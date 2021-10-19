@@ -34,13 +34,14 @@ DopeScope is a full stack application that allows users to upload, share, and in
 
 # MVP For this Project
 
-A user should have the ablitly to add new slides with images that can be viewed, sorted and searched by all users. The user should also be able to tag slides with a list of tags. The list of tags can be updated and added to and a slide may have a list of tags and add notes to the slides. Every page and request should have authorization. 
+A user should have the ablitly to add new slides with images that can be viewed, sorted and searched by all users. The list of tags can be updated and added to and a slide may have a list of tags and add notes to the slides. Every page and request should have authorization. 
 
 # Streach goals
 
   - Add ablity for users to like slides
   - Tap into external api for taxonomy info for that slide
   - Allow users to add ratings to slides
+  - Allow user to add a list of tags to their slides
 
 
 # Tech Stack
