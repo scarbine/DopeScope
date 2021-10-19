@@ -1,69 +1,77 @@
-CREATE TABLE [Slide] (
-  [id] int PRIMARY KEY,
-  [userId] int,
-  [dateCreated] datetime,
-  [magnification] int,
-  [microscopeId] int,
-  [imageUrl] nvarchar(255)
-)
+USE [master]
+
+IF db_id('DopeScope') IS NULL
+	CREATE DATABASE [DopeScope]
+
 GO
 
+USE [DopeScope]
+
+GO
+
+DROP TABLE IF EXISTS [Slide]
+DROP TABLE IF EXISTS [User]
+DROP TABLE IF EXISTS [Microscope]
+DROP TABLE IF EXISTS [Tag]
+DROP TABLE IF EXISTS [SlideTag]
+DROP TABLE IF EXISTS [Note]
+
+
+
 CREATE TABLE [User] (
-  [id] int PRIMARY KEY,
-  [firstName] nvarchar(255),
-  [lastName] nvarchar(255),
-  [email] nvarchar(255),
-  [isAdmin] bool,
-  [firebaseId] nvarchar(255)
+  [id] integer PRIMARY KEY IDENTITY,
+  [FirstName] nvarchar(50) NOT NULL,
+  [LastName] nvarchar(50) NOT NULL,
+  [Email] nvarchar(50) NOT NULL,
+  [IsAdmin] bit NOT NULL,
+  [FirebaseId] nvarchar(28) NOT NULL
 )
 GO
 
 CREATE TABLE [Microscope] (
-  [id] int PRIMARY KEY,
-  [make] nvarchar(255),
-  [model] nvarchar(255),
-  [userId] int
+  [id] integer PRIMARY KEY IDENTITY,
+  [Make] nvarchar(50) NOT NULL,
+  [Model] nvarchar(50) NOT NULL,
+  [UserId] integer NOT NULL
+)
+GO
+
+CREATE TABLE [Slide] (
+  [id] integer PRIMARY KEY IDENTITY,
+  [DateCreated] datetime NOT NULL,
+  [Magnification] integer NOT NULL,
+  [MicroscopeId] integer NOT NULL,
+  [ImageUrl] nvarchar(255) NOT NULL,
+
+CONSTRAINT [FK_Slide_Microscope] FOREIGN KEY ([microscopeId]) REFERENCES [Microscope] ([Id])
+
 )
 GO
 
 CREATE TABLE [Tag] (
-  [id] int PRIMARY KEY,
-  [tag] nvarchar(255)
+  [id] integer PRIMARY KEY IDENTITY,
+  [Tag] nvarchar(50) NOT NULL
 )
 GO
 
-CREATE TABLE [SlideTags] (
-  [id] int PRIMARY KEY,
-  [tagId] int,
-  [slideId] int
+CREATE TABLE [SlideTag] (
+  [id] integer PRIMARY KEY IDENTITY,
+  [TagId] integer NOT NULL,
+  [SlideId] integer NOT NULL,
+
+CONSTRAINT [FK_SlideTag_Tag] FOREIGN KEY ([tagId]) REFERENCES [Tag] ([Id]),
+CONSTRAINT [FK_SlideTag_Slide] FOREIGN KEY ([slideId]) REFERENCES [Slide] ([Id])
 )
 GO
 
-CREATE TABLE [Notes] (
-  [id] int PRIMARY KEY,
-  [note] nvarchar(255),
-  [userId] int,
-  [slideId] int
+CREATE TABLE [Note] (
+  [id] integer PRIMARY KEY IDENTITY,
+  [Note] nvarchar(500) NOT NULL,
+  [UserId] integer NOT NULL,
+  [SlideId] integer NOT NULL,
+
+CONSTRAINT [FK_Note_User] FOREIGN KEY ([userId]) REFERENCES [User] ([Id]),
+CONSTRAINT [FK_Note_Slide] FOREIGN KEY ([slideId]) REFERENCES [Slide] ([Id])
 )
 GO
 
-ALTER TABLE [Slide] ADD FOREIGN KEY ([userId]) REFERENCES [User] ([id])
-GO
-
-ALTER TABLE [Notes] ADD FOREIGN KEY ([slideId]) REFERENCES [Slide] ([id])
-GO
-
-ALTER TABLE [Notes] ADD FOREIGN KEY ([userId]) REFERENCES [User] ([id])
-GO
-
-ALTER TABLE [Slide] ADD FOREIGN KEY ([microscopeId]) REFERENCES [Microscope] ([id])
-GO
-
-ALTER TABLE [SlideTags] ADD FOREIGN KEY ([tagId]) REFERENCES [Tag] ([id])
-GO
-
-ALTER TABLE [SlideTags] ADD FOREIGN KEY ([id]) REFERENCES [Slide] ([id])
-GO
-
-ALTER TABLE [Microscope] ADD FOREIGN KEY ([userId]) REFERENCES [User] ([id])
-GO

@@ -25,14 +25,23 @@ DopeScope is a full stack application that allows users to upload, share, and in
 # ERD
 
 
-
-[DopeScope.-.ERD.pdf](https://github.com/scarbine/DopeScope/files/7374165/DopeScope.-.ERD.pdf)
-
+[DopeScope_MVP.pdf](https://github.com/scarbine/DopeScope/files/7376234/DopeScope_MVP.pdf)
 
 
 # WireFrame
 
 [DopeScope---Wireframe.pdf](https://github.com/scarbine/DopeScope/files/7374163/DopeScope---Wireframe.pdf)
+
+# MVP For this Project
+
+A user should have the ablitly to add new slides with images that can be viewed, sorted and searched by all users. The list of tags can be updated and added to and a slide may have a list of tags and add notes to the slides. Every page and request should have authorization. 
+
+# Streach goals
+
+  - Add ablity for users to like slides
+  - Tap into external api for taxonomy info for that slide
+  - Allow users to add ratings to slides
+  - Allow user to add a list of tags to their slides
 
 
 # Tech Stack
@@ -42,3 +51,4 @@ DopeScope is a full stack application that allows users to upload, share, and in
   - React 
   - Bootstrap
   - SQL
+  - Firebase
