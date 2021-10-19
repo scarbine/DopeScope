@@ -4,22 +4,17 @@ import Login from "./Login";
 import Register from "./Register";
 import Hello from "./Hello";
 
-
 export default function ApplicationViews({ isLoggedIn }) {
-
   return (
     <main>
       <Switch>
         <Route path="/" exact>
           {isLoggedIn ? <Hello /> : <Redirect to="/login" />}
         </Route>
-       
 
         <Route path="/login">
           <Login />
         </Route>
-
-       
 
         <Route path="/register">
           <Register />
@@ -27,4 +22,4 @@ export default function ApplicationViews({ isLoggedIn }) {
       </Switch>
     </main>
   );
-};
+}
