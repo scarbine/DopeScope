@@ -17,8 +17,8 @@ insert into [Microscope] (id, Make, Model, UserId) VALUES (1, 'Amscope', 'A32453
 set identity_insert [Microscope] off
 
 set identity_insert [Slide] on
-insert into [Slide] ([id],[DateCreated],[Magnification], [MicroscopeId], [ImageUrl]) VALUES (1, '2019-10-23', 10, 1, 'test'),
- (2, '2020-10-23', 100, 2, 'test');
+insert into [Slide] ([id],[Name],[DateCreated],[Magnification],[Description], [MicroscopeId], [ImageUrl]) VALUES (1,'blood cell','very very tiny', '2019-10-23', 10, 1, 'test'),
+ (2,'plant cell','very very green', '2020-10-23', 100, 2, 'test');
 set identity_insert [Slide] off
 
 set identity_insert [Note] on
