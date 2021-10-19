@@ -25,9 +25,7 @@ DopeScope is a full stack application that allows users to upload, share, and in
 # ERD
 
 
-
-[DopeScope.-.ERD.pdf](https://github.com/scarbine/DopeScope/files/7374165/DopeScope.-.ERD.pdf)
-
+[DopeScope_MVP.pdf](https://github.com/scarbine/DopeScope/files/7376234/DopeScope_MVP.pdf)
 
 
 # WireFrame
