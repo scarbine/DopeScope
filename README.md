@@ -19,18 +19,20 @@ DopeScope is a full stack application that allows users to upload, share, and in
 
 # SQL
 
-[Create Tables Script](https://github.com/scarbine/DopeScope/blob/main/SQL/DopeScope.sql)
+[Create Tables Script](https://github.com/scarbine/DopeScope/blob/main/SQL/01_Db_Create.sql.sql)
 
 
 # ERD
 
 
 
+[DopeScope.-.ERD.pdf](https://github.com/scarbine/DopeScope/files/7374165/DopeScope.-.ERD.pdf)
 
 
 
 # WireFrame
 
+[DopeScope---Wireframe.pdf](https://github.com/scarbine/DopeScope/files/7374163/DopeScope---Wireframe.pdf)
 
 
 # Tech Stack
