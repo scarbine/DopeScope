@@ -34,6 +34,16 @@ DopeScope is a full stack application that allows users to upload, share, and in
 
 [DopeScope---Wireframe.pdf](https://github.com/scarbine/DopeScope/files/7374163/DopeScope---Wireframe.pdf)
 
+# MVP For this Project
+
+A user should have the ablitly to add new slides with images that can be viewed and sorted and searched by all users. The user should also be able to tag slides with a list of tags. The list of tags can be updated and added to and a slide may have a list of tags.
+
+# Streach goals
+
+  - Add ablity for users to like slides
+  - Tap into external api for taxonomy info for that slide
+  - Allow users to add ratings to slides
+
 
 # Tech Stack
 
@@ -42,3 +52,4 @@ DopeScope is a full stack application that allows users to upload, share, and in
   - React 
   - Bootstrap
   - SQL
+  - Firebase
