@@ -41,6 +41,8 @@ CREATE TABLE [Slide] (
   [DateCreated] datetime NOT NULL,
   [Magnification] integer NOT NULL,
   [MicroscopeId] integer NOT NULL,
+  [Name] nvarchar(255) NOT NULL,
+  [Description] nvarchar(255) NOT NULL,
   [ImageUrl] nvarchar(255) NOT NULL,
 
 CONSTRAINT [FK_Slide_Microscope] FOREIGN KEY ([microscopeId]) REFERENCES [Microscope] ([Id])
