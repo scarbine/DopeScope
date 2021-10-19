@@ -1,3 +1,22 @@
+USE [master]
+
+IF db_id('DopeScope') IS NULL
+	CREATE DATABASE [DopeScope]
+
+GO
+
+USE [DopeScope]
+
+GO
+
+DROP TABLE IF EXISTS [Slide]
+DROP TABLE IF EXISTS [User]
+DROP TABLE IF EXISTS [Microscope]
+DROP TABLE IF EXISTS [Tag]
+DROP TABLE IF EXISTS [SlideTags]
+DROP TABLE IF EXISTS [Notes]
+
+
 CREATE TABLE [Slide] (
   [id] int PRIMARY KEY,
   [userId] int,
@@ -5,6 +24,11 @@ CREATE TABLE [Slide] (
   [magnification] int,
   [microscopeId] int,
   [imageUrl] nvarchar(255)
+
+CONSTRAINT [FK_Slide_Microscope] FOREIGN KEY ([microscopeId]) REFRENCES [Microscope] ([Id]),
+CONSTRAINT [FK_Slide_User] FOREIGN KEY ([userId]) REFRENCES [User] ([Id])
+
+
 )
 GO
 
@@ -13,7 +37,7 @@ CREATE TABLE [User] (
   [firstName] nvarchar(255),
   [lastName] nvarchar(255),
   [email] nvarchar(255),
-  [isAdmin] bool,
+  [isAdmin] bit,
   [firebaseId] nvarchar(255)
 )
 GO
@@ -36,6 +60,9 @@ CREATE TABLE [SlideTags] (
   [id] int PRIMARY KEY,
   [tagId] int,
   [slideId] int
+
+CONSTRAINT [FK_SlideTags_Tag] FOREIGN KEY ([tagId]) REFRENCES [Tag] ([Id]),
+CONSTRAINT [FK_SlideTags_Slide] FOREIGN KEY ([slideId]) REFRENCES [Slide] ([Id])
 )
 GO
 
@@ -44,26 +71,9 @@ CREATE TABLE [Notes] (
   [note] nvarchar(255),
   [userId] int,
   [slideId] int
+
+CONSTRAINT [FK_Notes_User] FOREIGN KEY ([userId]) REFRENCES [User] ([Id]),
+CONSTRAINT [FK_Notes_Slide] FOREIGN KEY ([slideId]) REFRENCES [Slide] ([Id])
 )
 GO
 
-ALTER TABLE [Slide] ADD FOREIGN KEY ([userId]) REFERENCES [User] ([id])
-GO
-
-ALTER TABLE [Notes] ADD FOREIGN KEY ([slideId]) REFERENCES [Slide] ([id])
-GO
-
-ALTER TABLE [Notes] ADD FOREIGN KEY ([userId]) REFERENCES [User] ([id])
-GO
-
-ALTER TABLE [Slide] ADD FOREIGN KEY ([microscopeId]) REFERENCES [Microscope] ([id])
-GO
-
-ALTER TABLE [SlideTags] ADD FOREIGN KEY ([tagId]) REFERENCES [Tag] ([id])
-GO
-
-ALTER TABLE [SlideTags] ADD FOREIGN KEY ([id]) REFERENCES [Slide] ([id])
-GO
-
-ALTER TABLE [Microscope] ADD FOREIGN KEY ([userId]) REFERENCES [User] ([id])
-GO
