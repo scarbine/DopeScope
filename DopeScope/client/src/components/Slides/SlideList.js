@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { Button } from "reactstrap";
 import { getAllSlides } from "../../modules/SlideManager";
 import { SlideCard } from "./SlideCard";
 
@@ -11,10 +12,12 @@ export const SlideList = () => {
 
   return (
     <>
-      <h1>Slide List</h1>
+      <h1>Slides</h1>
+      <Button>Add Slide</Button>
       <div>
-      {slides.map((slide) => {
-        <SlideCard key={slide.id} slide={slide} />;
+          {console.log(slides)}
+      {slides?.map((slide) => { 
+        return <SlideCard key={slide.id} slide={slide} />;
       })}
       </div>
     </>

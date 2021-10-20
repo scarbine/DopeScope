@@ -13,42 +13,28 @@ export default function Login() {
     e.preventDefault();
     login(email, password)
       .then(() => history.push("/"))
-      .catch(() => alert("Invalid email or password"));
+      .catch(() => alert("Login Failed"));
   };
 
   return (
-    <>
-      <div className="center">
-        <Form className="login-container" onSubmit={loginSubmit}>
-          <fieldset>
-            <FormGroup>
-              {/* <Label for="email">Email</Label> */}
-              <Input
-                id="email"
-                type="text"
-                placeholder="Email"
-                autoFocus
-                onChange={(e) => setEmail(e.target.value)}
-              />
-            </FormGroup>
-            <FormGroup>
-              {/* <Label for="password">Password</Label> */}
-              <Input
-                id="password"
-                type="password"
-                placeholder="Password"
-                onChange={(e) => setPassword(e.target.value)}
-              />
-            </FormGroup>
-            <FormGroup>
-              <Button className="login-button">Login</Button>
-            </FormGroup>
-            <em>
-              Not registered? <Link to="register">Register</Link>
-            </em>
-          </fieldset>
-        </Form>
-      </div>
-    </>
+    <Form onSubmit={loginSubmit}>
+      <fieldset>
+        <FormGroup>
+          <Label for="email">Email</Label>
+          <Input id="email" type="text" autoFocus onChange={e => setEmail(e.target.value)} />
+        </FormGroup>
+        <FormGroup>
+          <Label for="password">Password</Label>
+          <Input id="password" type="password" onChange={e => setPassword(e.target.value)} />
+        </FormGroup>
+        <FormGroup>
+          <Button>Login</Button>
+        </FormGroup>
+        <em>
+          Not registered? <Link to="register">Register</Link>
+        </em>
+      </fieldset>
+    </Form>
   );
 }
+
