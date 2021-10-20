@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Button, Form, FormGroup, Label, Input } from "reactstrap";
 import { useHistory, Link } from "react-router-dom";
 import { login } from "../modules/authManager";
-import logo from "./quill-logo.png";
+
 
 export default function Login() {
   const history = useHistory();
@@ -21,9 +21,7 @@ export default function Login() {
     <>
       <div className="center">
         <Form className="login-container" onSubmit={loginSubmit}>
-          <FormGroup>
-            <img src={logo} alt="logo" className="login-logo" />
-          </FormGroup>
+      
           <fieldset>
             <FormGroup>
               {/* <Label for="email">Email</Label> */}
