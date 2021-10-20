@@ -11,5 +11,6 @@ namespace DopeScope.Repository
 
         List<Microscope> GetAll();
         Microscope GetById(int id);
+        void Add(Microscope microscope);
     }
 }

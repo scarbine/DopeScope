@@ -46,16 +46,16 @@ namespace DopeScope.Controllers
                 return Ok(quote);
             }
 
-            //[HttpPost]
-            //public IActionResult Post(Microscope microscope)
-            //{
-            //    var currentUserProfile = GetCurrentUserProfile();
-            //    microscope.UserId = currentUserProfile.Id;
-            //    _microscopeRepository.Add(microscope);
-            //    return CreatedAtAction(nameof(Get), new { id = microscope.Id }, microscope);
-            //}
+        [HttpPost]
+        public IActionResult Post(Microscope microscope)
+        {
+            var currentUserProfile = GetCurrentUserProfile();
+            microscope.UserId = currentUserProfile.Id;
+            _microscopeRepository.Add(microscope);
+            return CreatedAtAction(nameof(Get), new { id = microscope.Id }, microscope);
+        }
 
-            private UserProfile GetCurrentUserProfile()
+        private UserProfile GetCurrentUserProfile()
             {
                 var firebaseUserId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
                 return _userProfileRepository.GetByFirebaseUserId(firebaseUserId);
