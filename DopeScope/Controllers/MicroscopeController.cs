@@ -13,7 +13,7 @@ namespace DopeScope.Controllers
 {
    
 
-        [Authorize]
+        // [Authorize]
         [Route("api/[controller]")]
         [ApiController]
         public class MicroscopeController : ControllerBase

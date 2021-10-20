@@ -19,10 +19,10 @@ function App() {
 
   return (
     <Router>
-      {/* <Header isLoggedIn={isLoggedIn} /> */}
-      <Header />
-      <ApplicationViews  />
-      {/* <ApplicationViews isLoggedIn={isLoggedIn} /> */}
+      <Header isLoggedIn={isLoggedIn} />
+      {/* <Header />
+      <ApplicationViews  /> */}
+      <ApplicationViews isLoggedIn={isLoggedIn} />
     </Router>
   );
 }

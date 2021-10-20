@@ -14,8 +14,9 @@ export const MicroscopeList = () => {
     <>
       <h1>Microscope List</h1>
       <div>
+          {console.log(microscopes)}
       {microscopes.map((microscope) => {
-        <MicroscopeCard key={microscope.id} microscope={microscope} />;
+        return <MicroscopeCard key={microscope.id} microscope={microscope} />;
       })}
       </div>
     </>
