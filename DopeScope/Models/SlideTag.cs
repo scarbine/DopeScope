@@ -7,7 +7,6 @@ namespace DopeScope.Models
 {
     public class SlideTag
     {
-
         public int Id { get; set; }
 
         public int SlideId { get; set; }
