@@ -6,10 +6,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Security.Claims;
+using Microsoft.AspNetCore.Authorization;
 
 namespace DopeScope.Controllers
 {
-        //[Authorize]
+        [Authorize]
         [Route("api/[controller]")]
         [ApiController]
         public class SlideController : ControllerBase
@@ -51,6 +52,24 @@ namespace DopeScope.Controllers
             slide.DateCreated = DateTime.Now;
             _slideRepository.Add(slide);
             return CreatedAtAction(nameof(Get), new { id = slide.Id }, slide);
+        }
+
+        [HttpPut("{id}")]
+        public IActionResult Update(int id, Slide slide)
+        {
+            if (id != slide.Id)
+            {
+                return BadRequest();
+            }
+            _slideRepository.Update(slide);
+            return Ok(slide);
+        }
+
+        [HttpDelete("{id}")]
+        public IActionResult Delete(int id)
+        {
+            _slideRepository.Delete(id);
+            return NoContent();
         }
 
         private UserProfile GetCurrentUserProfile()

@@ -88,6 +88,50 @@ namespace DopeScope.Repository
             }
         }
 
+        public void Update( Slide slide)
+        {
+            using (var conn = Connection)
+            {
+                conn.Open();
+                using (var cmd = conn.CreateCommand())
+                {
+                    cmd.CommandText = @"
+                        UPDATE Slide
+                           SET Magnification = @Magnification,
+                               MicroscopeId = @MicroscopeId,
+                               Description = @Description,
+                               ImageUrl = @ImageUrl,
+                                Name = @Name,
+                         WHERE Id = @Id";
+
+                    DbUtils.AddParameter(cmd, "@Magnification", slide.Magnification);
+                    DbUtils.AddParameter(cmd, "@MicroscopeId", slide.MicroscopeId);
+                    DbUtils.AddParameter(cmd, "@Description", slide.Description);
+                    DbUtils.AddParameter(cmd, "@ImageUrl", slide.ImageUrl);
+                    DbUtils.AddParameter(cmd, "@Name", slide.Name);
+                    DbUtils.AddParameter(cmd, "@Id", slide.Id);
+
+
+
+                    cmd.ExecuteNonQuery();
+                }
+            }
+        }
+
+        public void Delete(int id)
+        {
+            using (var conn = Connection)
+            {
+                conn.Open();
+                using (var cmd = conn.CreateCommand())
+                {
+                    cmd.CommandText = "DELETE FROM Slide WHERE Id = @Id";
+                    DbUtils.AddParameter(cmd, "@id", id);
+                    cmd.ExecuteNonQuery();
+                }
+            }
+        }
+
 
         private string SlideQuery
         {
