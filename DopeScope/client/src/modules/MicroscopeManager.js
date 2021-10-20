@@ -14,12 +14,31 @@ export const getAllMicroscopes = () => {
         return resp.json();
       } else {
         throw new Error(
-          "An unknown error occurred while trying to get quotes."
+          "An unknown error occurred while trying to get Scope."
         );
       }
     });
   });
 };
+
+// export const getMicroscopesByUserId = () => {
+//   return getToken().then((token) => {
+//     return fetch(apiUrl, {
+//       method: "GET",
+//       headers: {
+//         Authorization: `Bearer ${token}`,
+//       },
+//     }).then((resp) => {
+//       if (resp.ok) {
+//         return resp.json();
+//       } else {
+//         throw new Error(
+//           "An unknown error occurred while trying to get Scope."
+//         );
+//       }
+//     });
+//   });
+// };
 
 export const addMicroscope = (microscope) => {
   return getToken().then((token) => {
@@ -37,7 +56,7 @@ export const addMicroscope = (microscope) => {
         throw new Error("Unauthorized");
       } else {
         throw new Error(
-          "An unknown error occurred while trying to save a new quote."
+          "An unknown error occurred while trying to save a new Scope."
         );
       }
     });
