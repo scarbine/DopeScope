@@ -34,27 +34,26 @@ namespace DopeScope.Controllers
                 return Ok(_slideRepository.GetAll());
             }
 
-            //[HttpGet("{id}")]
-            //public IActionResult Get(int id)
-            //{
-            //    var slide = _slideRepository.GetById(id);
-            //    if (slide != null)
-            //    {
-            //        NotFound();
-            //    }
-            //    return Ok(slide);
-            //}
+        [HttpGet("{id}")]
+        public IActionResult Get(int id)
+        {
+            var slide = _slideRepository.GetById(id);
+            if (slide != null)
+            {
+                NotFound();
+            }
+            return Ok(slide);
+        }
 
-            //[HttpPost]
-            //public IActionResult Post(Slide slide)
-            //{
-            //    var currentUserProfile = GetCurrentUserProfile();
-            //    slide.UserId = currentUserProfile.Id;
-            //    _slideRepository.Add(slide);
-            //    return CreatedAtAction(nameof(Get), new { id = slide.Id }, slide);
-            //}
+        [HttpPost]
+        public IActionResult Post(Slide slide)
+        {
+            slide.DateCreated = DateTime.Now;
+            _slideRepository.Add(slide);
+            return CreatedAtAction(nameof(Get), new { id = slide.Id }, slide);
+        }
 
-            private UserProfile GetCurrentUserProfile()
+        private UserProfile GetCurrentUserProfile()
             {
                 var firebaseUserId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
                 return _userProfileRepository.GetByFirebaseUserId(firebaseUserId);

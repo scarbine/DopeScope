@@ -39,6 +39,56 @@ namespace DopeScope.Repository
             }
         }
 
+        public Slide GetById(int id)
+        {
+            using (var conn = Connection)
+            {
+                conn.Open();
+                using (var cmd = conn.CreateCommand())
+                {
+                    cmd.CommandText = SlideQuery;
+
+                    DbUtils.AddParameter(cmd, "@Id", id);
+
+                    Slide slide = null;
+
+                    var reader = cmd.ExecuteReader();
+                    if (reader.Read())
+                    {
+                        slide = NewSlide(reader);
+
+                    }
+
+                    reader.Close();
+
+                    return slide;
+                }
+            }
+        }
+
+        public void Add(Slide slide)
+        {
+            using (var conn = Connection)
+            {
+                conn.Open();
+                using (var cmd = conn.CreateCommand())
+                {
+                    cmd.CommandText = @"INSERT INTO Slide (Magnification, MicroscopeId, Description, ImageUrl, Name)
+                                        OUTPUT INSERTED.ID
+                                        VALUES ( @Magnification, @icroscopeId @Description, @ImageUrl, @Name)";
+                    DbUtils.AddParameter(cmd, "@Magnification", slide.Magnification);
+                    DbUtils.AddParameter(cmd, "@MicroscopeId", slide.MicroscopeId);
+                    DbUtils.AddParameter(cmd, "@Description", slide.Description);
+                    DbUtils.AddParameter(cmd, "@ImageUrl", slide.ImageUrl);
+                    DbUtils.AddParameter(cmd, "@Name", slide.Name);
+                   
+
+                    slide.Id = (int)cmd.ExecuteScalar();
+                }
+            }
+        }
+
+
         private string SlideQuery
         {
             get
