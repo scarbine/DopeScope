@@ -1,8 +1,8 @@
 import { getToken } from "./authManager";
 
-const apiUrl = "api/microscope";
+const apiUrl = "api/slide";
 
-export const getAllMicroscopes = () => {
+export const getAllSlides = () => {
   return getToken().then((token) => {
     return fetch(apiUrl, {
       method: "GET",
@@ -21,7 +21,7 @@ export const getAllMicroscopes = () => {
   });
 };
 
-export const addMicroscope = (microscope) => {
+export const addSlide = (slide) => {
   return getToken().then((token) => {
     return fetch(apiUrl, {
       method: "POST",
@@ -29,7 +29,7 @@ export const addMicroscope = (microscope) => {
         Authorization: `Bearer ${token}`,
         "Content-Type": "application/json",
       },
-      body: JSON.stringify(microscope),
+      body: JSON.stringify(slide),
     }).then((resp) => {
       if (resp.ok) {
         return resp.json();

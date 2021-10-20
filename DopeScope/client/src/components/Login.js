@@ -3,7 +3,6 @@ import { Button, Form, FormGroup, Label, Input } from "reactstrap";
 import { useHistory, Link } from "react-router-dom";
 import { login } from "../modules/authManager";
 
-
 export default function Login() {
   const history = useHistory();
 
@@ -21,7 +20,6 @@ export default function Login() {
     <>
       <div className="center">
         <Form className="login-container" onSubmit={loginSubmit}>
-      
           <fieldset>
             <FormGroup>
               {/* <Label for="email">Email</Label> */}

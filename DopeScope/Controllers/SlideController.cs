@@ -6,10 +6,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Security.Claims;
+using Microsoft.AspNetCore.Authorization;
 
 namespace DopeScope.Controllers
 {
-        //[Authorize]
+        [Authorize]
         [Route("api/[controller]")]
         [ApiController]
         public class SlideController : ControllerBase

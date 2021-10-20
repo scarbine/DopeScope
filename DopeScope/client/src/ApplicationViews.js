@@ -4,14 +4,14 @@ import Login from "./components/Login";
 import Register from "./components/Register";
 import { Hello } from "./components/Hello";
 import { MicroscopeList } from "./components/Microscopes/MicroscopeList";
+import { SlideList } from "./components/Slides/SlideList";
 
 export default function ApplicationViews({ isLoggedIn }) {
   return (
     <main>
       <Switch>
         <Route path="/" exact>
-          {/* {isLoggedIn ? <Hello /> : <Redirect to="/login" />} */}
-          {<Hello />}
+          {isLoggedIn ? <Hello /> : <Redirect to="/login" />}
         </Route>
 
         <Route path="/login">
@@ -19,8 +19,12 @@ export default function ApplicationViews({ isLoggedIn }) {
         </Route>
 
         <Route path="/microscopes">
-          <MicroscopeList />
-          </Route>
+          {isLoggedIn ? <MicroscopeList /> : <Redirect to="/login" />}
+        </Route>
+
+        <Route path="/slide">
+          {isLoggedIn ? <SlideList /> : <Redirect to="/login" />}
+        </Route>
 
         <Route path="/register">
           <Register />
