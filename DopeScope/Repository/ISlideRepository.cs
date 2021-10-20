@@ -11,5 +11,7 @@ namespace DopeScope.Repository
         List<Slide> GetAll();
         Slide GetById(int id);
         void Add(Slide slide);
+        void Update( Slide slide);
+        void Delete(int id);
     }
 }

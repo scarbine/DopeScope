@@ -84,6 +84,46 @@ namespace DopeScope.Repository
             }
         }
 
+        public void Update(Microscope microscope)
+        {
+            using (var conn = Connection)
+            {
+                conn.Open();
+                using (var cmd = conn.CreateCommand())
+                {
+                    cmd.CommandText = @"
+                        UPDATE Microscope
+                           SET Make = @Make,
+                               Model = @Model,
+                               UserId = @UserId
+                         WHERE Id = @Id";
+
+                    DbUtils.AddParameter(cmd, "@Make", microscope.Make);
+                    DbUtils.AddParameter(cmd, "@Model", microscope.Model);
+                    DbUtils.AddParameter(cmd, "@UserId", microscope.UserId);
+                    DbUtils.AddParameter(cmd, "@Id", microscope.Id);
+
+
+
+                    cmd.ExecuteNonQuery();
+                }
+            }
+        }
+
+        public void Delete(int id)
+        {
+            using (var conn = Connection)
+            {
+                conn.Open();
+                using (var cmd = conn.CreateCommand())
+                {
+                    cmd.CommandText = "DELETE FROM Microscope WHERE Id = @Id";
+                    DbUtils.AddParameter(cmd, "@id", id);
+                    cmd.ExecuteNonQuery();
+                }
+            }
+        }
+
         private string MicroscopeQuery
         {
             get

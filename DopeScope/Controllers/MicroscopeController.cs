@@ -55,6 +55,24 @@ namespace DopeScope.Controllers
             return CreatedAtAction(nameof(Get), new { id = microscope.Id }, microscope);
         }
 
+        [HttpPut("{id}")]
+        public IActionResult Update(int id, Microscope microscope)
+        {
+            if (id != microscope.Id)
+            {
+                return BadRequest();
+            }
+            _microscopeRepository.Update(microscope);
+            return Ok(microscope);
+        }
+
+        [HttpDelete("{id}")]
+        public IActionResult Delete(int id)
+        {
+            _microscopeRepository.Delete(id);
+            return NoContent();
+        }
+
         private UserProfile GetCurrentUserProfile()
             {
                 var firebaseUserId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
