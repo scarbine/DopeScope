@@ -26,6 +26,7 @@ namespace DopeScope
             services.AddControllers();
             services.AddTransient<IUserProfileRepository, UserProfileRepository>();
             services.AddTransient<IMicroscopeRepository, MicroscopeRepository>();
+            services.AddTransient<ISlideRepository, SlideRepository>();
 
             var firebaseProjectId = Configuration.GetValue<string>("FirebaseProjectId");
             var googleTokenUrl = $"https://securetoken.google.com/{firebaseProjectId}";
