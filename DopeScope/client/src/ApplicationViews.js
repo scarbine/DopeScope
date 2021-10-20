@@ -5,6 +5,8 @@ import Register from "./components/Register";
 import { Hello } from "./components/Hello";
 import { MicroscopeList } from "./components/Microscopes/MicroscopeList";
 import { SlideList } from "./components/Slides/SlideList";
+import { MicroscopeForm } from "./components/Microscopes/MicroscopeForm";
+import { SlideForm } from "./components/Slides/SlideForm";
 
 export default function ApplicationViews({ isLoggedIn }) {
   return (
@@ -18,12 +20,18 @@ export default function ApplicationViews({ isLoggedIn }) {
           <Login />
         </Route>
 
-        <Route path="/microscope">
+        <Route path="/microscope" exact>
           {isLoggedIn ? <MicroscopeList /> : <Redirect to="/login" />}
         </Route>
+        <Route path="/microscope/form" >
+          {isLoggedIn ? <MicroscopeForm /> : <Redirect to="/login" />}
+        </Route>
 
-        <Route path="/slide">
+        <Route path="/slide" exact>
           {isLoggedIn ? <SlideList /> : <Redirect to="/login" />}
+        </Route>
+        <Route path="/slide/form">
+          {isLoggedIn ? <SlideForm /> : <Redirect to="/login" />}
         </Route>
 
         <Route path="/register">

@@ -2,7 +2,9 @@ import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
 import { Button, Form, FormGroup, Label, Input } from 'reactstrap';
 import { addMicroscope } from "../../modules/MicroscopeManager";
-import { addQuote } from "../modules/quoteManager";
+import "./Microscope.css";
+
+
 
 export const MicroscopeForm = () => {
   const history = useHistory();
@@ -16,7 +18,7 @@ export const MicroscopeForm = () => {
     event.preventDefault()
     const value = event.target.value
     const key = event.target.id
-    const microscopeCopy = {...post}
+    const microscopeCopy = {...microscope}
     microscopeCopy[key] = value
     setMicroscope({
         make: microscopeCopy.title,
@@ -32,6 +34,14 @@ export const MicroscopeForm = () => {
       .catch((err) => alert(`An error ocurred: ${err.message}`));
   };
 
+  const handleCancel = () => {
+      history.push("/microscope")
+  }
+
+  const handleSave = () => {
+    //   Add logic to save or submit new
+  }
+
   return (
     <Form onSubmit={submitForm}>
       <FormGroup>
@@ -43,7 +53,8 @@ export const MicroscopeForm = () => {
         <Input id="quoteText" type="text" name="Model" onChange={handleInputChange} value={microscope.model} />
       </FormGroup>
       <FormGroup>
-        <Button>Save</Button>
+        <Button className="scope-btn" onClick={handleSave}>Save</Button>
+        <Button className="scope-btn" onClick={handleCancel}>Cancel</Button>
       </FormGroup>
     </Form>
   );
