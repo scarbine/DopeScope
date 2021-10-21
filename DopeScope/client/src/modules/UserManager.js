@@ -3,7 +3,7 @@ import { getToken } from "./authManager";
 
 
 
- const apiUrl = "/userprofile"
+ const apiUrl = "/api/userprofile"
 export const  getUserByFirebaseId =(firebaseId) => {
     return getToken().then((token) => {
         return fetch(`${apiUrl}/${firebaseId}`, {
@@ -15,7 +15,7 @@ export const  getUserByFirebaseId =(firebaseId) => {
           if (res.ok) {
             return res.json();
           } else {
-            throw new Error("An unknown error occurred while trying to get slides.");
+            throw new Error("An unknown error occurred while trying to get user.");
           }
         });
       });

@@ -77,12 +77,14 @@ namespace DopeScope.Repository
                 conn.Open();
                 using (var cmd = conn.CreateCommand())
                 {
-                    cmd.CommandText = @"INSERT INTO Microscope (Make, Model)
+                    cmd.CommandText = @"INSERT INTO Microscope (Make, Model, UserId)
                                         OUTPUT INSERTED.ID
-                                        VALUES ( @Make, @Model @UserId)";
+                                        VALUES ( @Make, @Model,@UserId )";
                     DbUtils.AddParameter(cmd, "@Make", microscope.Make);
                     DbUtils.AddParameter(cmd, "@Model", microscope.Model);
-                   
+                    DbUtils.AddParameter(cmd, "@UserId", microscope.UserId);
+
+
                     microscope.Id = (int)cmd.ExecuteScalar();
                 }
             }
