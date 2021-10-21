@@ -39,6 +39,8 @@ namespace DopeScope.Repository
             }
         }
 
+        
+
         public Microscope GetById(int id)
         {
             using (var conn = Connection)
@@ -46,7 +48,9 @@ namespace DopeScope.Repository
                 conn.Open();
                 using (var cmd = conn.CreateCommand())
                 {
-                    cmd.CommandText = MicroscopeQuery;
+                    cmd.CommandText = @"SELECT m.Id, m.Make, m.Model, m.UserId, u.Id AS UserId, u.FirstName, u.LastName, u.Email, u.FirebaseId FROM Microscope m
+                        LEFT JOIN[User] u ON u.id = m.UserId
+                        WHERE m.Id = @Id";
 
                     DbUtils.AddParameter(cmd, "@Id", id);
 

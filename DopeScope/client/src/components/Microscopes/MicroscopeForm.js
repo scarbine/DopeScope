@@ -1,61 +1,87 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
-import { Button, Form, FormGroup, Label, Input } from 'reactstrap';
-import { addMicroscope } from "../../modules/MicroscopeManager";
+import { useParams } from "react-router";
+import { Button, Form, FormGroup, Label, Input } from "reactstrap";
+import { addMicroscope, getMicroscopesById, updateMicroscope } from "../../modules/MicroscopeManager";
+import firebase from "firebase";
 import "./Microscope.css";
-
-
+import { getUserByFirebaseId } from "../../modules/UserManager";
 
 export const MicroscopeForm = () => {
   const history = useHistory();
-  const [microscope, setMicroscope] = useState({
-      make:"",
-      model : "",
-      userid : ""
-  });
+  const {scopeId} = useParams();
+  const [microscope, setMicroscope] = useState({});
+  const [user, setUser] =useState({})
+  const currentUser = firebase.auth().currentUser
 
-  const handleInputChange = (event) => {
-    event.preventDefault()
-    const value = event.target.value
-    const key = event.target.id
-    const microscopeCopy = {...microscope}
-    microscopeCopy[key] = value
-    setMicroscope({
-        make: microscopeCopy.title,
-        model: microscopeCopy.content
-})
-}
-
-
-  const submitForm = (e) => {
+  const handleInputChange = (e) => {
     e.preventDefault();
-    addMicroscope(microscope)
-      .then(() => history.push("/"))
-      .catch((err) => alert(`An error ocurred: ${err.message}`));
+    const newMicroscope = { ...microscope };
+    newMicroscope[e.target.name] = e.target.value
+    setMicroscope(newMicroscope);
   };
 
-  const handleCancel = () => {
-      history.push("/microscope")
-  }
+  useEffect(() => {
+    if(scopeId){
+      getMicroscopesById(scopeId).then(setMicroscope)}
+  },[])
 
-  const handleSave = () => {
-    //   Add logic to save or submit new
-  }
+
+  const handleCancel = () => {
+    history.push("/microscope");
+  };
+
+  const handleSave = (e) => {
+    e.preventDefault();
+    if(scopeId){
+      updateMicroscope({
+        id: microscope.id,
+        make: microscope.make,
+        model: microscope.model,
+        userId: microscope.userId
+      }).then(history.push('/microscope'))
+    } else {
+      // getUserByFirebaseId(currentUser.l).then(setUser)
+      addMicroscope({
+        id: microscope.id,
+        make: microscope.make,
+        model: microscope.model,
+        userId: user.id
+      }).then(history.push('/microscope'))
+    }
+  };
 
   return (
-    <Form onSubmit={submitForm}>
+    <Form >
+    {console.log(currentUser.l)}
       <FormGroup>
         <Label for="quoteText">Make</Label>
-        <Input id="quoteText" type="text" name="Make" onChange={handleInputChange} value={microscope.make} />
+        <Input
+          id="quoteText"
+          type="text"
+          name="make"
+          onChange={handleInputChange}
+          value={microscope.make}
+        />
       </FormGroup>
       <FormGroup>
         <Label for="quoteText">Model</Label>
-        <Input id="quoteText" type="text" name="Model" onChange={handleInputChange} value={microscope.model} />
+        <Input
+          id="quoteText"
+          type="text"
+          name="model"
+          onChange={handleInputChange}
+          value={microscope.model}
+        />
       </FormGroup>
       <FormGroup>
-        <Button className="scope-btn" onClick={handleSave}>Save</Button>
-        <Button className="scope-btn" onClick={handleCancel}>Cancel</Button>
+        { scopeId ? <Button className="scope-btn" onClick={handleSave}>
+          Update Scope
+        </Button> : <Button className="scope-btn" onClick={handleSave}> Add New Scope </Button> }
+        <Button className="scope-btn" onClick={handleCancel}>
+          Cancel
+        </Button>
       </FormGroup>
     </Form>
   );
-}
+};

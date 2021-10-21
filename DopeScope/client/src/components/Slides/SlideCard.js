@@ -9,17 +9,24 @@ import {
   CardSubtitle,
   Button,
 } from "reactstrap";
+import { deleteSlide} from "../../modules/SlideManager";
 import "./Slide.css";
 
-export const SlideCard = ({ slide }) => {
+export const SlideCard = ({ slide , updateList }) => {
   const [date] = slide.dateCreated.split("T");
   const history = useHistory();
 
-  const handleDelete = () => {};
+  const handleDelete = () => {
+    deleteSlide(slide.id).then(history.push("/slide")).then(updateList())
+  };
 
   const handleEdit = () => {
-    history.push("/slide/edit");
+    history.push(`/slide/form/${slide.id}`);
   };
+
+  const handleDetails = () => {
+    history.push("/slide/details")
+  }
 
   return (
     <>
@@ -35,6 +42,7 @@ export const SlideCard = ({ slide }) => {
             </CardSubtitle>
             <CardText>{slide.description}</CardText>
             <div className="slide-buttons">
+            <Button className="slide-btn" onClick={handleDetails}>Edit Details</Button>
             <Button className="slide-btn" onClick={handleEdit}>Edit Slide</Button>
             <Button className="slide-btn" onClick={handleDelete}>Delete Slide</Button>
             </div>
