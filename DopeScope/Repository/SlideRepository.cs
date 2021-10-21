@@ -46,7 +46,10 @@ namespace DopeScope.Repository
                 conn.Open();
                 using (var cmd = conn.CreateCommand())
                 {
-                    cmd.CommandText = SlideQuery;
+                    cmd.CommandText = @"SELECT s.Id, s.Magnification, s.MicroscopeId,s.Description, s.ImageUrl, s.Name, s.DateCreated, m.Id AS MId, m.Make, m.Model, m.UserId AS MUID, u.Id AS UserId, u.FirebaseId, u.FirstName, u.Lastname, u.Email FROM Slide s
+                        JOIN Microscope m ON s.MicroscopeId = m.Id
+                        JOIN [USER] u ON u.Id = m.UserId
+                        WHERE s.Id = @Id";
 
                     DbUtils.AddParameter(cmd, "@Id", id);
 

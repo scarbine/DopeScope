@@ -14,6 +14,10 @@ export const MicroscopeCard = (props) => {
   const handleOnClick = () => {
     history.push("/microscope/details")
   }
+
+  const handleEdit = () => {
+    history.push(`/microscope/form/${props.microscope.id}`)
+  }
   return (
     <>
       <div>
@@ -24,6 +28,7 @@ export const MicroscopeCard = (props) => {
           <CardSubtitle tag="h6" className="mb-2 text-muted">{props.microscope.make} {props.microscope.model}</CardSubtitle>
           <CardText>Owner : {props.microscope.user.firstName} {props.microscope.user.lastName}</CardText>
           <Button onClick={handleOnClick}>Details</Button>
+          <Button onClick={handleEdit}>Edit</Button>
         </CardBody>
       </Card>
     </div>

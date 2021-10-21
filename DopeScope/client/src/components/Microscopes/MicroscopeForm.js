@@ -1,61 +1,86 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
-import { Button, Form, FormGroup, Label, Input } from 'reactstrap';
-import { addMicroscope } from "../../modules/MicroscopeManager";
+import { useParams } from "react-router";
+import { Button, Form, FormGroup, Label, Input } from "reactstrap";
+import { addMicroscope, getMicroscopesById, updateMicroscope } from "../../modules/MicroscopeManager";
 import "./Microscope.css";
-
-
 
 export const MicroscopeForm = () => {
   const history = useHistory();
+  const {scopeId} = useParams();
   const [microscope, setMicroscope] = useState({
-      make:"",
-      model : "",
-      userid : ""
+    make: "",
+    model: "",
+    userid: "",
   });
 
   const handleInputChange = (event) => {
-    event.preventDefault()
-    const value = event.target.value
-    const key = event.target.id
-    const microscopeCopy = {...microscope}
-    microscopeCopy[key] = value
+    event.preventDefault();
+    const value = event.target.value;
+    const key = event.target.id;
+    const microscopeCopy = { ...microscope };
+    microscopeCopy[key] = value;
     setMicroscope({
-        make: microscopeCopy.title,
-        model: microscopeCopy.content
-})
-}
-
-
-  const submitForm = (e) => {
-    e.preventDefault();
-    addMicroscope(microscope)
-      .then(() => history.push("/"))
-      .catch((err) => alert(`An error ocurred: ${err.message}`));
+      make: microscopeCopy.title,
+      model: microscopeCopy.content,
+    });
   };
 
-  const handleCancel = () => {
-      history.push("/microscope")
-  }
+  useEffect(() => {
+    if(scopeId){
+      getMicroscopesById(scopeId).then(setMicroscope)}
+  },[])
 
-  const handleSave = () => {
-    //   Add logic to save or submit new
-  }
+  // const submitForm = (e) => {
+  //   e.preventDefault();
+  //   addMicroscope(microscope)
+  //     .then(() => history.push("/"))
+  //     .catch((err) => alert(`An error ocurred: ${err.message}`));
+  // };
+
+  const handleCancel = () => {
+    history.push("/microscope");
+  };
+
+  const handleSave = (e) => {
+    e.preventDefault();
+    if(scopeId){
+      updateMicroscope(microscope)
+    } else {
+      addMicroscope(microscope)
+    }
+  };
 
   return (
-    <Form onSubmit={submitForm}>
+    <Form >
       <FormGroup>
         <Label for="quoteText">Make</Label>
-        <Input id="quoteText" type="text" name="Make" onChange={handleInputChange} value={microscope.make} />
+        <Input
+          id="quoteText"
+          type="text"
+          name="Make"
+          onChange={handleInputChange}
+          value={microscope.make}
+        />
       </FormGroup>
       <FormGroup>
         <Label for="quoteText">Model</Label>
-        <Input id="quoteText" type="text" name="Model" onChange={handleInputChange} value={microscope.model} />
+        <Input
+          id="quoteText"
+          type="text"
+          name="Model"
+          onChange={handleInputChange}
+          value={microscope.model}
+        />
       </FormGroup>
       <FormGroup>
-        <Button className="scope-btn" onClick={handleSave}>Save</Button>
-        <Button className="scope-btn" onClick={handleCancel}>Cancel</Button>
+        { scopeId ? <Button className="scope-btn" onClick={handleSave}>
+          Update Scope
+        </Button> : <Button className="scope-btn" onClick={handleSave}> Add New Scope </Button> }
+        <Button className="scope-btn" onClick={handleCancel}>
+          Cancel
+        </Button>
       </FormGroup>
     </Form>
   );
-}
+};

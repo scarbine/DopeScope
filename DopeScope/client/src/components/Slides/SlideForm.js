@@ -1,12 +1,14 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
+import { useParams } from "react-router";
 import { Button, Form, FormGroup, Label, Input } from 'reactstrap';
-import { addSlide } from "../../modules/SlideManager";
+import { addSlide, getSlideById, updateSlide } from "../../modules/SlideManager";
 import "./Slide.css"
 
 
 export const SlideForm = () => {
   const history = useHistory();
+  const {slideId} = useParams();
   const [slide, setSlide] = useState({
  
   });
@@ -25,6 +27,12 @@ export const SlideForm = () => {
 })
 }
 
+useEffect(()=>{
+  if(slideId){
+    getSlideById(slideId).then(setSlide)
+  }
+},[])
+
 
   const submitForm = (e) => {
     e.preventDefault();
@@ -38,7 +46,11 @@ export const SlideForm = () => {
   }
 
   const handleSave = () => {
-    // add handle save if new or edit
+    if(slideId){
+      updateSlide(slide)
+    } else {
+      addSlide(slide)
+    }
   }
 
   return (
@@ -60,7 +72,7 @@ export const SlideForm = () => {
         <Input id="slideScope" type="text" name="scope" onChange={handleInputChange} value={slide.microscopeId} />
       </FormGroup>
       <FormGroup className="slide-buttons">
-        <Button className="slide-btn" onClick={handleSave}>Save</Button>
+        {slideId ? <Button className="slide-btn" onClick={handleSave}>Update Slide</Button> : <Button className="slide-btn" onClick={handleSave}>Add Slide</Button> }
         <Button className="slide-btn" onClick={handleCancel}>Cancel</Button>
       </FormGroup>
     </Form>

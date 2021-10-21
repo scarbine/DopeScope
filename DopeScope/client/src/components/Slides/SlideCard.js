@@ -21,7 +21,7 @@ export const SlideCard = ({ slide }) => {
   };
 
   const handleEdit = () => {
-    history.push("/slide/edit");
+    history.push(`/slide/form/${slide.id}`);
   };
 
   const handleDetails = () => {
