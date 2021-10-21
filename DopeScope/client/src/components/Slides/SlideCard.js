@@ -26,6 +26,7 @@ export const SlideCard = ({ slide , updateList }) => {
 
   const handleDetails = () => {
     history.push(`/slide/${slide.id}`)
+  }
 
   return (
     <>
@@ -52,4 +53,4 @@ export const SlideCard = ({ slide , updateList }) => {
       </div>
     </>
   );
-}}
+};
