@@ -14,3 +14,15 @@
 .slide-list-title{
     text-align: center;
 }
+
+.slide-detail-container{
+    margin:2rem;
+}
+
+.slide-detail-img{
+    width: 20rem;
+}
+
+.slide-card-container{
+    margin: 1rem;
+}

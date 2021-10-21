@@ -30,7 +30,7 @@ export const SlideCard = ({ slide , updateList }) => {
 
   return (
     <>
-      <div>
+      <div className="slide-card-container">
         <Card className="slide-card">
           <CardImg top width="100%" src={slide.imageUrl} alt="Card image cap" />
           <CardBody>

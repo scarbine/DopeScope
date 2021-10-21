@@ -7,7 +7,7 @@ import "./Slide.css"
 
 export const SlideList = () => {
  
-  const history = useHistory();
+
   const [slides, setSlides] = useState([]);
   const [update, setUpdate] = useState(true);
 
