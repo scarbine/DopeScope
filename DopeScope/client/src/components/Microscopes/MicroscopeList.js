@@ -14,18 +14,18 @@ export const MicroscopeList = () => {
   }, []);
 
   const history = useHistory()
-  const handleClick = () => {
-      history.push("microscope/form")
-  }
+ 
   return (
     <>
-      <h1>Scopes</h1>
-      <Button  className="scope-btn" onClick={handleClick}>Add Scope</Button>
+    <div className="scope-container">
+      <h1 className="scope-title">Scopes</h1>
+    
       <div>
         {console.log(microscopes)}
         {microscopes.map((microscope) => {
           return <MicroscopeCard key={microscope.id} microscope={microscope} />;
         })}
+      </div>
       </div>
     </>
   );

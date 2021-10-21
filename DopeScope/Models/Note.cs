@@ -11,6 +11,8 @@ namespace DopeScope.Models
 
         public int UserId { get; set; }
 
+        public string NoteText { get; set; }
+
         public UserProfile User { get; set; }
 
         public int SlideId { get; set; }

@@ -28,7 +28,7 @@ export default function ApplicationViews({ isLoggedIn }) {
         <Route exact path="/microscope/form/:scopeId(\d+)" >
           {isLoggedIn ? <MicroscopeForm /> : <Redirect to="/login" />}
         </Route>
-        <Route path="/microscope/details" >
+        <Route path="/microscope/:scopeId(\d+)" >
           {isLoggedIn ? <MicroscopeDetail /> : <Redirect to="/login" />}
         </Route>
 
@@ -38,7 +38,7 @@ export default function ApplicationViews({ isLoggedIn }) {
         <Route path="/slide/form/:slideId(\d+)" exact>
           {isLoggedIn ? <SlideForm /> : <Redirect to="/login" />}
         </Route>
-        <Route path="/slide/details">
+        <Route path="/slide/:slideId(\d+)">
           {isLoggedIn ? <SlideDetails /> : <Redirect to="/login" />}
         </Route>
 

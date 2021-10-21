@@ -26,17 +26,7 @@ export default function Header({ isLoggedIn }) {
           <Nav className="mr-auto" navbar>
             {isLoggedIn && (
               <>
-                <NavItem>
-                  <NavLink tag={RRNavLink} to="/slide">
-                    Slides
-                  </NavLink>
-                </NavItem>
-                <NavItem>
-                  <NavLink tag={RRNavLink} to="/microscope">
-                    Microscope
-                  </NavLink>
-                </NavItem>
-                <NavItem>
+                <NavItem className="logout">
                   <a
                     aria-current="page"
                     className="nav-link"

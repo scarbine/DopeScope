@@ -25,24 +25,26 @@ export const SlideCard = ({ slide , updateList }) => {
   };
 
   const handleDetails = () => {
-    history.push("/slide/details")
+    history.push(`/slide/${slide.id}`)
   }
 
   return (
     <>
-      <div>
-        <Card>
-          {/* <CardImg top width="100%" src="/assets/318x180.svg" alt="Card image cap" /> */}
+      <div className="slide-card-container">
+        <Card className="slide-card">
+          <CardImg top width="100%" src={slide.imageUrl} alt="Card image cap" />
           <CardBody>
             <CardTitle tag="h5">{slide.name}</CardTitle>
             <CardSubtitle tag="h6" className="mb-2 text-muted">
               {" "}
-              Submited by: {slide.microscope.user.firstName}{" "}
-              {slide.microscope.user.lastName} on {date}
+              Submited by: {slide.microscope.user.fullName} on {date}
             </CardSubtitle>
+            <CardText>{slide.microscope.make} {slide.microscope.model}</CardText>
+            <CardText> Magnification: x{slide.magnification}</CardText>
             <CardText>{slide.description}</CardText>
+            
             <div className="slide-buttons">
-            <Button className="slide-btn" onClick={handleDetails}>Edit Details</Button>
+            <Button className="slide-btn" onClick={handleDetails}>Details</Button>
             <Button className="slide-btn" onClick={handleEdit}>Edit Slide</Button>
             <Button className="slide-btn" onClick={handleDelete}>Delete Slide</Button>
             </div>
