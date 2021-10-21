@@ -13,9 +13,7 @@ export const getAllMicroscopes = () => {
       if (resp.ok) {
         return resp.json();
       } else {
-        throw new Error(
-          "An unknown error occurred while trying to get Scope."
-        );
+        throw new Error("An unknown error occurred while trying to get Scope.");
       }
     });
   });
@@ -59,6 +57,18 @@ export const addMicroscope = (microscope) => {
           "An unknown error occurred while trying to save a new Scope."
         );
       }
+    });
+  });
+};
+export const deleteMicroscope = (id) => {
+  return getToken().then((token) => {
+    return fetch((apiUrl + "/" + id), {
+      method: "DELETE",
+      headers: {
+        Authorization: `Bearer ${token}`,
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(id),
     });
   });
 };
