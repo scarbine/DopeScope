@@ -39,6 +39,9 @@ namespace DopeScope.Repository
             }
         }
 
+       
+        
+
         public Slide GetById(int id)
         {
             using (var conn = Connection)

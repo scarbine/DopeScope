@@ -39,6 +39,8 @@ namespace DopeScope.Repository
             }
         }
 
+        
+
         public Microscope GetById(int id)
         {
             using (var conn = Connection)

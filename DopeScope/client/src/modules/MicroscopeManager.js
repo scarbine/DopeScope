@@ -60,7 +60,7 @@ export const addMicroscope = (microscope) => {
 };
 export const updateMicroscope = (microscope) => {
   return getToken().then((token) => {
-    return fetch(apiUrl, {
+    return fetch(apiUrl+"/"+microscope.id, {
       method: "PUT",
       headers: {
         Authorization: `Bearer ${token}`,

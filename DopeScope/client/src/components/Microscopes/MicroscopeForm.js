@@ -8,22 +8,16 @@ import "./Microscope.css";
 export const MicroscopeForm = () => {
   const history = useHistory();
   const {scopeId} = useParams();
-  const [microscope, setMicroscope] = useState({
-    make: "",
-    model: "",
-    userid: "",
-  });
+  const [microscope, setMicroscope] = useState({});
 
-  const handleInputChange = (event) => {
-    event.preventDefault();
-    const value = event.target.value;
-    const key = event.target.id;
-    const microscopeCopy = { ...microscope };
-    microscopeCopy[key] = value;
-    setMicroscope({
-      make: microscopeCopy.title,
-      model: microscopeCopy.content,
-    });
+  const handleInputChange = (e) => {
+    e.preventDefault();
+    
+
+    const newMicroscope = { ...microscope };
+    newMicroscope[e.target.name] = e.target.value
+    
+    setMicroscope(newMicroscope);
   };
 
   useEffect(() => {
@@ -31,12 +25,6 @@ export const MicroscopeForm = () => {
       getMicroscopesById(scopeId).then(setMicroscope)}
   },[])
 
-  // const submitForm = (e) => {
-  //   e.preventDefault();
-  //   addMicroscope(microscope)
-  //     .then(() => history.push("/"))
-  //     .catch((err) => alert(`An error ocurred: ${err.message}`));
-  // };
 
   const handleCancel = () => {
     history.push("/microscope");
@@ -45,20 +33,31 @@ export const MicroscopeForm = () => {
   const handleSave = (e) => {
     e.preventDefault();
     if(scopeId){
-      updateMicroscope(microscope)
+      updateMicroscope({
+        id: microscope.id,
+        make: microscope.make,
+        model: microscope.model,
+        userId: microscope.userId
+      }).then(history.push('/microscope'))
     } else {
-      addMicroscope(microscope)
+      addMicroscope({
+        id: microscope.id,
+        make: microscope.make,
+        model: microscope.model,
+        userId: microscope.userId
+      }).then(history.push('/microscope'))
     }
   };
 
   return (
     <Form >
+      {console.log(microscope)}
       <FormGroup>
         <Label for="quoteText">Make</Label>
         <Input
           id="quoteText"
           type="text"
-          name="Make"
+          name="make"
           onChange={handleInputChange}
           value={microscope.make}
         />
@@ -68,7 +67,7 @@ export const MicroscopeForm = () => {
         <Input
           id="quoteText"
           type="text"
-          name="Model"
+          name="model"
           onChange={handleInputChange}
           value={microscope.model}
         />
