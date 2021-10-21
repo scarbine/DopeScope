@@ -17,7 +17,7 @@ export const SlideCard = ({ slide }) => {
   const history = useHistory();
 
   const handleDelete = () => {
-    deleteSlide(slide.id)
+    deleteSlide(slide.id).then(history.push("/slide"))
   };
 
   const handleEdit = () => {
