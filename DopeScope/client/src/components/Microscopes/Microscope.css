@@ -1,3 +1,22 @@
 .scope-btn{
     margin : 1rem;
 }
+.scope-container{
+    margin: 2rem;
+}
+
+.scope-card-container{
+    margin: 1rem;
+}
+
+.scope-title{
+    text-align:  center;
+}
+
+.scope-details-container{
+    margin: 2rem;
+}
+
+.scope-card-btn{
+    margin:1rem;
+}

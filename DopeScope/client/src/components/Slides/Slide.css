@@ -6,3 +6,11 @@
 .slide-card{
     width: 30rem;
 }
+
+.slide-container{
+    margin: 2rem;
+}
+
+.slide-list-title{
+    text-align: center;
+}
