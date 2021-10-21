@@ -1,6 +1,10 @@
 import { getToken } from "./authManager";
+import React from "react";
+import { useState } from "react/cjs/react.development";
 
 const apiUrl = "/api/Slide";
+
+
 
 export const getAllSlides = () => {
     return getToken().then((token) => {

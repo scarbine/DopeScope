@@ -9,15 +9,15 @@ import {
   CardSubtitle,
   Button,
 } from "reactstrap";
-import { deleteSlide } from "../../modules/SlideManager";
+import { deleteSlide} from "../../modules/SlideManager";
 import "./Slide.css";
 
-export const SlideCard = ({ slide }) => {
+export const SlideCard = ({ slide , updateList }) => {
   const [date] = slide.dateCreated.split("T");
   const history = useHistory();
 
   const handleDelete = () => {
-    deleteSlide(slide.id).then(history.push("/slide"))
+    deleteSlide(slide.id).then(history.push("/slide")).then(updateList())
   };
 
   const handleEdit = () => {
