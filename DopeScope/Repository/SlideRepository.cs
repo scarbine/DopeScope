@@ -107,7 +107,7 @@ namespace DopeScope.Repository
                                MicroscopeId = @MicroscopeId,
                                Description = @Description,
                                ImageUrl = @ImageUrl,
-                                Name = @Name,
+                                Name = @Name
                          WHERE Id = @Id";
 
                     DbUtils.AddParameter(cmd, "@Magnification", slide.Magnification);

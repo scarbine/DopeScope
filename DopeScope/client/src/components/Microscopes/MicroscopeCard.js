@@ -4,7 +4,7 @@ import {
     Card, CardImg, CardText, CardBody,
     CardTitle, CardSubtitle, Button
   } from 'reactstrap';
-import { deleteMicroscope } from "../../modules/MicroscopeManager";
+
   import "./Microscope.css";
 
 export const MicroscopeCard = (props) => {

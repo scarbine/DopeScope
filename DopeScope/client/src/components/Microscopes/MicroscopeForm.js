@@ -3,20 +3,21 @@ import { useHistory } from "react-router-dom";
 import { useParams } from "react-router";
 import { Button, Form, FormGroup, Label, Input } from "reactstrap";
 import { addMicroscope, getMicroscopesById, updateMicroscope } from "../../modules/MicroscopeManager";
+import firebase from "firebase";
 import "./Microscope.css";
+import { getUserByFirebaseId } from "../../modules/UserManager";
 
 export const MicroscopeForm = () => {
   const history = useHistory();
   const {scopeId} = useParams();
   const [microscope, setMicroscope] = useState({});
+  const [user, setUser] =useState({})
+  const currentUser = firebase.auth().currentUser
 
   const handleInputChange = (e) => {
     e.preventDefault();
-    
-
     const newMicroscope = { ...microscope };
     newMicroscope[e.target.name] = e.target.value
-    
     setMicroscope(newMicroscope);
   };
 
@@ -40,18 +41,19 @@ export const MicroscopeForm = () => {
         userId: microscope.userId
       }).then(history.push('/microscope'))
     } else {
+      // getUserByFirebaseId(currentUser.l).then(setUser)
       addMicroscope({
         id: microscope.id,
         make: microscope.make,
         model: microscope.model,
-        userId: microscope.userId
+        userId: user.id
       }).then(history.push('/microscope'))
     }
   };
 
   return (
     <Form >
-      {console.log(microscope)}
+    {console.log(currentUser.l)}
       <FormGroup>
         <Label for="quoteText">Make</Label>
         <Input
