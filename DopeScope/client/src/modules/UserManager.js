@@ -9,11 +9,11 @@ export const getUserByFirebaseId = (firebaseId) => {
         Authorization: `Bearer ${token}`,
       },
     }).then((res) => {
-      if (res.ok) {
-        return res.json();
-      } else {
-        throw new Error("An unknown error occurred while trying to get Slide.");
-      }
-    });
+    //   if (res.ok) {
+    //     return res.json();
+    //   } else {
+    //     throw new Error("An unknown error occurred while trying to get User.");
+    //   }
+    // });
   });
-};
+  })}

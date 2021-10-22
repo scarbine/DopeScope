@@ -41,6 +41,23 @@ export const getAllSlides = () => {
       });
     };
 
+  export const  getSlideByUserId =(id) => {
+    return getToken().then((token) => {
+        return fetch(`${apiUrl}/GetUserSlides?firebaseId=${id}`, {
+          method: "GET",
+          headers: {
+            Authorization: `Bearer ${token}`
+          }
+        }).then(res => {
+          if (res.ok) {
+            return res.json();
+          } else {
+            throw new Error("An unknown error occurred while trying to get user slides.");
+          }
+        });
+      });
+    };
+
 export const addSlide = (slide) => {
   return getToken().then((token) => {
     return fetch(apiUrl, {

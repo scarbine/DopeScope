@@ -2,7 +2,7 @@ import React from "react";
 import { Switch, Route, Redirect } from "react-router-dom";
 import Login from "./components/Login";
 import Register from "./components/Register";
-import { Hello } from "./components/Hello";
+import { Home } from "./components/Hello";
 import { MicroscopeList } from "./components/Microscopes/MicroscopeList";
 import { SlideList } from "./components/Slides/SlideList";
 import { MicroscopeForm } from "./components/Microscopes/MicroscopeForm";
@@ -15,7 +15,7 @@ export default function ApplicationViews({ isLoggedIn }) {
     <main>
       <Switch>
         <Route exact path="/" >
-          {isLoggedIn ? <Hello /> : <Redirect to="/login" />}
+          {isLoggedIn ? <Home /> : <Redirect to="/login" />}
         </Route>
 
         <Route path="/login">
@@ -36,6 +36,9 @@ export default function ApplicationViews({ isLoggedIn }) {
         </Route>
 
         <Route path="/slide" exact>
+          {isLoggedIn ? <SlideList /> : <Redirect to="/login" />}
+        </Route>
+        <Route path="/myslides" exact>
           {isLoggedIn ? <SlideList /> : <Redirect to="/login" />}
         </Route>
         <Route path="/slide/form/:slideId(\d+)" exact>

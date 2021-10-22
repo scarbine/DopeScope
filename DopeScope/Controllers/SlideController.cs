@@ -10,7 +10,7 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace DopeScope.Controllers
 {
-        [Authorize]
+        //[Authorize]
         [Route("api/[controller]")]
         [ApiController]
         public class SlideController : ControllerBase
@@ -44,6 +44,13 @@ namespace DopeScope.Controllers
                 NotFound();
             }
             return Ok(slide);
+        }
+
+        [HttpGet("GetUserSlides")]
+        public IActionResult GetUserSlides(string firebaseId)
+        {
+            var slides = _slideRepository.GetUserSlides(firebaseId);
+            return Ok(slides);
         }
 
         [HttpPost]

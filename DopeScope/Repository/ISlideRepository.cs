@@ -9,6 +9,7 @@ namespace DopeScope.Repository
     public interface ISlideRepository
     {
         List<Slide> GetAll();
+        List<Slide> GetUserSlides(string firebaseId);
         Slide GetById(int id);
         void Add(Slide slide);
         void Update( Slide slide);

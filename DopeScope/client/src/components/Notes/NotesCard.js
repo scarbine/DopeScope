@@ -1,10 +1,13 @@
 import React from "react";
+import "./Notes.css"
 
 export const NoteCard = (props) => {
     return (
         <>
-            <h5> {props.note.noteText}</h5>
-            <h5>{props.note.user.fullName}</h5>
+            <div className="note-card-container" >
+            <div className="note-detail"> {props.note.noteText}</div>
+            <div className="note-detail">{props.note.user.fullName}</div>
+            </div>
         </>
     )
 }

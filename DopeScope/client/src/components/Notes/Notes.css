@@ -1,0 +1,7 @@
+.note-card-container{
+    display: flex;
+}
+
+.note-detail{
+    margin: 1rem;
+}
