@@ -56,7 +56,7 @@ useEffect(()=>{
   }
 
   return (
-    <Form >
+    <Form className="new-slide-form">
       {console.log(slide)}
       <FormGroup>
         <Label for="slideName">Name</Label>

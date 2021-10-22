@@ -8,7 +8,7 @@
 }
 
 .slide-container{
-    margin: 2rem;
+    margin: 0rem 0rem 0rem 2rem;
 }
 
 .slide-list-title{
@@ -21,10 +21,26 @@
     justify-content: space-between;
 }
 
+.new-slide-form{
+    margin:3rem;
+    display: flex;
+    flex-direction: column;
+}
+
 .slide-detail-header{
     text-align: center;
     
 }
+.scope-slide-container-flex{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.scope-slide-contaier-column{
+    display: flex;
+    flex-direction: column;
+}
+
 .sub-image-info{
     display: flex;
     flex-direction: row;
@@ -74,7 +90,7 @@
 }
 
 .slide-details-column{
-    margin: 1rem;
+    margin: 1rem 6rem 1rem 6rem;
     justify-content: center;
 }
 

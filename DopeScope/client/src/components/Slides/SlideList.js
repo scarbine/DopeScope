@@ -30,16 +30,26 @@ export const SlideList = () => {
     setUpdate(!update)
   }
 
+  const slideViewFlexWrap = "scope-slide-container-flex"
 
+  const slideViewColumn = "scope-slide-contaier-column"
+
+  const longLine = <h5 className="scope-slide-title line">________________________________________________________________________________________</h5>
+  const shortLine = <h5 className="scope-slide-title line">____________________________________</h5>
+  
+
+  const slideView = ( location === "/slide" || location ==="/myslides" ? slideViewFlexWrap : slideViewColumn)
+  const slideLine = ( location === "/slide" || location ==="/myslides" ? longLine : shortLine)
 
   return (
     <>
     <div className="slide-container">
       {/* <h1 className="slide-list-title">Slides</h1> */}
       <div className="scope-slides-wrapper">
-                <h5 className="scope-slide-title">{location === "/slide" ? "All Slides" : "Slides"}</h5>
-                <h5 className="scope-slide-title line">________________________________________________________________________________________</h5>
-            <div className="scope-slides">
+                <h5 className="scope-slide-title">{location.includes("/slide") ? "Latest Slides" : "Slides"}</h5>
+                {slideLine}
+                {/* <h5 className="scope-slide-title line">________________________________________________________________________________________</h5> */}
+               <div className={slideView}>
             { slides.length === 0 ? <div>Currenlty No Slides </div> : slides?.map(slide => {
                 return <SlideCard key={slide.id} slide={slide} />
             })}

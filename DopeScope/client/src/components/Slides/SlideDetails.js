@@ -7,6 +7,7 @@ import { NoteCard } from "../Notes/NotesCard";
 import { deleteSlide } from "../../modules/SlideManager";
 import { Button } from "reactstrap";
 import { SlideCommentModal } from "./SlideCommentModal";
+import { SlideList } from "./SlideList";
 
 export const SlideDetails = () => {
   const { slideId } = useParams();
@@ -97,6 +98,7 @@ export const SlideDetails = () => {
           )}
         </div>
         </section>
+        <SlideList />
       </div>
     </>
   );

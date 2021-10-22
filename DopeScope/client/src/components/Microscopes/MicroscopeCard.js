@@ -10,6 +10,7 @@ import {
 export const MicroscopeCard = (props) => {
 
   const history = useHistory();
+  const location = history.location.pathname
 
   const handleOnClick = () => {
     history.push(`/microscope/${props.microscope.id}`)
@@ -24,9 +25,11 @@ export const MicroscopeCard = (props) => {
       <Card>
         {/* <CardImg top width="100%" src="/assets/318x180.svg" alt="Card image cap" /> */}
         <CardBody>
-          <CardTitle tag="h5">{props.microscope.name}</CardTitle>
+          {/* <CardTitle className="scope-name" tag="h5">{props.microscope.name}</CardTitle> */}
+          <div className="title-scope">
           <CardSubtitle tag="h6" className="mb-2 text-muted">{props.microscope.make} {props.microscope.model}</CardSubtitle>
-          <CardText>Owner : {props.microscope.user.firstName} {props.microscope.user.lastName}</CardText>
+          </div>
+          <CardText>{location === "/myscopes" ? <></> :<div> Owner : {props.microscope.user.firstName} {props.microscope.user.lastName}</div> }</CardText>
           <Button className="scope-card-btn" onClick={handleOnClick}>Details</Button>
           <Button className="scope-card-btn" onClick={handleEdit}>Edit</Button>
         </CardBody>
