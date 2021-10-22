@@ -13,7 +13,7 @@ namespace DopeScope.Controllers
 {
    
 
-        [Authorize]
+        //[Authorize]
         [Route("api/[controller]")]
         [ApiController]
         public class MicroscopeController : ControllerBase
@@ -45,6 +45,13 @@ namespace DopeScope.Controllers
                 }
                 return Ok(quote);
             }
+
+        [HttpGet("GetUserScopes")]
+        public IActionResult GetUserScopes(string firebaseId)
+        {
+            var scopes = _microscopeRepository.GetUserScopes(firebaseId);
+            return Ok(scopes);
+        }
 
         [HttpPost]
         public IActionResult Post(Microscope microscope)

@@ -4,16 +4,28 @@ import { useHistory } from "react-router";
 import { Button } from "reactstrap";
 import { getAllMicroscopes } from "../../modules/MicroscopeManager";
 import { MicroscopeCard } from "./MicroscopeCard";
+import { getScopesByUserId } from "../../modules/MicroscopeManager";
+import { getUserByFirebaseId } from "../../modules/UserManager";
+import firebase from "firebase";
 import "./Microscope.css"
 
 export const MicroscopeList = () => {
+  const history = useHistory()
+  const location = history.location.pathname
   const [microscopes, setMicroscopes] = useState([]);
+  const user = firebase.auth().currentUser
+ 
 
   useEffect(() => {
-    getAllMicroscopes().then(setMicroscopes);
-  }, []);
+   
+    if(location === "/microscope"){
+    getAllMicroscopes().then(setMicroscopes)}
+    else if (history.location.pathname === "/myscopes"){
+      (getScopesByUserId(user.uid)).then(setMicroscopes)
+    }
+  }, [location]);
 
-  const history = useHistory()
+
  
   return (
     <>
@@ -22,6 +34,7 @@ export const MicroscopeList = () => {
     
       <div>
         {console.log(microscopes)}
+        {console.log(user.uid)}
         {microscopes.map((microscope) => {
           return <MicroscopeCard key={microscope.id} microscope={microscope} />;
         })}

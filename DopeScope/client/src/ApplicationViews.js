@@ -25,6 +25,9 @@ export default function ApplicationViews({ isLoggedIn }) {
         <Route path="/microscope" exact>
           {isLoggedIn ? <MicroscopeList /> : <Redirect to="/login" />}
         </Route>
+        <Route path="/myscopes" exact>
+          {isLoggedIn ? <MicroscopeList /> : <Redirect to="/login" />}
+        </Route>
         <Route path="/microscope/form/:scopeId(\d+)" >
           {isLoggedIn ? <MicroscopeForm /> : <Redirect to="/login" />}
         </Route>
