@@ -22,7 +22,13 @@
 }
 
 .slide-detail-header{
+    text-align: center;
     
+}
+.sub-image-info{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
 }
 
 .comments-header{
@@ -31,15 +37,25 @@
     margin: 1rem 0rem 1rem 0rem;
 }
 .slide-detail-img{
-    width: 25rem;
+    width:inherit;
 }
 
 .scope-name{
     text-align: center;
 }
 
+.slide-detail-info-container{
+    margin: 3rem;
+    margin-top: 2rem;
+    padding-top: 3rem;
+}
+
 .slide-card-container{
     margin: 1rem;
+}
+.image-container{
+    display: flex;
+    width: 30rem;
 }
 
 .slide-card-wrapper{
@@ -59,6 +75,7 @@
 
 .slide-details-column{
     margin: 1rem;
+    justify-content: center;
 }
 
 .scope-slides{

@@ -32,6 +32,11 @@
     margin-top: 3rem;
 }
 
+.flex-wrap-display{
+    display: flex;
+    flex-wrap: wrap;
+}
+
 .scope-slide-title{
     text-align: center;
 }

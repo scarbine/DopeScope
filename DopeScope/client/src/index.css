@@ -25,10 +25,11 @@ html, body {
 
 .dashboard{
   display: flex;
+  flex-direction: column;
 }
 
 .dashboard-header{
-  margin-bottom: 1rem;
+
   /* margin-left: 2rem; */
   text-align: center;
 }
