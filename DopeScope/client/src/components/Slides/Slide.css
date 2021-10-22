@@ -45,6 +45,7 @@
 .slide-card-wrapper{
     display: flex;
     flex-wrap: wrap;
+    justify-content: space-between;
 }
 
 .card-subtitle{
@@ -58,4 +59,12 @@
 
 .slide-details-column{
     margin: 1rem;
+}
+
+.scope-slides{
+    justify-content: space-between;
+}
+
+.line{
+    margin-bottom: 1rem;
 }
