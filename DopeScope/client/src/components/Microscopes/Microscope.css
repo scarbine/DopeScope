@@ -46,3 +46,13 @@
 .scope-slide-title{
     text-align: center;
 }
+
+.scope-details-header{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.scope-owner{
+    text-align: center;
+}

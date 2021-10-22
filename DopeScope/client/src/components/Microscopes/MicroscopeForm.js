@@ -39,7 +39,7 @@ export const MicroscopeForm = () => {
         make: microscope.make,
         model: microscope.model,
         userId: microscope.userId
-      }).then(history.push('/microscope'))
+      }).then(history.push(`/microscope/${microscope.id}`))
     } else {
       getUserByFirebaseId(currentUser.l).then(setUser)
       addMicroscope({
