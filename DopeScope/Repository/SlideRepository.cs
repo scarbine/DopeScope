@@ -107,14 +107,15 @@ namespace DopeScope.Repository
                 conn.Open();
                 using (var cmd = conn.CreateCommand())
                 {
-                    cmd.CommandText = @"INSERT INTO Slide (Magnification, MicroscopeId, Description, ImageUrl, Name)
+                    cmd.CommandText = @"INSERT INTO Slide (Magnification, MicroscopeId, Description, ImageUrl, Name, DateCreated)
                                         OUTPUT INSERTED.ID
-                                        VALUES ( @Magnification, @icroscopeId @Description, @ImageUrl, @Name)";
+                                        VALUES ( @Magnification, @MicroscopeId, @Description, @ImageUrl, @Name, @DateCreated)";
                     DbUtils.AddParameter(cmd, "@Magnification", slide.Magnification);
                     DbUtils.AddParameter(cmd, "@MicroscopeId", slide.MicroscopeId);
                     DbUtils.AddParameter(cmd, "@Description", slide.Description);
                     DbUtils.AddParameter(cmd, "@ImageUrl", slide.ImageUrl);
                     DbUtils.AddParameter(cmd, "@Name", slide.Name);
+                    DbUtils.AddParameter(cmd, "@DateCreated", slide.DateCreated);
                    
 
                     slide.Id = (int)cmd.ExecuteScalar();

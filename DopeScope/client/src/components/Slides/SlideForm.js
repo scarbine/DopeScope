@@ -49,10 +49,9 @@ useEffect(()=>{
         description: slide.description,
         imageUrl: slide.imageUrl,
         microscopeId: slide.microscopeId,
-        dateCreated: slide.dateCreated,
         magnification: slide.magnification
 
-      })
+      }).then(history.push("/slide"))
     }
   }
 
