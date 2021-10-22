@@ -23,7 +23,7 @@ export const MicroscopeCard = (props) => {
     <>
       <div className="scope-card-container">
       <Card onClick={handleOnClick}>
-        {/* <CardImg top width="100%" src="/assets/318x180.svg" alt="Card image cap" /> */}
+        <CardImg className="scope-thumbnail" top width="100%" src={props.microscope.imageUrl} alt="Card image cap" />
         <CardBody>
           {/* <CardTitle className="scope-name" tag="h5">{props.microscope.name}</CardTitle> */}
           <div className="title-scope">

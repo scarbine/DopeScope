@@ -14,6 +14,7 @@ namespace DopeScope.Models
         public string Model { get; set; }
 
         public int UserId { get; set; }
+        public string ImageUrl { get; set; }
 
         public UserProfile User { get; set; }
     }

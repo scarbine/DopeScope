@@ -42,6 +42,9 @@
     display: flex;
     flex-wrap: wrap;
 }
+.scope-thumbnail{
+    height: 10rem;
+}
 
 .scope-slide-title{
     text-align: center;
