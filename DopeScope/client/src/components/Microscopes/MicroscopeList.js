@@ -14,6 +14,7 @@ export const MicroscopeList = () => {
   const location = history.location.pathname
   const [microscopes, setMicroscopes] = useState([]);
   const user = firebase.auth().currentUser
+  const gridDisplay = (location === "/microscope" ? "flex-wrap-display" : " column-display")
  
 
   useEffect(() => {
@@ -29,16 +30,23 @@ export const MicroscopeList = () => {
  
   return (
     <>
-    <div className="scope-container">
+    <div className="scope-container ">
       {/* <h1 className="scope-title">Scopes</h1> */}
     
       <div>
-        {console.log(microscopes)}
-        {console.log(user.uid)}
+
+        <div className="scope-slides-wrapper">
+                <h5 className="scope-slide-title">{location === "/slide" ? "All Scopes" : "Scopes"}</h5>
+                <h5 className="scope-slide-title line">________________________________________________________________________________________</h5>
+            <div className="scope-slides">
         {microscopes.map((microscope) => {
           return <MicroscopeCard key={microscope.id} microscope={microscope} />;
         })}
+            
+            </div>
+            </div>
       </div>
+        
       </div>
     </>
   );

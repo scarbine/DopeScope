@@ -42,17 +42,16 @@ useEffect(()=>{
         dateCreated: slide.dateCreated,
         magnification: slide.magnification
 
-      }).then(history.push("/slide"))
+      }).then(history.push(`/slide/${slide.id}`))
     } else {
       addSlide({
         name:slide.name,
         description: slide.description,
         imageUrl: slide.imageUrl,
         microscopeId: slide.microscopeId,
-        dateCreated: slide.dateCreated,
         magnification: slide.magnification
 
-      })
+      }).then(history.push("/slide"))
     }
   }
 
@@ -75,6 +74,13 @@ useEffect(()=>{
         <Label for="slideImageUrl">Image Url</Label>
         <Input id="slideImageUrl" type="text" name="imageUrl" onChange={handleInputChange} value={slide.imageUrl} />
       </FormGroup>
+      <FormGroup>
+        <Label for="slideImageUrl">Image Url</Label>
+        <Input id="slideImageUrl" type="text" name="imageUrl" onChange={handleInputChange} value={slide.imageUrl} />
+      </FormGroup>
+      {/* <FormGroup>
+      <ImageUploader key={slide} slide={slide}/>id="slideImageUrl" type="text" name="imageUrl" onChange={handleInputChange} value={slide.imageUrl} />
+      </FormGroup> */}
       <FormGroup>
         <Label for="slideScope">Scope</Label>
         <Input id="slideScope" type="text" name="microscopeId" onChange={handleInputChange} value={slide.microscopeId} />

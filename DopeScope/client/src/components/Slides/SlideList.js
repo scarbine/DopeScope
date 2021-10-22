@@ -36,11 +36,15 @@ export const SlideList = () => {
     <>
     <div className="slide-container">
       {/* <h1 className="slide-list-title">Slides</h1> */}
-      <div className="slide-card-wrapper">
-      {slides?.map((slide) => { 
-        return <SlideCard key={slide.id} slide={slide}  updateList={updateList}/>;
-      })}
-      </div>
+      <div className="scope-slides-wrapper">
+                <h5 className="scope-slide-title">{location === "/slide" ? "All Slides" : "Slides"}</h5>
+                <h5 className="scope-slide-title line">________________________________________________________________________________________</h5>
+            <div className="scope-slides">
+            { slides.length === 0 ? <div>Currenlty No Slides </div> : slides?.map(slide => {
+                return <SlideCard key={slide.id} slide={slide} />
+            })}
+            </div>
+            </div>
       </div>
     </>
   );

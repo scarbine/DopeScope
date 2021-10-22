@@ -20,3 +20,23 @@
 .scope-card-btn{
     margin:1rem;
 }
+
+.scope-slides{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.scope-slides-wrapper{
+    display: flex;
+    flex-direction: column;
+    margin-top: 3rem;
+}
+
+.flex-wrap-display{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.scope-slide-title{
+    text-align: center;
+}

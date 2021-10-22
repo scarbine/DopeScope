@@ -35,7 +35,7 @@ export const SlideCommentModal = (props) => {
   return (
     <div>
       
-      <Button color="grey" onClick={toggle}>Comment</Button>
+      <Button color="secondary" onClick={toggle} className="slide-btn btn btn-secondary">Add Comment</Button>
       <Modal isOpen={modal} toggle={toggle} className={className}>
         <ModalHeader toggle={toggle}>Add Comment</ModalHeader>
         <ModalBody>

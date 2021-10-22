@@ -25,9 +25,11 @@ html, body {
 
 .dashboard{
   display: flex;
+  flex-direction: column;
 }
 
 .dashboard-header{
-  margin-top: 1rem;
+
+  /* margin-left: 2rem; */
   text-align: center;
 }

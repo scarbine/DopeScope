@@ -57,6 +57,22 @@ export const getAllSlides = () => {
         });
       });
     };
+  export const  getSlideByScopeId =(id) => {
+    return getToken().then((token) => {
+        return fetch(`${apiUrl}/GetScopeSlides?id=${id}`, {
+          method: "GET",
+          headers: {
+            Authorization: `Bearer ${token}`
+          }
+        }).then(res => {
+          if (res.ok) {
+            return res.json();
+          } else {
+            throw new Error("An unknown error occurred while trying to get scope slides.");
+          }
+        });
+      });
+    };
 
 export const addSlide = (slide) => {
   return getToken().then((token) => {
