@@ -32,7 +32,8 @@ CREATE TABLE [Microscope] (
   [id] integer PRIMARY KEY IDENTITY,
   [Make] nvarchar(50) NOT NULL,
   [Model] nvarchar(50) NOT NULL,
-  [UserId] integer NOT NULL
+  [UserId] integer NOT NULL,
+ImageUrl nvarchar(255) 
 )
 GO
 
@@ -61,7 +62,7 @@ CREATE TABLE [SlideTag] (
   [TagId] integer NOT NULL,
   [SlideId] integer NOT NULL,
 
-CONSTRAINT [FK_SlideTag_Tag] FOREIGN KEY ([tagId]) REFERENCES [Tag] ([Id]),
+CONSTRAINT [FK_SlideTag_Tag] FOREIGN KEY ([tagId]) REFERENCES [Tag] ([Id])ON DELETE CASCADE,
 CONSTRAINT [FK_SlideTag_Slide] FOREIGN KEY ([slideId]) REFERENCES [Slide] ([Id]) ON DELETE CASCADE
 )
 GO
@@ -72,8 +73,7 @@ CREATE TABLE [Note] (
   [UserId] integer NOT NULL,
   [SlideId] integer NOT NULL,
 
-CONSTRAINT [FK_Note_User] FOREIGN KEY ([userId]) REFERENCES [User] ([Id]),
-CONSTRAINT [FK_Note_Slide] FOREIGN KEY ([slideId]) REFERENCES [Slide] ([Id])
+CONSTRAINT [FK_Note_User] FOREIGN KEY ([userId]) REFERENCES [User] ([Id])ON DELETE CASCADE,
+CONSTRAINT [FK_Note_Slide] FOREIGN KEY ([slideId]) REFERENCES [Slide] ([Id])ON DELETE CASCADE
 )
 GO
-
