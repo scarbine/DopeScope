@@ -38,10 +38,14 @@ export const MicroscopeDetail = () => {
             <h1 className="scope-name">{scope.make} {scope.model}</h1>
             {/* <h5>{scope.user.fullName}</h5> */}
             {/* <h5>Scopes Slides</h5> */}
+            <div className="scope-slides-wrapper">
+                <h5 className="scope-slide-title">Slides</h5>
+                <h5 className="scope-slide-title">________________________________________________________________________________________</h5>
             <div className="scope-slides">
             { slides.length === 0 ? <div>Currenlty No Slides </div> : slides?.map(slide => {
                 return <SlideCard key={slide.id} slide={slide} />
             })}
+            </div>
             </div>
             </div>
            
