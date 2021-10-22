@@ -10,6 +10,7 @@ namespace DopeScope.Repository
     {
 
         List<Microscope> GetAll();
+        List<Microscope> GetUserScopes(string firebaseId);
         Microscope GetById(int id);
         void Add(Microscope microscope);
         void Update(Microscope microscope);

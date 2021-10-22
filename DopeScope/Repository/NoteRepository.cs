@@ -43,7 +43,7 @@ namespace DopeScope.Repository
 
 
 
-        public Note GetById(int id)
+        public List<Note> GetBySlideId(int id)
         {
             using (var conn = Connection)
             {
@@ -53,22 +53,22 @@ namespace DopeScope.Repository
                     cmd.CommandText = @"SELECT s.Id AS SlideId, s.Magnification, s.MicroscopeId,s.Description, s.ImageUrl, s.Name, s.DateCreated, u.Id AS UserId, u.FirebaseId, u.FirstName, u.Lastname, u.Email, n.Id, n.UserId, n.SlideId, n.Note FROM Note n
                         JOIN[User] u ON u.Id = n.UserId
                         JOIN Slide s ON s.Id = n.SlideId
-                        WHERE n.Id = @Id";
+                        WHERE s.Id = @Id";
 
                     DbUtils.AddParameter(cmd, "@Id", id);
 
-                    Note note = null;
+                    List<Note> notes = new List<Note>();
 
                     var reader = cmd.ExecuteReader();
-                    if (reader.Read())
+                    while (reader.Read())
                     {
-                        note = NewNote(reader);
+                        notes.Add(NewNote(reader));
 
                     }
 
                     reader.Close();
 
-                    return note;
+                    return notes;
                 }
             }
         }
@@ -82,7 +82,7 @@ namespace DopeScope.Repository
                 {
                     cmd.CommandText = @"INSERT INTO Note (slideId, userId, note)
                                         OUTPUT INSERTED.ID
-                                        VALUES ( @SlideId, @userId @NoteText)";
+                                        VALUES ( @SlideId, @userId, @NoteText)";
                     DbUtils.AddParameter(cmd, "@SlideId", note.SlideId);
                     DbUtils.AddParameter(cmd, "@UserId", note.UserId);
                     DbUtils.AddParameter(cmd, "@NoteText", note.NoteText);

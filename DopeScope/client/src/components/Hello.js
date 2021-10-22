@@ -1,9 +1,28 @@
-import React from "react";
+import firebase from "firebase";
+import React, { useEffect } from "react";
+import { useState } from "react/cjs/react.development";
+import { getUserByFirebaseId } from "../modules/UserManager";
+import { MicroscopeList } from "./Microscopes/MicroscopeList";
+import { SlideList } from "./Slides/SlideList";
+import "../index.css"
 
-export const Hello = () => {
+export const Home = () => {
+  
+    const [user,setUser] = useState({})
+    const currentUser = firebase.auth().currentUser
+
+    // useEffect(()=>{
+    //     getUserByFirebaseId(currentUser.l).then(setUser)
+    // },[])
+
   return (
     <>
-      <h1>Hello!</h1>
+    {console.log(currentUser.l)}
+     <h3 className="dashboard-header">My Dashboard</h3>
+      <div className="dashboard">
+      <SlideList />
+      <MicroscopeList />
+      </div>
     </>
   );
 };

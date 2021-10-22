@@ -39,7 +39,35 @@ namespace DopeScope.Repository
             }
         }
 
-        
+        public List<Microscope> GetUserScopes(string firebaseId)
+        {
+            using (var conn = Connection)
+            {
+                conn.Open();
+                using (var cmd = conn.CreateCommand())
+                {
+                    cmd.CommandText = @"SELECT m.Id, m.Make, m.Model, m.UserId, u.Id AS UserId, u.FirstName, u.LastName, u.Email, u.FirebaseId FROM Microscope m 
+                        LEFT JOIN [User] u ON u.id = m.UserId
+                        WHERE u.FirebaseId = @Id";
+                    DbUtils.AddParameter(cmd, "@Id", firebaseId);
+
+                    var microscopes = new List<Microscope>();
+
+                    var reader = cmd.ExecuteReader();
+                    while (reader.Read())
+                    {
+                        microscopes.Add(NewMicroscope(reader));
+                    }
+
+                    reader.Close();
+
+                    return microscopes;
+
+                }
+            }
+        }
+
+
 
         public Microscope GetById(int id)
         {
@@ -77,12 +105,14 @@ namespace DopeScope.Repository
                 conn.Open();
                 using (var cmd = conn.CreateCommand())
                 {
-                    cmd.CommandText = @"INSERT INTO Microscope (Make, Model)
+                    cmd.CommandText = @"INSERT INTO Microscope (Make, Model, UserId)
                                         OUTPUT INSERTED.ID
-                                        VALUES ( @Make, @Model @UserId)";
+                                        VALUES ( @Make, @Model,@UserId )";
                     DbUtils.AddParameter(cmd, "@Make", microscope.Make);
                     DbUtils.AddParameter(cmd, "@Model", microscope.Model);
-                   
+                    DbUtils.AddParameter(cmd, "@UserId", microscope.UserId);
+
+
                     microscope.Id = (int)cmd.ExecuteScalar();
                 }
             }
