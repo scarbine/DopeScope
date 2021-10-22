@@ -17,10 +17,21 @@
 
 .slide-detail-container{
     margin:2rem;
+    display: flex;
+    justify-content: space-between;
 }
 
+.slide-detail-header{
+    
+}
+
+.comments-header{
+    display: flex;
+    justify-content: space-between;
+    margin: 1rem 0rem 1rem 0rem;
+}
 .slide-detail-img{
-    width: 10rem;
+    width: 25rem;
 }
 
 .slide-card-container{
@@ -30,4 +41,17 @@
 .slide-card-wrapper{
     display: flex;
     flex-wrap: wrap;
+}
+
+.card-subtitle{
+    display: flex;
+    justify-content: space-between;
+}
+
+.slide-comments{
+    margin: 1rem;
+}
+
+.slide-details-column{
+    margin: 1rem;
 }

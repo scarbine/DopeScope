@@ -42,7 +42,7 @@ useEffect(()=>{
         dateCreated: slide.dateCreated,
         magnification: slide.magnification
 
-      }).then(history.push("/slide"))
+      }).then(history.push(`/slide/${slide.id}`))
     } else {
       addSlide({
         name:slide.name,

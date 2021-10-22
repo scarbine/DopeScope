@@ -34,10 +34,11 @@ export const SlideCard = ({ slide , updateList }) => {
         <Card className="slide-card">
           <CardImg top width="100%" src={slide.imageUrl} alt="Card image cap" onClick={handleDetails}/>
           <CardBody>
+            <div className="card-subtitle">
             <CardTitle tag="h5">{slide.name}</CardTitle>
-    
             <CardText>{slide.microscope.user.fullName}</CardText>
-            <CardText>{date}</CardText>
+            </div>
+            {/* <CardText>{date}</CardText> */}
             {/* <CardText>{slide.microscope.make} {slide.microscope.model}</CardText>
             <CardText> Magnification: x{slide.magnification}</CardText>
             <CardText>{slide.description}</CardText> */}
