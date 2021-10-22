@@ -52,6 +52,12 @@ namespace DopeScope.Controllers
             var slides = _slideRepository.GetUserSlides(firebaseId);
             return Ok(slides);
         }
+        [HttpGet("GetScopeSlides")]
+        public IActionResult GetScopeSlides(int id)
+        {
+            var slides = _slideRepository.GetScopeSlides(id);
+            return Ok(slides);
+        }
 
         [HttpPost]
         public IActionResult Post(Slide slide)

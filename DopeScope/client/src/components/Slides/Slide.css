@@ -34,6 +34,10 @@
     width: 25rem;
 }
 
+.scope-name{
+    text-align: center;
+}
+
 .slide-card-container{
     margin: 1rem;
 }
