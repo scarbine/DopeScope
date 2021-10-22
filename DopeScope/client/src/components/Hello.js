@@ -18,7 +18,7 @@ export const Home = () => {
   return (
     <>
     {console.log(currentUser.l)}
-     
+     <h3 className="dashboard-header">My Dashboard</h3>
       <div className="dashboard">
       <SlideList />
       <MicroscopeList />

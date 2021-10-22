@@ -13,16 +13,15 @@ export const SlideList = () => {
   const history = useHistory();
   const location = history.location.pathname
   const [slides, setSlides] = useState([]);
-  const [currentUser, setCurrentUser] = useState({})
   const user = firebase.auth().currentUser
   const firebaseId = user.uid
   const [update, setUpdate] = useState(true);
 
   useEffect(() => {
-    getUserByFirebaseId(firebaseId).then(setCurrentUser)
-    if(location === "/slide"){
+   
+    if(location === "/slide" ){
     getAllSlides().then(setSlides)}
-    else if (history.location.pathname === "/myslides"){
+    else if (history.location.pathname === "/myslides" || "/"){
       (getSlideByUserId(firebaseId)).then(setSlides)
     }
   }, [update, location]);
@@ -37,10 +36,7 @@ export const SlideList = () => {
     <>
     <div className="slide-container">
       {/* <h1 className="slide-list-title">Slides</h1> */}
-      <div>
-          {console.log(slides)}
-          {console.log(user.uid)}
-          {console.log(location)}
+      <div className="slide-card-wrapper">
       {slides?.map((slide) => { 
         return <SlideCard key={slide.id} slide={slide}  updateList={updateList}/>;
       })}

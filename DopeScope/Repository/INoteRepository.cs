@@ -9,7 +9,7 @@ namespace DopeScope.Repository
         void Delete(int id);
         List<Note> GetAll();
         List<Note> GetBySlideId(int id);
-        //Note GetById(int id);
+        
         void Update(Note note);
     }
 }

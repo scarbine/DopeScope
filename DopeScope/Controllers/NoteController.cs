@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace DopeScope.Controllers
 {
-    [Authorize]
+    //[Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class NoteController : ControllerBase
@@ -37,15 +37,15 @@ namespace DopeScope.Controllers
             return Ok(_noteRepository.GetAll());
         }
 
-        [HttpGet("{id}")]
+        [HttpGet("Slide")]
         public IActionResult Get(int id)
         {
-            var note = _noteRepository.GetBySlideId(id);
-            if (note != null)
+            var notes = _noteRepository.GetBySlideId(id);
+            if (notes != null)
             {
                 NotFound();
             }
-            return Ok(note);
+            return Ok(notes);
         }
 
         [HttpPost]

@@ -60,7 +60,7 @@ namespace DopeScope.Repository
                     List<Note> notes = new List<Note>();
 
                     var reader = cmd.ExecuteReader();
-                    if (reader.Read())
+                    while (reader.Read())
                     {
                         notes.Add(NewNote(reader));
 
@@ -82,7 +82,7 @@ namespace DopeScope.Repository
                 {
                     cmd.CommandText = @"INSERT INTO Note (slideId, userId, note)
                                         OUTPUT INSERTED.ID
-                                        VALUES ( @SlideId, @userId @NoteText)";
+                                        VALUES ( @SlideId, @userId, @NoteText)";
                     DbUtils.AddParameter(cmd, "@SlideId", note.SlideId);
                     DbUtils.AddParameter(cmd, "@UserId", note.UserId);
                     DbUtils.AddParameter(cmd, "@NoteText", note.NoteText);

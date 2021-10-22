@@ -4,7 +4,7 @@
 }
 
 .slide-card{
-    width: 30rem;
+    width: 20rem;
 }
 
 .slide-container{
@@ -20,9 +20,14 @@
 }
 
 .slide-detail-img{
-    width: 20rem;
+    width: 10rem;
 }
 
 .slide-card-container{
     margin: 1rem;
+}
+
+.slide-card-wrapper{
+    display: flex;
+    flex-wrap: wrap;
 }

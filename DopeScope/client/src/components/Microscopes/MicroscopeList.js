@@ -18,9 +18,9 @@ export const MicroscopeList = () => {
 
   useEffect(() => {
    
-    if(location === "/microscope"){
+    if(location === "/microscope" ){
     getAllMicroscopes().then(setMicroscopes)}
-    else if (history.location.pathname === "/myscopes"){
+    else if (history.location.pathname === "/myscopes" || "/"){
       (getScopesByUserId(user.uid)).then(setMicroscopes)
     }
   }, [location]);
@@ -30,7 +30,7 @@ export const MicroscopeList = () => {
   return (
     <>
     <div className="scope-container">
-      <h1 className="scope-title">Scopes</h1>
+      {/* <h1 className="scope-title">Scopes</h1> */}
     
       <div>
         {console.log(microscopes)}

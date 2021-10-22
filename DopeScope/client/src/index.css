@@ -26,3 +26,8 @@ html, body {
 .dashboard{
   display: flex;
 }
+
+.dashboard-header{
+  margin-top: 1rem;
+  text-align: center;
+}
