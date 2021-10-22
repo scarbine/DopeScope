@@ -7,6 +7,7 @@ import "./Slide.css"
 import { unstable_renderSubtreeIntoContainer } from "react-dom";
 import { getUserByFirebaseId } from "../../modules/UserManager";
 import firebase from "firebase";
+import { MiniSlideCard } from "./MiniSlideCard";
 
 export const SlideList = () => {
  
@@ -19,7 +20,7 @@ export const SlideList = () => {
 
   useEffect(() => {
    
-    if(location === "/slide" ){
+    if(location === "/slide" || location.includes('/slide/') ){
     getAllSlides().then(setSlides)}
     else if (history.location.pathname === "/myslides" || "/"){
       (getSlideByUserId(firebaseId)).then(setSlides)
@@ -30,18 +31,28 @@ export const SlideList = () => {
     setUpdate(!update)
   }
 
+  const slideViewFlexWrap = "scope-slide-container-flex"
 
+  const slideViewColumn = "scope-slide-contaier-column"
+
+  const longLine = <h5 className="scope-slide-title line">________________________________________________________________________________________</h5>
+  const shortLine = <h5 className="scope-slide-title line">____________________________________</h5>
+  
+
+  const slideView = ( location === "/slide" || location ==="/myslides" || location ==="/" ? slideViewFlexWrap : slideViewColumn)
+  const slideLine = ( location === "/slide" || location ==="/myslides" || location==="/" ? longLine : shortLine)
 
   return (
     <>
     <div className="slide-container">
       {/* <h1 className="slide-list-title">Slides</h1> */}
       <div className="scope-slides-wrapper">
-                <h5 className="scope-slide-title">{location === "/slide" ? "All Slides" : "Slides"}</h5>
-                <h5 className="scope-slide-title line">________________________________________________________________________________________</h5>
-            <div className="scope-slides">
+                <h5 className="scope-slide-title">{location.includes("/slide")  ? "Latest Slides" : "Slides"}</h5>
+                {slideLine}
+                {/* <h5 className="scope-slide-title line">________________________________________________________________________________________</h5> */}
+               <div className={slideView}>
             { slides.length === 0 ? <div>Currenlty No Slides </div> : slides?.map(slide => {
-                return <SlideCard key={slide.id} slide={slide} />
+                return location.includes("/slide/") ? <MiniSlideCard key={slide.id} slide={slide} updateList={updateList}/> : <SlideCard key={slide.id} slide={slide} />
             })}
             </div>
             </div>

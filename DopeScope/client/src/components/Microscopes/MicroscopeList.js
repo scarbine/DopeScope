@@ -36,7 +36,7 @@ export const MicroscopeList = () => {
       <div>
 
         <div className="scope-slides-wrapper">
-                <h5 className="scope-slide-title">{location === "/slide" ? "All Scopes" : "Scopes"}</h5>
+                <h5 className="scope-slide-title">{location === "/microscope" ? "All Scopes" : "Scopes"}</h5>
                 <h5 className="scope-slide-title line">________________________________________________________________________________________</h5>
             <div className="scope-slides">
         {microscopes.map((microscope) => {

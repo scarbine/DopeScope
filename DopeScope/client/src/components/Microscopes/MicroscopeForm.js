@@ -38,15 +38,17 @@ export const MicroscopeForm = () => {
         id: microscope.id,
         make: microscope.make,
         model: microscope.model,
-        userId: microscope.userId
-      }).then(history.push('/microscope'))
+        userId: microscope.userId,
+        imageUrl : microscope.imageUrl
+      }).then(history.push(`/microscope/${microscope.id}`))
     } else {
       getUserByFirebaseId(currentUser.l).then(setUser)
       addMicroscope({
         id: microscope.id,
         make: microscope.make,
         model: microscope.model,
-        userId: user.id
+        userId: user.id,
+        imageUrl : microscope.imageUrl
       }).then(history.push('/microscope'))
     }
   };
@@ -72,6 +74,16 @@ export const MicroscopeForm = () => {
           name="model"
           onChange={handleInputChange}
           value={microscope.model}
+        />
+      </FormGroup>
+      <FormGroup>
+        <Label for="imageUrl">Image Url</Label>
+        <Input
+          id="imageUrl"
+          type="text"
+          name="imageUrl"
+          onChange={handleInputChange}
+          value={microscope.imageUrl}
         />
       </FormGroup>
       <FormGroup>

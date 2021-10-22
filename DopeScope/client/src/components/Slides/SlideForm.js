@@ -56,7 +56,7 @@ useEffect(()=>{
   }
 
   return (
-    <Form >
+    <Form className="new-slide-form">
       {console.log(slide)}
       <FormGroup>
         <Label for="slideName">Name</Label>
@@ -74,10 +74,7 @@ useEffect(()=>{
         <Label for="slideImageUrl">Image Url</Label>
         <Input id="slideImageUrl" type="text" name="imageUrl" onChange={handleInputChange} value={slide.imageUrl} />
       </FormGroup>
-      <FormGroup>
-        <Label for="slideImageUrl">Image Url</Label>
-        <Input id="slideImageUrl" type="text" name="imageUrl" onChange={handleInputChange} value={slide.imageUrl} />
-      </FormGroup>
+      
       {/* <FormGroup>
       <ImageUploader key={slide} slide={slide}/>id="slideImageUrl" type="text" name="imageUrl" onChange={handleInputChange} value={slide.imageUrl} />
       </FormGroup> */}

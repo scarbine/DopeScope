@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { useParams } from "react-router";
+import { useHistory, useParams } from "react-router";
 import { useState } from "react/cjs/react.development";
 import { Button } from "reactstrap";
 import { getMicroscopesById } from "../../modules/MicroscopeManager";
@@ -9,7 +9,7 @@ import { SlideCard } from "../Slides/SlideCard";
 
 
 export const MicroscopeDetail = () => {
-
+    const history = useHistory();
     const {scopeId} =useParams();
 
     const [scope, setScope] = useState({
@@ -24,6 +24,10 @@ export const MicroscopeDetail = () => {
     });
     const [slides, setSlides] = useState([])
 
+    const handleEdit = () => {
+        history.push(`/microscope/form/${scope.id}`)
+      }
+
     useEffect(()=>{
         getMicroscopesById(scopeId).then(setScope)
         getSlideByScopeId(scopeId).then(setSlides)
@@ -35,7 +39,10 @@ export const MicroscopeDetail = () => {
             {console.log(scope)}
             {console.log(slides)}
             <div className="scope-details-container">
+                <div className="scope-details-header">
             <h1 className="scope-name">{scope.make} {scope.model}</h1>
+                {/* <div className="scope-owner">{scope.user.fullName}</div> */}
+                </div>
             {/* <h5>{scope.user.fullName}</h5> */}
             {/* <h5>Scopes Slides</h5> */}
             <div className="scope-slides-wrapper">
@@ -46,6 +53,7 @@ export const MicroscopeDetail = () => {
                 return <SlideCard key={slide.id} slide={slide} />
             })}
             </div>
+            <Button className="scope-card-btn" onClick={handleEdit}>Edit Scope</Button> 
             </div>
             </div>
            

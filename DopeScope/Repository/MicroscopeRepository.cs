@@ -46,7 +46,7 @@ namespace DopeScope.Repository
                 conn.Open();
                 using (var cmd = conn.CreateCommand())
                 {
-                    cmd.CommandText = @"SELECT m.Id, m.Make, m.Model, m.UserId, u.Id AS UserId, u.FirstName, u.LastName, u.Email, u.FirebaseId FROM Microscope m 
+                    cmd.CommandText = @"SELECT m.Id, m.Make, m.Model, m.UserId, m.imageUrl, u.Id AS UserId, u.FirstName, u.LastName, u.Email, u.FirebaseId FROM Microscope m 
                         LEFT JOIN [User] u ON u.id = m.UserId
                         WHERE u.FirebaseId = @Id";
                     DbUtils.AddParameter(cmd, "@Id", firebaseId);
@@ -76,7 +76,7 @@ namespace DopeScope.Repository
                 conn.Open();
                 using (var cmd = conn.CreateCommand())
                 {
-                    cmd.CommandText = @"SELECT m.Id, m.Make, m.Model, m.UserId, u.Id AS UserId, u.FirstName, u.LastName, u.Email, u.FirebaseId FROM Microscope m
+                    cmd.CommandText = @"SELECT m.Id, m.Make, m.Model,m.imageUrl, m.UserId, u.Id AS UserId, u.FirstName, u.LastName, u.Email, u.FirebaseId FROM Microscope m
                         LEFT JOIN[User] u ON u.id = m.UserId
                         WHERE m.Id = @Id";
 
@@ -105,12 +105,13 @@ namespace DopeScope.Repository
                 conn.Open();
                 using (var cmd = conn.CreateCommand())
                 {
-                    cmd.CommandText = @"INSERT INTO Microscope (Make, Model, UserId)
+                    cmd.CommandText = @"INSERT INTO Microscope (Make, Model, UserId, ImageUrl)
                                         OUTPUT INSERTED.ID
-                                        VALUES ( @Make, @Model,@UserId )";
+                                        VALUES ( @Make, @Model,@UserId, @ImageUrl )";
                     DbUtils.AddParameter(cmd, "@Make", microscope.Make);
                     DbUtils.AddParameter(cmd, "@Model", microscope.Model);
                     DbUtils.AddParameter(cmd, "@UserId", microscope.UserId);
+                    DbUtils.AddParameter(cmd, "@ImageUrl", microscope.ImageUrl);
 
 
                     microscope.Id = (int)cmd.ExecuteScalar();
@@ -129,13 +130,15 @@ namespace DopeScope.Repository
                         UPDATE Microscope
                            SET Make = @Make,
                                Model = @Model,
-                               UserId = @UserId
+                               UserId = @UserId,
+                               ImageUrl = @ImageUrl                       
                          WHERE Id = @Id";
 
                     DbUtils.AddParameter(cmd, "@Make", microscope.Make);
                     DbUtils.AddParameter(cmd, "@Model", microscope.Model);
                     DbUtils.AddParameter(cmd, "@UserId", microscope.UserId);
                     DbUtils.AddParameter(cmd, "@Id", microscope.Id);
+                    DbUtils.AddParameter(cmd, "@ImageUrl", microscope.ImageUrl);
 
 
 
@@ -162,7 +165,7 @@ namespace DopeScope.Repository
         {
             get
             {
-                return @"SELECT m.Id, m.Make, m.Model, m.UserId, u.Id AS UserId, u.FirstName, u.LastName, u.Email, u.FirebaseId FROM Microscope m 
+                return @"SELECT m.Id, m.Make, m.Model, m.UserId, m.ImageUrl, u.Id AS UserId, u.FirstName, u.LastName, u.Email, u.FirebaseId FROM Microscope m 
                         LEFT JOIN [User] u ON u.id = m.UserId";
                         
             }
@@ -176,6 +179,7 @@ namespace DopeScope.Repository
                 Make = DbUtils.GetString(reader, "Make"),
                 Model = DbUtils.GetString(reader, "Model"),
                 UserId = DbUtils.GetInt(reader, "UserId"),
+                ImageUrl = DbUtils.GetString(reader, "ImageUrl"),
                 User = new UserProfile()
                 {
                     Id = DbUtils.GetInt(reader, "UserId"),
