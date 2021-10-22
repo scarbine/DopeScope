@@ -7,6 +7,7 @@ import "./Slide.css"
 import { unstable_renderSubtreeIntoContainer } from "react-dom";
 import { getUserByFirebaseId } from "../../modules/UserManager";
 import firebase from "firebase";
+import { MiniSlideCard } from "./MiniSlideCard";
 
 export const SlideList = () => {
  
@@ -19,7 +20,7 @@ export const SlideList = () => {
 
   useEffect(() => {
    
-    if(location === "/slide" ){
+    if(location === "/slide" || location.includes('/slide/') ){
     getAllSlides().then(setSlides)}
     else if (history.location.pathname === "/myslides" || "/"){
       (getSlideByUserId(firebaseId)).then(setSlides)
@@ -51,7 +52,7 @@ export const SlideList = () => {
                 {/* <h5 className="scope-slide-title line">________________________________________________________________________________________</h5> */}
                <div className={slideView}>
             { slides.length === 0 ? <div>Currenlty No Slides </div> : slides?.map(slide => {
-                return <SlideCard key={slide.id} slide={slide} />
+                return location.includes("/slide/") ? <MiniSlideCard key={slide.id} slide={slide}/> : <SlideCard key={slide.id} slide={slide} />
             })}
             </div>
             </div>

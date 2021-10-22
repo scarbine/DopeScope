@@ -101,3 +101,32 @@
 .line{
     margin-bottom: 1rem;
 }
+
+.slide-card-mini{
+display: flex;
+justify-content: space-between;
+border: solid rgb(219, 219, 219) .1rem;
+margin: 1rem;
+}
+
+.left-box{
+display: flex;
+flex-direction: column;
+width: 7rem;
+}
+
+.center-box{
+height: 5rem;
+width: 5rem;
+}
+
+.right-box{
+    display: flex;
+    flex-direction: column;
+    width: 7rem;
+}
+
+.mini-slide-img{
+    height: 5rem;
+    width: 5rem;
+}
