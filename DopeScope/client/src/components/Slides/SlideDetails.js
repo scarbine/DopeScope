@@ -12,6 +12,7 @@ import { SlideList } from "./SlideList";
 export const SlideDetails = () => {
   const { slideId } = useParams();
   const history = useHistory();
+  const location = history.location.pathname
   const [update, setUpdate] = useState(true);
   const [slide, setSlide] = useState({
     dateCreated: "",
@@ -47,7 +48,7 @@ export const SlideDetails = () => {
     getSlideById(slideId)
       .then(setSlide)
       .then(getNotesBySlideId(slideId).then(setNotes));
-  }, []);
+  }, [location]);
 
   useEffect(() => {
     getNotesBySlideId(slideId).then(setNotes);

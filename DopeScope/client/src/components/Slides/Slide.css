@@ -109,6 +109,9 @@ justify-content: space-between;
 border: solid rgb(219, 219, 219) .1rem;
 margin: 1rem;
 }
+.slide-card-mini:hover{
+    cursor: pointer;
+}
 
 .left-box{
 display: flex;

@@ -1,12 +1,17 @@
 import React from "react";
+import { useHistory } from "react-router";
 import { Container } from "reactstrap";
 import { getScopesByUserId } from "../../modules/MicroscopeManager";
 
 
 export const MiniSlideCard = (props) => {
+    const history = useHistory()
+    const handleClick =()=>{
+        history.push(`/slide/${props.slide.id}`)
+    }
     return(
         <>
-            <container className="slide-card-mini">
+            <container className="slide-card-mini" onClick={handleClick}>
                 <div className="left-box">
                     <div>{props.slide.name}</div>
                 </div>
