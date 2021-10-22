@@ -29,7 +29,7 @@ export const MicroscopeCard = (props) => {
           <div className="title-scope">
           <CardSubtitle tag="h6" className="mb-2 text-muted">{props.microscope.make} {props.microscope.model}</CardSubtitle>
           </div>
-          <CardText>{location === "/myscopes" ? <></> :<div> Owner : {props.microscope.user.firstName} {props.microscope.user.lastName}</div> }</CardText>
+          <CardText>{location === "/myscopes" || location ==="/" ? <></> :<div> Owner : {props.microscope.user.firstName} {props.microscope.user.lastName}</div> }</CardText>
           <Button className="scope-card-btn" onClick={handleOnClick}>Details</Button>
           <Button className="scope-card-btn" onClick={handleEdit}>Edit</Button>
         </CardBody>
