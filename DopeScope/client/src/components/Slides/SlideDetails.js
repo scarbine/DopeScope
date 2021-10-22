@@ -82,8 +82,8 @@ export const SlideDetails = () => {
         <section className="slide-detail-info-container">
         <h5>
         </h5>
-        <h5>{slide.magnification}</h5>
-        <h5>{slide.description}</h5>
+        <h5>Magnifiaction: {slide.magnification}</h5>
+        <h5>Description :{slide.description}</h5>
         <h5>{date}</h5>
         </section>
         <h3 className="slide-comments"> Comments</h3>
