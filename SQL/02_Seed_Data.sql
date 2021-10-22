@@ -12,8 +12,8 @@ values (1, 'Cool'), (2, 'Dope'), (3, 'Colorful'), (4, 'Scary');
 set identity_insert [Tag] off
 
 set identity_insert [Microscope] on
-insert into [Microscope] (id, Make, Model, UserId) VALUES (1, 'Amscope', 'A32453', 1),
- (2, 'Amscope', 'B34542', 2);
+insert into [Microscope] (id, Make, Model, UserId, ImageUrl) VALUES (1, 'Amscope', 'A32453', 1,'https://res.cloudinary.com/ddaeunjfu/image/upload/v1634945558/tjqa6nyu6hlgkfnuptkf.jpg'),
+ (2, 'Amscope', 'B34542', 2,'https://res.cloudinary.com/ddaeunjfu/image/upload/v1634945558/tjqa6nyu6hlgkfnuptkf.jpg');
 set identity_insert [Microscope] off
 
 set identity_insert [Slide] on
@@ -37,4 +37,3 @@ insert into [SlideTag] (id, SlideId, TagId) VALUES (1, 1 ,1),
  (6, 2 ,4),
  (7, 1 ,1);
 set identity_insert [SlideTag] off
-
