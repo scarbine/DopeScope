@@ -38,6 +38,18 @@
     justify-content: center;
 }
 
+.scope-detail-image{
+    height: 30rem;
+    width: 30rem;
+    margin-top: 7rem;
+    margin-right: 2rem;
+  
+}
+
+.scope-details-wrapper{
+    display: flex;
+}
+
 .flex-wrap-display{
     display: flex;
     flex-wrap: wrap;

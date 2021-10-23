@@ -19,7 +19,7 @@ export const MiniSlideCard = (props) => {
                 <img className="mini-slide-img" src={props.slide.imageUrl} alt={props.slide.name} />
                 </div>
                 <div className="right-box">
-                    <div>{props.slide.magnification}</div>
+                    <div>{props.slide.microscope.user.fullName}</div>
                 </div>
             </container>
         </>

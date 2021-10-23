@@ -4,6 +4,7 @@ import { useParams } from "react-router";
 import { Button, Form, FormGroup, Label, Input } from 'reactstrap';
 import { addSlide, getSlideById, updateSlide } from "../../modules/SlideManager";
 import "./Slide.css"
+import { getAllMicroscopes, getScopesByUserId } from "../../modules/MicroscopeManager";
 
 
 export const SlideForm = () => {
@@ -12,6 +13,7 @@ export const SlideForm = () => {
   const [slide, setSlide] = useState({
  
   });
+  const [scopes, setScopes] = useState([])
 
   const handleInputChange = (e) => {
     e.preventDefault();
@@ -21,6 +23,7 @@ export const SlideForm = () => {
 }
 
 useEffect(()=>{
+  getAllMicroscopes().then(setScopes)
   if(slideId){
     getSlideById(slideId).then(setSlide)
   }
@@ -78,9 +81,17 @@ useEffect(()=>{
       {/* <FormGroup>
       <ImageUploader key={slide} slide={slide}/>id="slideImageUrl" type="text" name="imageUrl" onChange={handleInputChange} value={slide.imageUrl} />
       </FormGroup> */}
-      <FormGroup>
+      {/* <FormGroup>
         <Label for="slideScope">Scope</Label>
         <Input id="slideScope" type="text" name="microscopeId" onChange={handleInputChange} value={slide.microscopeId} />
+      </FormGroup> */}
+      <FormGroup>
+        <Label for="slideScope">Scope</Label>
+       <select id="slideScope" type="dropbown" name="microscopeId" onChange={handleInputChange} value={slide.microscopeId} >
+         {scopes.map(scope=>{
+           return <option id="scopeOption" name="scopeOption" value={scope.id} onChange={handleInputChange}>{scope.make} {scope.model}</option>
+         })}
+       </select>
       </FormGroup>
    
       <FormGroup className="slide-buttons">
