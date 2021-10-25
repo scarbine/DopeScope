@@ -51,8 +51,8 @@ export const SlideList = () => {
                 {slideLine}
                 {/* <h5 className="scope-slide-title line">________________________________________________________________________________________</h5> */}
                <div className={slideView}>
-            { slides.length === 0 ? <div>Currenlty No Slides </div> : slides?.map(slide => {
-                return location.includes("/slide/") ? <MiniSlideCard key={slide.id} slide={slide} updateList={updateList}/> : <SlideCard key={slide.id} slide={slide} />
+            { slides.length === 0 ? <div>Currenlty No Slides </div> : location.includes("/slide/") ? slides?.slice(0,5).map(slide => {
+                return  <MiniSlideCard key={slide.id} slide={slide} updateList={updateList}/>}) :  slides?.map(slide => { return <SlideCard key={slide.id} slide={slide} />
             })}
             </div>
             </div>
