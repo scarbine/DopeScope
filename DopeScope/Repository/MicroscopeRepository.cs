@@ -161,6 +161,34 @@ namespace DopeScope.Repository
             }
         }
 
+        public List<Microscope> Search(string criterion)
+        {
+            using (var conn = Connection)
+            {
+                conn.Open();
+                using (var cmd = conn.CreateCommand())
+                {
+                   
+
+                    cmd.CommandText = @"SELECT m.Id, m.Make, m.Model, m.UserId, m.ImageUrl, u.Id AS UserId, u.FirstName, u.LastName, u.Email, u.FirebaseId FROM Microscope m
+                        LEFT JOIN[User] u ON u.id = m.UserId
+                        WHERE m.Model LIKE @Criterion or m.Make LIKE @Criterion";
+                    DbUtils.AddParameter(cmd, "@Criterion", $"%{criterion}%");
+                    var reader = cmd.ExecuteReader();
+
+                    var microscopes = new List<Microscope>();
+                    while (reader.Read())
+                    {
+                        microscopes.Add(NewMicroscope(reader));
+                    }
+
+                    reader.Close();
+
+                    return microscopes;
+                }
+            }
+        }
+
         private string MicroscopeQuery
         {
             get

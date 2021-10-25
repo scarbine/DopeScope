@@ -1,8 +1,8 @@
 import { getAllByAltText } from "@testing-library/dom";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import { useHistory } from "react-router";
 import { Button } from "reactstrap";
-import { getAllMicroscopes } from "../../modules/MicroscopeManager";
+import { getAllMicroscopes, searchScopes } from "../../modules/MicroscopeManager";
 import { MicroscopeCard } from "./MicroscopeCard";
 import { getScopesByUserId } from "../../modules/MicroscopeManager";
 import { getUserByFirebaseId } from "../../modules/UserManager";
@@ -27,6 +27,30 @@ export const MicroscopeList = () => {
     }
   }, [currentLocation]);
 
+  // const ScopeSearch = () => {
+  //   let textInput = useRef();
+
+  //   const handleSearch = () => {
+  //     console.log(textInput.current.value);
+  //     searchScopes(textInput.current.value).then((searchResults) =>
+  //       setMicroscopes(searchResults)
+  //     );
+
+  //     const handleSearchChange = (e) => {
+        
+  //     }
+  //   };
+
+  //   return (
+  //     <>
+    
+  //       <input ref={textInput} type="text" onChange={handleSearchChange}></input>
+  //       <button onClick={handleSearch}>Search Scopes</button>
+  //       {console.log(microscopes)}
+  //     </>
+  //   );
+  // };
+
 
  
   return (
@@ -38,6 +62,7 @@ export const MicroscopeList = () => {
 
         <div className="scope-slides-wrapper">
                 <h5 className="scope-slide-title">{location === "/microscope" ? "All Scopes" : "Scopes"}</h5>
+                {/* <ScopeSearch /> */}
                 <h5 className="scope-slide-title line">________________________________________________________________________________________</h5>
             <div className="scope-slides">
         {microscopes.length !== 0 ? microscopes.map((microscope) => {

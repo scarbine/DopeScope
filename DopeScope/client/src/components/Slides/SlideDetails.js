@@ -54,6 +54,10 @@ export const SlideDetails = () => {
     getNotesBySlideId(slideId).then(setNotes);
   }, [update]);
 
+  const handleScopeClick = () => {
+        history.push(`/microscope/${slide.microscope.id}`)
+  }
+
   return (
     <>
         
@@ -102,7 +106,7 @@ export const SlideDetails = () => {
         </section>
         <section className="right-container">
         <SlideList />
-        <img className="slide-detail-scope-img" src={slide.microscope.imageUrl} alt={slide.microscope.Make} />
+        <img onClick={handleScopeClick}className="slide-detail-scope-img" src={slide.microscope.imageUrl} alt={slide.microscope.Make} />
         </section>
       </div>
     </>

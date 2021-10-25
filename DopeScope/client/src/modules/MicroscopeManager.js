@@ -53,6 +53,25 @@ export const  getMicroscopesById =(id) => {
       });
     };
 
+  export const  searchScopes =(search) => {
+    return getToken().then((token) => {
+        return fetch(`${apiUrl}/?q=${search}`, {
+          method: "GET",
+          headers: {
+            Authorization: `Bearer ${token}`
+          }
+        }).then(res => {
+          if (res.ok) {
+            return res.json();
+          } else {
+            throw new Error("An unknown error occurred while trying to get microscopes.");
+          }
+        });
+      });
+    };
+
+
+
 export const addMicroscope = (microscope) => {
   return getToken().then((token) => {
     return fetch(apiUrl, {
