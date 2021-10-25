@@ -99,8 +99,10 @@ export const SlideDetails = () => {
           )}
         </div>
         </section>
+        <section className="right-container">
         <SlideList />
-        <img src={slide.microscope.imageUrl} alt={slide.microscope.Make} />
+        <img className="slide-detail-scope-img" src={slide.microscope.imageUrl} alt={slide.microscope.Make} />
+        </section>
       </div>
     </>
   );

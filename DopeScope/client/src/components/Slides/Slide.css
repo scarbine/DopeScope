@@ -134,3 +134,14 @@ width: 5rem;
     height: 5rem;
     width: 5rem;
 }
+
+.right-container{
+    display: flex;
+    flex-direction: column;
+}
+
+.slide-detail-scope-img{
+    padding: 1rem;
+    height: 20rem;
+    width: auto;
+}
