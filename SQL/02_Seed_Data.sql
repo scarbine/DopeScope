@@ -2,8 +2,8 @@ USE [DopeScope];
 GO
 
 set identity_insert [User] on
-insert into [User] (id, FirstName, LastName, Email, IsAdmin, FirebaseId) VALUES (1, 'John', 'Smith', 'js@me.com', 1,'h3x09WR5jKYhbWoOQGyqxEdAGmo1'), 
-(2, 'Jane', 'John', 'jj@me.com', 1,'8RnvpS55C3N3i7LzN5O3cZ8I0vD2') ;
+insert into [User] (id, FirstName, LastName, Email, FirebaseId) VALUES (1, 'John', 'Smith', 'js@me.com','h3x09WR5jKYhbWoOQGyqxEdAGmo1'), 
+(2, 'Jane', 'John', 'jj@me.com','8RnvpS55C3N3i7LzN5O3cZ8I0vD2') ;
 set identity_insert [User] off
 
 set identity_insert [Tag] on
