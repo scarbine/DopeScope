@@ -46,6 +46,10 @@
   
 }
 
+.new-scope-form-wrapper{
+    margin: 3rem;
+}
+
 .scope-details-wrapper{
     display: flex;
 }

@@ -1,15 +1,18 @@
 import React, { useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
 import { useParams } from "react-router";
-import { Button, Form, FormGroup, Label, Input } from 'reactstrap';
+import { Button, Form, FormGroup, Label, Input, FormText } from 'reactstrap';
 import { addSlide, getSlideById, updateSlide } from "../../modules/SlideManager";
 import "./Slide.css"
 import { getAllMicroscopes, getScopesByUserId } from "../../modules/MicroscopeManager";
+import firebase from "firebase";
 
 
 export const SlideForm = () => {
   const history = useHistory();
   const {slideId} = useParams();
+  const user = firebase.auth().currentUser
+  const firebaseId = user.uid
   const [slide, setSlide] = useState({
  
   });
@@ -24,7 +27,7 @@ export const SlideForm = () => {
 }
 
 useEffect(()=>{
-  getAllMicroscopes().then(setScopes)
+  getScopesByUserId(firebaseId).then(setScopes)
   if(slideId){
     getSlideById(slideId).then(setSlide)
   }
@@ -78,23 +81,20 @@ useEffect(()=>{
         <Label for="slideImageUrl">Image Url</Label>
         <Input id="slideImageUrl" type="text" name="imageUrl" onChange={handleInputChange} value={slide.imageUrl} />
       </FormGroup>
-      
-      {/* <FormGroup>
-      <ImageUploader key={slide} slide={slide}/>id="slideImageUrl" type="text" name="imageUrl" onChange={handleInputChange} value={slide.imageUrl} />
-      </FormGroup> */}
-      {/* <FormGroup>
-        <Label for="slideScope">Scope</Label>
-        <Input id="slideScope" type="text" name="microscopeId" onChange={handleInputChange} value={slide.microscopeId} />
-      </FormGroup> */}
       <FormGroup>
         <Label for="slideScope">Scope</Label>
-       <select id="slideScope" type="dropbown" name="microscopeId" onChange={handleInputChange} >
+       <Input id="slideScope" type="select" name="microscopeId" onChange={handleInputChange} >
+         <option option id="scopeOption" name="scopeOption" onChange={handleInputChange}> Select a Scope </option>
          {scopes.map(scope=>{
            return <option id="scopeOption" name="scopeOption" value={scope.id} onChange={handleInputChange}>{scope.make} {scope.model}</option>
          })}
-       </select>
+       </Input>
       </FormGroup>
    
+      <FormGroup className="image-upload-field">
+        <Label for="slideImageUrl">Uploade Slide Image</Label><br></br>
+        <Input type="file" name="file" id="slideImageUrl" />
+      </FormGroup>
       <FormGroup className="slide-buttons">
         {slideId ? <Button className="slide-btn" onClick={handleSave}>Update Slide</Button> : <Button className="slide-btn" onClick={handleSave}>Add Slide</Button> }
         <Button className="slide-btn" onClick={handleCancel}>Cancel</Button>

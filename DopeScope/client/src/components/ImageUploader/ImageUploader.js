@@ -29,7 +29,9 @@ axios
         .then((res) => {
 		const slidePicObj = {
 			imageURL: res.data.secure_url,
-            slideId:props.slide.id
+            slideId:props.slide.id,
+            description:props.slide.description,
+            
 		};
           console.log(slidePicObj, );
         })

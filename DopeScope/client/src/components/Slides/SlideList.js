@@ -4,8 +4,6 @@ import { Button } from "reactstrap";
 import { getAllSlides, getSlideByUserId } from "../../modules/SlideManager";
 import { SlideCard } from "./SlideCard";
 import "./Slide.css"
-import { unstable_renderSubtreeIntoContainer } from "react-dom";
-import { getUserByFirebaseId } from "../../modules/UserManager";
 import firebase from "firebase";
 import { MiniSlideCard } from "./MiniSlideCard";
 
@@ -14,6 +12,7 @@ export const SlideList = () => {
   const history = useHistory();
   const location = history.location.pathname
   const [slides, setSlides] = useState([]);
+  const [currentLocation, setCurrentLocation] = useState('')
   const user = firebase.auth().currentUser
   const firebaseId = user.uid
   const [update, setUpdate] = useState(true);
@@ -21,11 +20,11 @@ export const SlideList = () => {
   useEffect(() => {
    
     if(location === "/slide" || location.includes('/slide/') ){
-    getAllSlides().then(setSlides)}
+    getAllSlides().then(setSlides).then(setCurrentLocation(location))}
     else if (history.location.pathname === "/myslides" || "/"){
-      (getSlideByUserId(firebaseId)).then(setSlides)
+      (getSlideByUserId(firebaseId)).then(setSlides).then(setCurrentLocation(location))
     }
-  }, [update, location]);
+  }, [update, currentLocation]);
 
   const updateList = () => {
     setUpdate(!update)
@@ -51,7 +50,7 @@ export const SlideList = () => {
                 {slideLine}
                 {/* <h5 className="scope-slide-title line">________________________________________________________________________________________</h5> */}
                <div className={slideView}>
-            { slides.length === 0 ? <div>Currenlty No Slides </div> : slides?.map(slide => {
+            { slides.length === 0 ? <div>Currenlty No Slides </div> : slides?.slice(0,5).map(slide => {
                 return location.includes("/slide/") ? <MiniSlideCard key={slide.id} slide={slide} updateList={updateList}/> : <SlideCard key={slide.id} slide={slide} />
             })}
             </div>

@@ -54,7 +54,7 @@ export const MicroscopeForm = () => {
   };
 
   return (
-    <Form >
+    <Form className="new-scope-form-wrapper">
     {console.log(currentUser.l)}
       <FormGroup>
         <Label for="quoteText">Make</Label>

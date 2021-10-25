@@ -46,6 +46,7 @@
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    margin-top: .5rem;
 }
 
 .comments-header{
@@ -70,6 +71,10 @@
 .slide-card-container{
     margin: 1rem;
 }
+.slide-card-container:hover{
+    cursor: pointer;
+}
+
 .image-container{
     display: flex;
     width: 30rem;
@@ -79,6 +84,10 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
+}
+
+.image-upload-field{
+    margin-top: 1rem;
 }
 
 .card-subtitle{
