@@ -57,7 +57,8 @@ export const SlideDetails = () => {
   return (
     <>
         
-    
+    {console.log(slide)}
+    {console.log("update" ,update)}
       <div className="slide-detail-container">
       <section className="slide-details-column">
         <h1 className="slide-detail-header">{slide.name}</h1>
@@ -68,7 +69,7 @@ export const SlideDetails = () => {
           alt={slide.name}
         />
         </div>
-        <div classname="sub-image-info">
+        <div className="sub-image-info">
             <div> {slide.microscope.make} {slide.microscope.model}</div>
             <div>{slide.microscope.user.fullName} </div>
         </div>
@@ -99,7 +100,10 @@ export const SlideDetails = () => {
           )}
         </div>
         </section>
+        <section className="right-container">
         <SlideList />
+        <img className="slide-detail-scope-img" src={slide.microscope.imageUrl} alt={slide.microscope.Make} />
+        </section>
       </div>
     </>
   );

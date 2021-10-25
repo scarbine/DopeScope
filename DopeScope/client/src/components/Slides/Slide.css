@@ -46,6 +46,7 @@
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    margin-top: .5rem;
 }
 
 .comments-header{
@@ -62,14 +63,18 @@
 }
 
 .slide-detail-info-container{
-    margin: 3rem;
-    margin-top: 2rem;
-    padding-top: 3rem;
+    margin: .5rem;
+    margin-top: .5rem;
+    padding-top: .5rem;
 }
 
 .slide-card-container{
     margin: 1rem;
 }
+.slide-card-container:hover{
+    cursor: pointer;
+}
+
 .image-container{
     display: flex;
     width: 30rem;
@@ -79,6 +84,10 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
+}
+
+.image-upload-field{
+    margin-top: 1rem;
 }
 
 .card-subtitle{
@@ -133,4 +142,15 @@ width: 5rem;
 .mini-slide-img{
     height: 5rem;
     width: 5rem;
+}
+
+.right-container{
+    display: flex;
+    flex-direction: column;
+}
+
+.slide-detail-scope-img{
+    padding: 1rem;
+    height: 20rem;
+    width: auto;
 }

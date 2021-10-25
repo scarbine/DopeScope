@@ -58,9 +58,9 @@ namespace DopeScope.Repository
                 conn.Open();
                 using (var cmd = conn.CreateCommand())
                 {
-                    cmd.CommandText = @"INSERT INTO User (FirebaseId, FirstName, LastName, Email)
+                    cmd.CommandText = @"INSERT INTO [User] (FirebaseId, FirstName, LastName, Email)
                                         OUTPUT INSERTED.ID
-                                        VALUES (@FirebaseUserId, @FirstName, @LastName @Email)";
+                                        VALUES (@FirebaseUserId, @FirstName, @LastName, @Email)";
                     DbUtils.AddParameter(cmd, "@FirebaseUserId", userProfile.FirebaseUserId);
                     DbUtils.AddParameter(cmd, "@FirstName", userProfile.FirstName);
                     DbUtils.AddParameter(cmd, "@LastName", userProfile.LastName);

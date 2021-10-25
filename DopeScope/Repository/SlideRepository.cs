@@ -46,7 +46,7 @@ namespace DopeScope.Repository
                 conn.Open();
                 using (var cmd = conn.CreateCommand())
                 {
-                    cmd.CommandText = @"SELECT s.Id, s.Magnification, s.MicroscopeId,s.Description, s.ImageUrl, s.Name, s.DateCreated, m.Id AS MId, m.Make, m.Model, m.UserId AS MUID, u.Id AS UserId, u.FirebaseId, u.FirstName, u.Lastname, u.Email FROM Slide s
+                    cmd.CommandText = @"SELECT s.Id, s.Magnification, s.MicroscopeId,s.Description, s.ImageUrl, s.Name, s.DateCreated, m.Id AS MId, m.Make, m.Model, m.ImageUrl AS ScopeImageUrl, m.UserId AS MUID, u.Id AS UserId, u.FirebaseId, u.FirstName, u.Lastname, u.Email FROM Slide s
                         JOIN Microscope m ON s.MicroscopeId = m.Id
                         JOIN [USER] u ON u.Id = m.UserId
                         WHERE u.FirebaseId =@Id";
@@ -75,7 +75,7 @@ namespace DopeScope.Repository
                 conn.Open();
                 using (var cmd = conn.CreateCommand())
                 {
-                    cmd.CommandText = @"SELECT s.Id, s.Magnification, s.MicroscopeId,s.Description, s.ImageUrl, s.Name, s.DateCreated, m.Id AS MId, m.Make, m.Model, m.UserId AS MUID, u.Id AS UserId, u.FirebaseId, u.FirstName, u.Lastname, u.Email FROM Slide s
+                    cmd.CommandText = @"SELECT s.Id, s.Magnification, s.MicroscopeId,s.Description, s.ImageUrl, s.Name, s.DateCreated, m.Id AS MId, m.ImageUrl AS ScopeImageUrl, m.Make, m.Model, m.UserId AS MUID, u.Id AS UserId, u.FirebaseId, u.FirstName, u.Lastname, u.Email FROM Slide s
                         JOIN Microscope m ON s.MicroscopeId = m.Id
                         JOIN [USER] u ON u.Id = m.UserId
                         WHERE m.Id =@Id";
@@ -105,7 +105,7 @@ namespace DopeScope.Repository
                 conn.Open();
                 using (var cmd = conn.CreateCommand())
                 {
-                    cmd.CommandText = @"SELECT s.Id, s.Magnification, s.MicroscopeId,s.Description, s.ImageUrl, s.Name, s.DateCreated, m.Id AS MId, m.Make, m.Model, m.UserId AS MUID, u.Id AS UserId, u.FirebaseId, u.FirstName, u.Lastname, u.Email FROM Slide s
+                    cmd.CommandText = @"SELECT s.Id, s.Magnification, s.MicroscopeId,s.Description, s.ImageUrl, s.Name, s.DateCreated, m.Id AS MId, m.Make, m.Model, m.ImageUrl AS ScopeImageUrl, m.UserId AS MUID, u.Id AS UserId, u.FirebaseId, u.FirstName, u.Lastname, u.Email FROM Slide s
                         JOIN Microscope m ON s.MicroscopeId = m.Id
                         JOIN [USER] u ON u.Id = m.UserId
                         WHERE s.Id = @Id";
@@ -200,7 +200,7 @@ namespace DopeScope.Repository
         {
             get
             {
-                return @"SELECT s.Id, s.Magnification, s.MicroscopeId,s.Description, s.ImageUrl, s.Name, s.DateCreated, m.Id AS MId, m.Make, m.Model, m.UserId AS MUID, u.Id AS UserId, u.FirebaseId, u.FirstName, u.Lastname, u.Email FROM Slide s
+                return @"SELECT s.Id, s.Magnification, s.MicroscopeId,s.Description, s.ImageUrl, s.Name, s.DateCreated, m.Id AS MId, m.Make, m.Model, m.ImageUrl AS ScopeImageUrl, m.UserId AS MUID, u.Id AS UserId, u.FirebaseId, u.FirstName, u.Lastname, u.Email FROM Slide s
                         JOIN Microscope m ON s.MicroscopeId = m.Id
                         JOIN [USER] u ON u.Id = m.UserId";
 
@@ -224,6 +224,7 @@ namespace DopeScope.Repository
                     Make = DbUtils.GetString(reader, "Make"),
                     Model = DbUtils.GetString(reader, "Model"),
                     UserId = DbUtils.GetInt(reader, "MUID"),
+                    ImageUrl = DbUtils.GetString(reader, "ScopeImageUrl"),
                     User = new UserProfile()
                     {
                         Id = DbUtils.GetInt(reader,"UserId"),

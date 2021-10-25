@@ -6,6 +6,7 @@ import { addMicroscope, getMicroscopesById, updateMicroscope } from "../../modul
 import firebase from "firebase";
 import "./Microscope.css";
 import { getUserByFirebaseId } from "../../modules/UserManager";
+import axios from "axios";
 
 export const MicroscopeForm = () => {
   const history = useHistory();
@@ -13,6 +14,7 @@ export const MicroscopeForm = () => {
   const [microscope, setMicroscope] = useState({});
   const [user, setUser] =useState({})
   const currentUser = firebase.auth().currentUser
+  const [imageSelected, setImageSelected] = useState(null)
 
   const handleInputChange = (e) => {
     e.preventDefault();
@@ -26,35 +28,48 @@ export const MicroscopeForm = () => {
       getMicroscopesById(scopeId).then(setMicroscope)}
   },[])
 
+  useEffect(()=>{
+    handleImageUpload()
+  },[imageSelected])
+
 
   const handleCancel = () => {
     history.push("/microscope");
   };
 
+  const handleImageUpload = () =>{
+
+    if (imageSelected) {
+      console.log("im here", imageSelected);
+      const formData = new FormData();
+  
+      formData.append("file", imageSelected);
+      formData.append("upload_preset", "dopescope");
+      axios
+        .post(
+          "https://api.cloudinary.com/v1_1/ddaeunjfu/image/upload",
+          formData
+        )
+        .then((res) => {
+          const newMicroscope = { ...microscope };
+         newMicroscope.imageUrl = res.data.secure_url;
+          setMicroscope(newMicroscope); 
+        })
+  }}
+
   const handleSave = (e) => {
     e.preventDefault();
     if(scopeId){
-      updateMicroscope({
-        id: microscope.id,
-        make: microscope.make,
-        model: microscope.model,
-        userId: microscope.userId,
-        imageUrl : microscope.imageUrl
-      }).then(history.push(`/microscope/${microscope.id}`))
+      updateMicroscope(microscope).then(history.push(`/microscope/${microscope.id}`))
     } else {
       getUserByFirebaseId(currentUser.l).then(setUser)
-      addMicroscope({
-        id: microscope.id,
-        make: microscope.make,
-        model: microscope.model,
-        userId: user.id,
-        imageUrl : microscope.imageUrl
-      }).then(history.push('/microscope'))
+      addMicroscope(
+      microscope).then(history.push('/microscope'))
     }
   };
 
   return (
-    <Form >
+    <Form className="new-scope-form-wrapper">
     {console.log(currentUser.l)}
       <FormGroup>
         <Label for="quoteText">Make</Label>
@@ -76,15 +91,11 @@ export const MicroscopeForm = () => {
           value={microscope.model}
         />
       </FormGroup>
-      <FormGroup>
-        <Label for="imageUrl">Image Url</Label>
-        <Input
-          id="imageUrl"
-          type="text"
-          name="imageUrl"
-          onChange={handleInputChange}
-          value={microscope.imageUrl}
-        />
+      <FormGroup className="image-upload-field">
+      <Label for="slideImageUrl" >Uploade Slide Image</Label><br></br>
+        <Input onChange={(event) => {
+           return setImageSelected(event.target.files[0])
+          }} type="file" name="file" id="slideImageUrl" />
       </FormGroup>
       <FormGroup>
         { scopeId ? <Button className="scope-btn" onClick={handleSave}>
