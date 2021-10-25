@@ -6,6 +6,7 @@ import { addSlide, getSlideById, updateSlide } from "../../modules/SlideManager"
 import "./Slide.css"
 import { getAllMicroscopes, getScopesByUserId } from "../../modules/MicroscopeManager";
 import firebase from "firebase";
+import axios from "axios";
 
 
 export const SlideForm = () => {
@@ -13,6 +14,8 @@ export const SlideForm = () => {
   const {slideId} = useParams();
   const user = firebase.auth().currentUser
   const firebaseId = user.uid
+  const [imageSelected, setImageSelected] = useState(null);
+  const [isUploading, setIsUploading] = useState(false)
   const [slide, setSlide] = useState({
  
   });
@@ -33,38 +36,50 @@ useEffect(()=>{
   }
 },[])
 
+useEffect(()=>{
+  setIsUploading(true)
+  handleImageUpload()
+},[imageSelected])
 
-  const handleCancel = () => {
-      history.push("/slide")
+
+
+  function handleCancel() {
+    history.push("/slide");
   }
 
-  const handleSave = () => {
-    if(slideId){
-      updateSlide({
-        id:slide.id,
-        name:slide.name,
-        description: slide.description,
-        imageUrl: slide.imageUrl,
-        microscopeId: slide.microscopeId,
-        dateCreated: slide.dateCreated,
-        magnification: slide.magnification
+  const handleImageUpload = () =>{
 
-      }).then(history.push(`/slide/${slide.id}`))
-    } else {
-      addSlide({
-        name:slide.name,
-        description: slide.description,
-        imageUrl: slide.imageUrl,
-        microscopeId: slide.microscopeId,
-        magnification: slide.magnification
+    if (imageSelected) {
+      console.log("im here", imageSelected);
+      const formData = new FormData();
+  
+      formData.append("file", imageSelected);
+      formData.append("upload_preset", "dopescope");
+      axios
+        .post(
+          "https://api.cloudinary.com/v1_1/ddaeunjfu/image/upload",
+          formData
+        )
+        .then((res) => {
+          const newSlideWithImage = { ...slide };
+          newSlideWithImage.imageUrl = res.data.secure_url;
+          setSlide(newSlideWithImage); 
+        })
+  }}
 
-      }).then(history.push("/slide"))
-    }
+  const handleSave = () => {  
+            if(slideId){
+              updateSlide(slide).then(history.push(`/slide/${slide.id}`))
+            } else {
+              addSlide(slide).then(history.push("/slide"))
+            }    
   }
 
   return (
     <Form className="new-slide-form">
       {console.log(slide)}
+      {console.log("image" , imageSelected)}
+      {console.log(isUploading)}
       <FormGroup>
         <Label for="slideName">Name</Label>
         <Input id="slideName" type="text" name="name" onChange={handleInputChange} value={slide.name} />
@@ -76,11 +91,7 @@ useEffect(()=>{
       <FormGroup>
         <Label for="slideDescription">magnification</Label>
         <Input id="slideDescription" type="text" name="magnification" onChange={handleInputChange} value={slide.magnification} />
-      </FormGroup>
-      <FormGroup>
-        <Label for="slideImageUrl">Image Url</Label>
-        <Input id="slideImageUrl" type="text" name="imageUrl" onChange={handleInputChange} value={slide.imageUrl} />
-      </FormGroup>
+      </FormGroup> 
       <FormGroup>
         <Label for="slideScope">Scope</Label>
        <Input id="slideScope" type="select" name="microscopeId" onChange={handleInputChange} >
@@ -90,10 +101,11 @@ useEffect(()=>{
          })}
        </Input>
       </FormGroup>
-   
       <FormGroup className="image-upload-field">
-        <Label for="slideImageUrl">Uploade Slide Image</Label><br></br>
-        <Input type="file" name="file" id="slideImageUrl" />
+      <Label for="slideImageUrl" >Uploade Slide Image</Label><br></br>
+        <Input onChange={(event) => {
+           return setImageSelected(event.target.files[0])
+          }} type="file" name="file" id="slideImageUrl" />
       </FormGroup>
       <FormGroup className="slide-buttons">
         {slideId ? <Button className="slide-btn" onClick={handleSave}>Update Slide</Button> : <Button className="slide-btn" onClick={handleSave}>Add Slide</Button> }

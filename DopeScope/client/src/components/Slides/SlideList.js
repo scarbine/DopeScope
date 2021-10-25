@@ -43,6 +43,7 @@ export const SlideList = () => {
 
   return (
     <>
+    {console.log(slides)}
     <div className="slide-container">
       {/* <h1 className="slide-list-title">Slides</h1> */}
       <div className="scope-slides-wrapper">
@@ -50,7 +51,7 @@ export const SlideList = () => {
                 {slideLine}
                 {/* <h5 className="scope-slide-title line">________________________________________________________________________________________</h5> */}
                <div className={slideView}>
-            { slides.length === 0 ? <div>Currenlty No Slides </div> : slides?.slice(0,5).map(slide => {
+            { slides.length === 0 ? <div>Currenlty No Slides </div> : slides?.map(slide => {
                 return location.includes("/slide/") ? <MiniSlideCard key={slide.id} slide={slide} updateList={updateList}/> : <SlideCard key={slide.id} slide={slide} />
             })}
             </div>
