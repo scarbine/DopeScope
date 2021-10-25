@@ -23,7 +23,6 @@ CREATE TABLE [User] (
   [FirstName] nvarchar(50) NOT NULL,
   [LastName] nvarchar(50) NOT NULL,
   [Email] nvarchar(50) NOT NULL,
-  [IsAdmin] bit NOT NULL,
   [FirebaseId] nvarchar(28) NOT NULL
 )
 GO
