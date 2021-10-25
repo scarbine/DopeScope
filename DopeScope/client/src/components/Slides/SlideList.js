@@ -43,7 +43,6 @@ export const SlideList = () => {
 
   return (
     <>
-    {console.log(slides)}
     <div className="slide-container">
       {/* <h1 className="slide-list-title">Slides</h1> */}
       <div className="scope-slides-wrapper">

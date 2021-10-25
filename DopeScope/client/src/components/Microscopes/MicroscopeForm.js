@@ -69,8 +69,10 @@ export const MicroscopeForm = () => {
   };
 
   return (
+
+    <>
     <Form className="new-scope-form-wrapper">
-    {console.log(currentUser.l)}
+    <h1>Add New Scope</h1>
       <FormGroup>
         <Label for="quoteText">Make</Label>
         <Input
@@ -106,5 +108,6 @@ export const MicroscopeForm = () => {
         </Button>
       </FormGroup>
     </Form>
+    </>
   );
 };

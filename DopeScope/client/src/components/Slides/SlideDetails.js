@@ -60,9 +60,6 @@ export const SlideDetails = () => {
 
   return (
     <>
-        
-    {console.log(slide)}
-    {console.log("update" ,update)}
       <div className="slide-detail-container">
       <section className="slide-details-column">
         <h1 className="slide-detail-header">{slide.name}</h1>
