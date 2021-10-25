@@ -29,7 +29,8 @@ export const SlideCommentModal = (props) => {
       
       console.log(note)
       addNote(note).then(props.updateList())
-    setModal(!modal)
+      setModal(!modal)
+      props.updateList()
   }
 
   return (

@@ -91,16 +91,6 @@ export const MicroscopeForm = () => {
           value={microscope.model}
         />
       </FormGroup>
-      {/* <FormGroup>
-        <Label for="imageUrl">Image Url</Label>
-        <Input
-          id="imageUrl"
-          type="text"
-          name="imageUrl"
-          onChange={handleInputChange}
-          value={microscope.imageUrl}
-        />
-      </FormGroup> */}
       <FormGroup className="image-upload-field">
       <Label for="slideImageUrl" >Uploade Slide Image</Label><br></br>
         <Input onChange={(event) => {
