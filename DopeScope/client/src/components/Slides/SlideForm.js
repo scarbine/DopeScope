@@ -20,6 +20,7 @@ export const SlideForm = () => {
     const newSlide = { ...slide };
     newSlide[e.target.name] = e.target.value
     setSlide(newSlide);
+    console.log(slide)
 }
 
 useEffect(()=>{
@@ -87,7 +88,7 @@ useEffect(()=>{
       </FormGroup> */}
       <FormGroup>
         <Label for="slideScope">Scope</Label>
-       <select id="slideScope" type="dropbown" name="microscopeId" onChange={handleInputChange} value={slide.microscopeId} >
+       <select id="slideScope" type="dropbown" name="microscopeId" onChange={handleInputChange} >
          {scopes.map(scope=>{
            return <option id="scopeOption" name="scopeOption" value={scope.id} onChange={handleInputChange}>{scope.make} {scope.model}</option>
          })}
