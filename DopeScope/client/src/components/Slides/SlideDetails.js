@@ -21,8 +21,7 @@ export const SlideDetails = () => {
   const [likeToggle, setLikeToggle] = useState(false)
   const user = firebase.auth().currentUser
   const firebaseId = user.uid
-  const [userLike, setUserLike] = useState(null
-      );
+  const [userLike, setUserLike] = useState(undefined);
   const [slide, setSlide] = useState({
     dateCreated: "",
     name: "",
@@ -63,8 +62,23 @@ export const SlideDetails = () => {
   }
   const handleDeleteLike = (e) =>{
     e.preventDefault();
-    deleteLike(userLike.id)
-    .then(setLikeToggle(!likeToggle));
+    deleteLike(userLike.id).then(setUserLike(undefined))
+    setLikeToggle(!likeToggle)
+   
+  }
+
+  const likeButton = () => {
+      if(userLike === undefined){
+          return <Button onClick={handleAddLike}>Like</Button>
+      }
+
+      else{
+          return <Button onClick={handleDeleteLike}>UnLike</Button>
+      }
+  }
+
+  const likeCounter = () => {
+      return likes?.length
   }
 
 
@@ -119,10 +133,11 @@ export const SlideDetails = () => {
         <section className="slide-detail-info-container">
         <h5>
         </h5>
-        {userLike !== null? 
-        <Button onClick={handleDeleteLike}>UnLike</Button> : <Button onClick={handleAddLike}>Like</Button>}
-       {console.log(userLike)}
-        <h5>Likes: {likes?.length}</h5>
+        {likeButton()}
+        {/* {userLike === undefined ? 
+         <Button onClick={handleAddLike}>Like</Button> : <Button onClick={handleDeleteLike}>UnLike</Button>} */}
+       {console.log("userLike",userLike)}
+        <h5>Likes: {likeCounter()}</h5>
         <h5>Magnifiaction: {slide.magnification}</h5>
         <h5>Description: {slide.description}</h5>
         <h5>Uploaded: {date}</h5>

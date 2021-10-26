@@ -11,7 +11,7 @@ export const MiniSlideCard = (props) => {
     }
     return(
         <>
-            <container className="slide-card-mini" onClick={handleClick}>
+            <div className="slide-card-mini" onClick={handleClick}>
                 <div className="left-box">
                     <div className="left-box-text">{props.slide.name}</div>
                 </div>
@@ -21,7 +21,7 @@ export const MiniSlideCard = (props) => {
                 <div className="right-box">
                     <div className="right-box-text">{props.slide.microscope.user.fullName}</div>
                 </div>
-            </container>
+            </div>
         </>
     )
 }
