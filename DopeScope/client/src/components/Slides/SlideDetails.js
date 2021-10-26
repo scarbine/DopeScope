@@ -12,6 +12,7 @@ import { addLike, deleteLike, getSlideLikes } from "../../modules/Likemanager";
 import firebase from "firebase";
 import { getSlideLikeByUser } from "../../modules/Likemanager";
 
+
 export const SlideDetails = () => {
   const { slideId } = useParams();
   const history = useHistory();
@@ -88,6 +89,7 @@ export const SlideDetails = () => {
       .then(setSlide)
       getNotesBySlideId(slideId).then(setNotes)
       getSlideLikes(slideId).then(setLikes)
+      console.log(userLike)
         getSlideLikeByUser(slideId, firebaseId).then(setUserLike)
   }, [location]);
 
@@ -97,7 +99,9 @@ export const SlideDetails = () => {
 
   useEffect(()=>{
       getSlideLikes(slideId).then(setLikes)
+      console.log(userLike)
       getSlideLikeByUser(slideId, firebaseId).then(setUserLike)
+      likeButton()
   },[likeToggle])
   
 
