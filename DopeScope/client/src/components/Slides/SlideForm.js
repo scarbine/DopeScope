@@ -76,10 +76,9 @@ useEffect(()=>{
   }
 
   return (
+    <>
     <Form className="new-slide-form">
-      {console.log(slide)}
-      {console.log("image" , imageSelected)}
-      {console.log(isUploading)}
+    <h1>Add New Slide</h1>
       <FormGroup>
         <Label for="slideName">Name</Label>
         <Input id="slideName" type="text" name="name" onChange={handleInputChange} value={slide.name} />
@@ -112,5 +111,7 @@ useEffect(()=>{
         <Button className="slide-btn" onClick={handleCancel}>Cancel</Button>
       </FormGroup>
     </Form>
+
+    </>
   );
 }

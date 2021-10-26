@@ -11,6 +11,7 @@ namespace DopeScope.Repository
 
         List<Microscope> GetAll();
         List<Microscope> GetUserScopes(string firebaseId);
+        List<Microscope> Search(string criterion);
         Microscope GetById(int id);
         void Add(Microscope microscope);
         void Update(Microscope microscope);

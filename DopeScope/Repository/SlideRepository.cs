@@ -128,6 +128,37 @@ namespace DopeScope.Repository
             }
         }
 
+        public List<Slide> SearchSlides(string q)
+        {
+            using (var conn = Connection)
+            {
+                conn.Open();
+                using (var cmd = conn.CreateCommand())
+                {
+                    cmd.CommandText = @"SELECT s.Id, s.Magnification, s.MicroscopeId,s.Description, s.ImageUrl, s.Name, s.DateCreated, m.Id AS MId, m.ImageUrl AS ScopeImageUrl, m.Make, m.Model, m.UserId AS MUID, u.Id AS UserId, u.FirebaseId, u.FirstName, u.Lastname, u.Email FROM Slide s
+                        JOIN Microscope m ON s.MicroscopeId = m.Id
+                        JOIN [USER] u ON u.Id = m.UserId
+                        WHERE s.Name LIKE @Criterion";
+                    DbUtils.AddParameter(cmd, "@Criterion", $"%{q}%");
+
+                    var slides = new List<Slide>();
+
+                    var reader = cmd.ExecuteReader();
+                    while (reader.Read())
+                    {
+                        slides.Add(NewSlide(reader));
+                    }
+
+                    reader.Close();
+
+                    return slides;
+
+                }
+            }
+        }
+
+
+
         public void Add(Slide slide)
         {
             using (var conn = Connection)

@@ -69,8 +69,10 @@ export const MicroscopeForm = () => {
   };
 
   return (
+
+    <>
     <Form className="new-scope-form-wrapper">
-    {console.log(currentUser.l)}
+    <h1>Add New Scope</h1>
       <FormGroup>
         <Label for="quoteText">Make</Label>
         <Input
@@ -92,7 +94,7 @@ export const MicroscopeForm = () => {
         />
       </FormGroup>
       <FormGroup className="image-upload-field">
-      <Label for="slideImageUrl" >Uploade Slide Image</Label><br></br>
+      <Label for="slideImageUrl" >Uploade Scope Image</Label><br></br>
         <Input onChange={(event) => {
            return setImageSelected(event.target.files[0])
           }} type="file" name="file" id="slideImageUrl" />
@@ -106,5 +108,6 @@ export const MicroscopeForm = () => {
         </Button>
       </FormGroup>
     </Form>
+    </>
   );
 };

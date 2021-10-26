@@ -11,17 +11,17 @@ export const MiniSlideCard = (props) => {
     }
     return(
         <>
-            <container className="slide-card-mini" onClick={handleClick}>
+            <div className="slide-card-mini" onClick={handleClick}>
                 <div className="left-box">
-                    <div>{props.slide.name}</div>
+                    <div className="left-box-text">{props.slide.name}</div>
                 </div>
                 <div className="center-box">
                 <img className="mini-slide-img" src={props.slide.imageUrl} alt={props.slide.name} />
                 </div>
                 <div className="right-box">
-                    <div>{props.slide.microscope.user.fullName}</div>
+                    <div className="right-box-text">{props.slide.microscope.user.fullName}</div>
                 </div>
-            </container>
+            </div>
         </>
     )
 }

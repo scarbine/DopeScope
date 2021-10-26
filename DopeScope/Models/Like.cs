@@ -5,17 +5,14 @@ using System.Threading.Tasks;
 
 namespace DopeScope.Models
 {
-    public class Microscope
+    public class Like
     {
         public int Id { get; set; }
 
-        public string Make { get; set; }
+        public int SlideId { get; set; }
 
-        public string Model { get; set; }
-
+        public Slide slide { get; set;  }
         public int UserId { get; set; }
-
-        public string ImageUrl { get; set; }
 
         public UserProfile User { get; set; }
     }

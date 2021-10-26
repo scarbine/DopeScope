@@ -6,6 +6,8 @@ import { SlideCard } from "./SlideCard";
 import "./Slide.css"
 import firebase from "firebase";
 import { MiniSlideCard } from "./MiniSlideCard";
+import { SlideSearch } from "./SlideSearch";
+
 
 export const SlideList = () => {
  
@@ -43,13 +45,14 @@ export const SlideList = () => {
 
   return (
     <>
-    {console.log(slides)}
     <div className="slide-container">
-      {/* <h1 className="slide-list-title">Slides</h1> */}
+     
       <div className="scope-slides-wrapper">
+               <div className="slides-list-header">
                 <h5 className="scope-slide-title">{location.includes("/slide")  ? "Latest Slides" : "Slides"}</h5>
                 {slideLine}
-                {/* <h5 className="scope-slide-title line">________________________________________________________________________________________</h5> */}
+                {location === "/slide" ? <SlideSearch setSlides={setSlides} /> : <> </>}
+                </div>
                <div className={slideView}>
             { slides.length === 0 ? <div>Currenlty No Slides </div> : location.includes("/slide/") ? slides?.slice(0,5).map(slide => {
                 return  <MiniSlideCard key={slide.id} slide={slide} updateList={updateList}/>}) :  slides?.map(slide => { return <SlideCard key={slide.id} slide={slide} />
