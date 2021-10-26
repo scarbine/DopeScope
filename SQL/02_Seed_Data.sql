@@ -28,6 +28,10 @@ insert into [Note] (id, Note, UserId, SlideId) VALUES (1, 'This is dope', 1, 1),
  (4, 'This is super', 2, 2);
 set identity_insert [Note] off
 
+set identity_insert [Like] on
+insert into [Like] (id, Userid, Slideid) VALUES (1,1,1) , (2,1,2), (3,1,2), (4,2,1)
+set identity_insert [Like] off
+
 set identity_insert [SlideTag] on
 insert into [SlideTag] (id, SlideId, TagId) VALUES (1, 1 ,1),
  (2, 1 ,2),
