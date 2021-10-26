@@ -50,6 +50,17 @@ CONSTRAINT [FK_Slide_Microscope] FOREIGN KEY ([microscopeId]) REFERENCES [Micros
 )
 GO
 
+CREATE TABLE [Like] (
+  [id] integer PRIMARY KEY IDENTITY,
+  [SlideId] integer NOT NULL,
+  [UserId] integer NOT NULL,
+  
+CONSTRAINT [FK_Like_User] FOREIGN KEY ([UserId]) REFERENCES [User] ([Id]),
+CONSTRAINT [FK_Like_Slide] FOREIGN KEY ([SlideId]) REFERENCES [Slide] ([Id])
+)
+
+GO
+
 CREATE TABLE [Tag] (
   [id] integer PRIMARY KEY IDENTITY,
   [Tag] nvarchar(50) NOT NULL
