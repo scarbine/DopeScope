@@ -45,6 +45,8 @@ namespace DopeScope.Controllers
             return Ok(_likeRepository.GetBySlideAndFirebaseId(slideId, firebaseId));
         }
 
+       
+
         [HttpGet("{id}")]
         public IActionResult Get(int id)
         {

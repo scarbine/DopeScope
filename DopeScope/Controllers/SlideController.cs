@@ -85,6 +85,12 @@ namespace DopeScope.Controllers
             return NoContent();
         }
 
+        [HttpGet("search")]
+        public IActionResult Search(string q)
+        {
+            return Ok(_slideRepository.SearchSlides(q));
+        }
+
         private UserProfile GetCurrentUserProfile()
             {
                 var firebaseUserId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
