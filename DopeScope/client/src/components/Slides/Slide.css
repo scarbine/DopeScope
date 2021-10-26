@@ -4,7 +4,7 @@
 }
 
 .slide-card{
-    width: 20rem;
+    width: 15rem;
 }
 
 .slide-container{
@@ -18,7 +18,7 @@
 .slide-detail-container{
     margin:2rem;
     display: flex;
-    justify-content: space-between;
+    justify-content: space-evenly;
 }
 
 .new-slide-form{
@@ -70,6 +70,7 @@
 
 .slide-card-container{
     margin: 1rem;
+   
 }
 .slide-card-container:hover{
     cursor: pointer;
@@ -127,6 +128,9 @@ display: flex;
 flex-direction: column;
 width: 7rem;
 }
+.left-box-text{
+    margin-left:.5rem;
+}
 
 .center-box{
 height: 5rem;
@@ -137,6 +141,13 @@ width: 5rem;
     display: flex;
     flex-direction: column;
     width: 7rem;
+}
+
+.right-box-text{
+    text-align: right;
+    padding-right: .5rem;
+    padding-top: 3.25rem;
+    bottom: 0;
 }
 
 .mini-slide-img{

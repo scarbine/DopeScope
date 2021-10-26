@@ -13,7 +13,7 @@ export const SlideDetails = () => {
   const { slideId } = useParams();
   const history = useHistory();
   const location = history.location.pathname
-  const [update, setUpdate] = useState(true);
+  const [update, setUpdate] = useState(false);
   const [slide, setSlide] = useState({
     dateCreated: "",
     name: "",
@@ -87,8 +87,8 @@ export const SlideDetails = () => {
         <h5>
         </h5>
         <h5>Magnifiaction: {slide.magnification}</h5>
-        <h5>Description :{slide.description}</h5>
-        <h5>{date}</h5>
+        <h5>Description: {slide.description}</h5>
+        <h5>Uploaded: {date}</h5>
         </section>
         <h3 className="slide-comments"> Comments</h3>
         <div>

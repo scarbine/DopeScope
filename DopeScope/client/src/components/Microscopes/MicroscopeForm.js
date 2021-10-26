@@ -94,7 +94,7 @@ export const MicroscopeForm = () => {
         />
       </FormGroup>
       <FormGroup className="image-upload-field">
-      <Label for="slideImageUrl" >Uploade Slide Image</Label><br></br>
+      <Label for="slideImageUrl" >Uploade Scope Image</Label><br></br>
         <Input onChange={(event) => {
            return setImageSelected(event.target.files[0])
           }} type="file" name="file" id="slideImageUrl" />

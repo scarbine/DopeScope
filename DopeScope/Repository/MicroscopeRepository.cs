@@ -88,7 +88,7 @@ namespace DopeScope.Repository
                     if (reader.Read())
                     {
                         microscope = NewMicroscope(reader);
-                       
+
                     }
 
                     reader.Close();
