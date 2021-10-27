@@ -65,7 +65,15 @@ import "./Slide.css"
               {console.log("slideTags",slideTags)}
               {console.log("foundTag",foundTag)}
               <div className="tags-container">
-              {tags.map(tag => <TagCard key={tag.id} tag={tag} tags={tags} slideTags={slideTags} setSlidetags={setSlideTags} handleTagClick={handleTagClick}/>)}
+              {tags.map(tag => {
+                  let isActive = false
+                  const foundTag = slideTags.find(slideTag => slideTag.tagId === tag.id)
+                  if (foundTag !== undefined){
+                      isActive = true;
+                  }
+                  console.log(foundTag)
+                return<TagCard key={tag.id} tag={tag} tags={tags} isActive={isActive} slideTags={slideTags} setSlidetags={setSlideTags} handleTagClick={handleTagClick}/>
+              })}
               </div>
               
           </ModalBody>

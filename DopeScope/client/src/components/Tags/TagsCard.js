@@ -9,8 +9,8 @@ export const TagCard = (props) => {
 
     useEffect(()=>{
        
-        // console.log(isActiveBool)
-        // setIsActive(isActiveBool);
+     setIsActive(props.isActive)
+
     },[])
 
     const handleInactiveTagClick =()=>{
