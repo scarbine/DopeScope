@@ -14,6 +14,7 @@ import { getSlideLikeByUser } from "../../modules/Likemanager";
 import { getAllSlideTagsBySlideId } from "../../modules/SlideTagManager";
 import { SlideTagCard } from "./SlideTagCard";
 import { SlideTagModal } from "./SlideTagModal";
+import { getUserByFirebaseId } from "../../modules/UserManager";
 
 
 export const SlideDetails = () => {
@@ -27,6 +28,7 @@ export const SlideDetails = () => {
   const firebaseId = user.uid
   const [userLike, setUserLike] = useState(undefined);
   const [slideTags, setSlideTags] = useState([]);
+  const [currrentUserObj, setCurrentUserObj] = useState({});
   const [slide, setSlide] = useState({
     dateCreated: "",
     name: "",
@@ -101,6 +103,7 @@ export const SlideDetails = () => {
       getAllSlideTagsBySlideId(slideId).then(setSlideTags)
       console.log(userLike)
         getSlideLikeByUser(slideId, firebaseId).then(setUserLike)
+        getUserByFirebaseId(firebaseId).then(setCurrentUserObj)
   }, [location]);
 
   useEffect(() => {
@@ -119,8 +122,17 @@ export const SlideDetails = () => {
         history.push(`/microscope/${slide.microscope.id}`)
   }
 
+  const slideTagModalDisplay = () => {
+        if(currrentUserObj.id === slide.microscope.user.id ){
+          return <SlideTagModal key={slide.id} slide={slide} slideId={slideId} addSlideTag={addSlideTag}/>
+        } else{
+          return
+        }
+  }
+
   return (
     <>
+    {console.log(currrentUserObj)}
       <div className="slide-detail-container">
       <section className="slide-details-column">
         <h1 className="slide-detail-header">{slide.name}</h1>
@@ -145,18 +157,15 @@ export const SlideDetails = () => {
       <Button className="slide-btn" onClick={handleDelete}>
         Delete Slide
       </Button>
-      {/* <Button className="slide-btn" onClick={handleAddSlideTag}>
-        Add Slide Tag
-      </Button> */}
-         <SlideTagModal key={slide.id} slide={slide} slideId={slideId} addSlideTag={addSlideTag}/>
+      {slideTagModalDisplay()}
+        {/* {currrentUserObj.id === slide.microscope.user.id ? <SlideTagModal key={slide.id} slide={slide} slideId={slideId} addSlideTag={addSlideTag}/> : <></>} */}
          <SlideCommentModal key={slide.id} slide={slide} updateList={updateList} />
          </div>
         <section className="slide-detail-info-container">
         <h5>
         </h5>
         {likeButton()}
-        {/* {userLike === undefined ? 
-         <Button onClick={handleAddLike}>Like</Button> : <Button onClick={handleDeleteLike}>UnLike</Button>} */}
+ 
        {console.log("userLike",userLike)}
         <h5>Likes: {likeCounter()}</h5>
         <h5>Magnifiaction: {slide.magnification}</h5>

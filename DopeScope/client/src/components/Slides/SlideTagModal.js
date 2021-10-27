@@ -32,7 +32,7 @@ import "./Slide.css"
                 slideId : props.slide.id,
                 tagId : e.target.id
             }
-            setFoundTag(slideTagCheck())
+            
     }
 
     const slideTagCheck = () => {
@@ -61,18 +61,17 @@ import "./Slide.css"
         <Modal isOpen={modal} toggle={toggle} className="slide-tag-modal">
           <ModalHeader className="slide-tag-modal-header"toggle={toggle}>Slide Tags</ModalHeader>
           <ModalBody>
-              {console.log("tags",tags)}
-              {console.log("slideTags",slideTags)}
-              {console.log("foundTag",foundTag)}
+           
               <div className="tags-container">
               {tags.map(tag => {
                   let isActive = false
                   const foundTag = slideTags.find(slideTag => slideTag.tagId === tag.id)
+                //   setFoundTag(foundTag)
                   if (foundTag !== undefined){
                       isActive = true;
                   }
                   console.log(foundTag)
-                return<TagCard key={tag.id} tag={tag} tags={tags} isActive={isActive} slideTags={slideTags} setSlidetags={setSlideTags} handleTagClick={handleTagClick}/>
+                return<TagCard key={tag.id} tag={tag} tags={tags} foundTag={foundTag} isActive={isActive} slideTags={slideTags} setSlidetags={setSlideTags} handleTagClick={handleTagClick}/>
               })}
               </div>
               
