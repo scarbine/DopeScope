@@ -56,7 +56,7 @@ CREATE TABLE [Like] (
   [UserId] integer NOT NULL,
   
 CONSTRAINT [FK_Like_User] FOREIGN KEY ([UserId]) REFERENCES [User] ([Id]),
-CONSTRAINT [FK_Like_Slide] FOREIGN KEY ([SlideId]) REFERENCES [Slide] ([Id])
+CONSTRAINT [FK_Like_Slide] FOREIGN KEY ([SlideId]) REFERENCES [Slide] ([Id]) ON DELETE CASCADE
 )
 
 GO
