@@ -195,6 +195,10 @@ width: 5rem;
     justify-content: space-evenly;
 }
 
+.slide-tag-modal-header{
+    text-align: center;
+}
+
 /* .tag-card{
     margin: 1rem;
 } */

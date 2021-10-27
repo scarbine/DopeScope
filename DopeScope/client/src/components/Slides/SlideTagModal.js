@@ -59,19 +59,19 @@ import "./Slide.css"
       <div>
         <Button color="secondary" onClick={toggle} className="slide-btn btn btn-secondary">Add Slide Tag</Button>
         <Modal isOpen={modal} toggle={toggle} className="slide-tag-modal">
-          <ModalHeader toggle={toggle}>Modal title</ModalHeader>
+          <ModalHeader className="slide-tag-modal-header"toggle={toggle}>Slide Tags</ModalHeader>
           <ModalBody>
               {console.log("tags",tags)}
               {console.log("slideTags",slideTags)}
               {console.log("foundTag",foundTag)}
               <div className="tags-container">
-              {tags.map(tag => <TagCard key={tag.id} tag={tag}  handleTagClick={handleTagClick}/>)}
+              {tags.map(tag => <TagCard key={tag.id} tag={tag} tags={tags} slideTags={slideTags} setSlidetags={setSlideTags} handleTagClick={handleTagClick}/>)}
               </div>
               
           </ModalBody>
           <ModalFooter>
-            <Button color="primary" onClick={toggle}>Do Something</Button>{' '}
-            <Button color="secondary" onClick={toggle}>Cancel</Button>
+            <Button color="primary" onClick={toggle}>Done</Button>{' '}
+           
           </ModalFooter>
         </Modal>
       </div>
