@@ -189,3 +189,12 @@ width: 5rem;
     display: flex;
     justify-content: space-evenly;
 }
+
+.tags-container{
+    display: flex;
+    justify-content: space-evenly;
+}
+
+/* .tag-card{
+    margin: 1rem;
+} */
