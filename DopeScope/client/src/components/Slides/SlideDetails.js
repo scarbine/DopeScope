@@ -11,6 +11,9 @@ import { SlideList } from "./SlideList";
 import { addLike, deleteLike, getSlideLikes } from "../../modules/Likemanager";
 import firebase from "firebase";
 import { getSlideLikeByUser } from "../../modules/Likemanager";
+import { getAllSlideTagsBySlideId } from "../../modules/SlideTagManager";
+import { SlideTagCard } from "./SlideTagCard";
+import { SlideTagModal } from "./SlideTagModal";
 
 
 export const SlideDetails = () => {
@@ -23,6 +26,7 @@ export const SlideDetails = () => {
   const user = firebase.auth().currentUser
   const firebaseId = user.uid
   const [userLike, setUserLike] = useState(undefined);
+  const [slideTags, setSlideTags] = useState([]);
   const [slide, setSlide] = useState({
     dateCreated: "",
     name: "",
@@ -68,6 +72,11 @@ export const SlideDetails = () => {
    
   }
 
+  const addSlideTag = (e) => {
+    e.preventDefault();
+    
+  }
+
   const likeButton = () => {
       if(userLike === undefined){
           return <Button onClick={handleAddLike}>Like</Button>
@@ -89,6 +98,7 @@ export const SlideDetails = () => {
       .then(setSlide)
       getNotesBySlideId(slideId).then(setNotes)
       getSlideLikes(slideId).then(setLikes)
+      getAllSlideTagsBySlideId(slideId).then(setSlideTags)
       console.log(userLike)
         getSlideLikeByUser(slideId, firebaseId).then(setUserLike)
   }, [location]);
@@ -99,8 +109,8 @@ export const SlideDetails = () => {
 
   useEffect(()=>{
       getSlideLikes(slideId).then(setLikes)
-      console.log(userLike)
       getSlideLikeByUser(slideId, firebaseId).then(setUserLike)
+      console.log(userLike)
       likeButton()
   },[likeToggle])
   
@@ -125,6 +135,9 @@ export const SlideDetails = () => {
             <div> {slide.microscope.make} {slide.microscope.model}</div>
             <div>{slide.microscope.user.fullName} </div>
         </div>
+        <div className="slideTagList">
+          {slideTags.map(slideTag=>{return <SlideTagCard key={slideTag.id} slideTag={slideTag} />})}
+        </div>
         <div className="comments-header">
       <Button className="slide-btn" onClick={handleEdit}>
         Edit Slide
@@ -132,6 +145,10 @@ export const SlideDetails = () => {
       <Button className="slide-btn" onClick={handleDelete}>
         Delete Slide
       </Button>
+      {/* <Button className="slide-btn" onClick={handleAddSlideTag}>
+        Add Slide Tag
+      </Button> */}
+         <SlideTagModal key={slide.id} slide={slide} addSlideTag={addSlideTag}/>
          <SlideCommentModal key={slide.id} slide={slide} updateList={updateList} />
          </div>
         <section className="slide-detail-info-container">
@@ -155,10 +172,13 @@ export const SlideDetails = () => {
           ) : (
             <div>No Comments</div>
           )}
+          {console.log(slideTags)}
         </div>
         </section>
         <section className="right-container">
+          <div  >
         <SlideList />
+        </div>
         <img onClick={handleScopeClick}className="slide-detail-scope-img" src={slide.microscope.imageUrl} alt={slide.microscope.Make} />
         </section>
       </div>

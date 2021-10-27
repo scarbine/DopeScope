@@ -25,11 +25,21 @@ html, body {
 
 .dashboard{
   display: flex;
+  
+}
+
+.dashboard-container-left{
+  display: flex;
   flex-direction: column;
+  flex-wrap: wrap;
 }
 
 .dashboard-header{
 
   /* margin-left: 2rem; */
   text-align: center;
+}
+
+.mini-slide-list-dashboard{
+  margin-top: 2rem;
 }

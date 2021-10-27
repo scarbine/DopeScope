@@ -177,3 +177,15 @@ width: 5rem;
     justify-content: center;
     text-align: center;
 }
+
+.mini-slide-list-container{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    margin-left: 2rem;
+}
+
+.slideTagList{
+    display: flex;
+    justify-content: space-evenly;
+}
