@@ -45,7 +45,7 @@ namespace DopeScope.Repository
                 conn.Open();
                 using (var cmd = conn.CreateCommand())
                 {
-                    cmd.CommandText = @"SELECT st.id, st.TagId, st.SlideId , s.Id, s.Magnification, s.Microscopeid, s.ImageUrl, s.Description, s.DateCreated, s.Name, t.Id, t.Tag FROM SlideTag st
+                    cmd.CommandText = @"SELECT st.id, st.TagId, st.SlideId , s.Id AS SlideId, s.Magnification, s.Microscopeid, s.ImageUrl, s.Description, s.DateCreated, s.Name, t.Id, t.Tag FROM SlideTag st
                         LEFT JOIN[Tag] t ON t.id = st.TagId
                         LEFT JOIN Slide s ON s.id = st.SlideId
                         WHERE  st.SlideId = @Id ";
@@ -79,7 +79,7 @@ namespace DopeScope.Repository
                 conn.Open();
                 using (var cmd = conn.CreateCommand())
                 {
-                    cmd.CommandText = @"SELECT st.id, st.TagId, st.SlideId , s.Id, s.Magnification, s.Microscopeid, s.ImageUrl, s.Description, s.DateCreated, s.Name, t.Id, t.Tag FROM SlideTag st 
+                    cmd.CommandText = @"SELECT st.id, st.TagId, st.SlideId , s.Id As SlideId, s.Magnification, s.Microscopeid, s.ImageUrl, s.Description, s.DateCreated, s.Name, t.Id, t.Tag FROM SlideTag st 
                         LEFT JOIN [Tag] t ON t.id = st.TagId
                         LEFT JOIN Slide s ON s.id = st.SlideId
                         WHERE st.Id = @Id";
@@ -161,7 +161,7 @@ namespace DopeScope.Repository
         {
             get
             {
-                return @"SELECT st.id, st.TagId, st.SlideId , s.Id, s.Magnification, s.Microscopeid, s.ImageUrl, s.Description, s.DateCreated, s.Name, t.Id, t.Tag FROM SlideTag st 
+                return @"SELECT st.Id, st.TagId, st.SlideId , s.Id AS SlideId, s.Magnification, s.Microscopeid, s.ImageUrl, s.Description, s.DateCreated, s.Name, t.Id, t.Tag FROM SlideTag st 
                         LEFT JOIN [Tag] t ON t.id = st.TagId
                         LEFT JOIN Slide s ON s.id = st.SlideId";
 
@@ -177,7 +177,7 @@ namespace DopeScope.Repository
 
                 Slide = new Slide()
                 {
-                    Id = DbUtils.GetInt(reader, "Id"),
+                    Id = DbUtils.GetInt(reader, "SlideId"),
                     Magnification = DbUtils.GetInt(reader, "Magnification"),
                     MicroscopeId = DbUtils.GetInt(reader, "MicroscopeId"),
                     Name = DbUtils.GetString(reader, "Name"),

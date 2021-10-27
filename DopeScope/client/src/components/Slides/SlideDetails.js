@@ -13,6 +13,7 @@ import firebase from "firebase";
 import { getSlideLikeByUser } from "../../modules/Likemanager";
 import { getAllSlideTagsBySlideId } from "../../modules/SlideTagManager";
 import { SlideTagCard } from "./SlideTagCard";
+import { SlideTagModal } from "./SlideTagModal";
 
 
 export const SlideDetails = () => {
@@ -69,6 +70,11 @@ export const SlideDetails = () => {
     deleteLike(userLike.id).then(setUserLike(undefined))
     setLikeToggle(!likeToggle)
    
+  }
+
+  const addSlideTag = (e) => {
+    e.preventDefault();
+    
   }
 
   const likeButton = () => {
@@ -139,6 +145,10 @@ export const SlideDetails = () => {
       <Button className="slide-btn" onClick={handleDelete}>
         Delete Slide
       </Button>
+      {/* <Button className="slide-btn" onClick={handleAddSlideTag}>
+        Add Slide Tag
+      </Button> */}
+         <SlideTagModal key={slide.id} slide={slide} addSlideTag={addSlideTag}/>
          <SlideCommentModal key={slide.id} slide={slide} updateList={updateList} />
          </div>
         <section className="slide-detail-info-container">
@@ -165,10 +175,10 @@ export const SlideDetails = () => {
           {console.log(slideTags)}
         </div>
         </section>
+        <section className="right-container">
           <div  >
         <SlideList />
         </div>
-        <section className="right-container">
         <img onClick={handleScopeClick}className="slide-detail-scope-img" src={slide.microscope.imageUrl} alt={slide.microscope.Make} />
         </section>
       </div>
