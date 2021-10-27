@@ -33,11 +33,10 @@ insert into [Like] (id, Userid, Slideid) VALUES (1,1,1) , (2,1,2), (3,1,2), (4,2
 set identity_insert [Like] off
 
 set identity_insert [SlideTag] on
-insert into [SlideTag] (id, SlideId, TagId) VALUES (1, 1 ,1),
+insert into [SlideTag] (id, SlideId, TagId) VALUES 
+ (1, 1 ,1),
  (2, 1 ,2),
  (3, 2 ,3),
- (4, 2 ,4),
- (5, 1 ,1),
- (6, 2 ,4),
- (7, 1 ,1);
+ (4, 2 ,4)
+
 set identity_insert [SlideTag] off
