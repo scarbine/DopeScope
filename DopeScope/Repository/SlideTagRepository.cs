@@ -45,7 +45,7 @@ namespace DopeScope.Repository
                 conn.Open();
                 using (var cmd = conn.CreateCommand())
                 {
-                    cmd.CommandText = @"SELECT st.id, st.TagId, st.SlideId , s.Id AS SlideId, s.Magnification, s.Microscopeid, s.ImageUrl, s.Description, s.DateCreated, s.Name, t.Id, t.Tag FROM SlideTag st
+                    cmd.CommandText = @"SELECT st.Id, st.TagId, st.SlideId , s.Id AS SlideId, s.Magnification, s.Microscopeid, s.ImageUrl, s.Description, s.DateCreated, s.Name, t.Id, t.Tag FROM SlideTag st
                         LEFT JOIN[Tag] t ON t.id = st.TagId
                         LEFT JOIN Slide s ON s.id = st.SlideId
                         WHERE  st.SlideId = @Id ";

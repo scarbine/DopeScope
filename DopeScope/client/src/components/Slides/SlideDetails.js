@@ -148,7 +148,7 @@ export const SlideDetails = () => {
       {/* <Button className="slide-btn" onClick={handleAddSlideTag}>
         Add Slide Tag
       </Button> */}
-         <SlideTagModal key={slide.id} slide={slide} addSlideTag={addSlideTag}/>
+         <SlideTagModal key={slide.id} slide={slide} slideId={slideId} addSlideTag={addSlideTag}/>
          <SlideCommentModal key={slide.id} slide={slide} updateList={updateList} />
          </div>
         <section className="slide-detail-info-container">
