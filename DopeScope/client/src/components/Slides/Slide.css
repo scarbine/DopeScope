@@ -47,6 +47,7 @@
     flex-direction: row;
     justify-content: space-between;
     margin: .5rem 1rem .5rem 1rem;
+    font-size: large;
 }
 
 .comments-header{
@@ -167,7 +168,7 @@ width: 5rem;
 
 .slide-detail-scope-img{
     padding: 1rem;
-    height: 25rem;
+    height: max-content;
     width: auto;
 }
 

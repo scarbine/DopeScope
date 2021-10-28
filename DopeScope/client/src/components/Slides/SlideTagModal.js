@@ -34,7 +34,7 @@ export const SlideTagModal = (props) => {
         onClick={toggle}
         className="slide-btn btn btn-secondary"
       >
-        Add Slide Tag
+        Slide Tags
       </Button>
       <Modal isOpen={modal} toggle={toggle} className="slide-tag-modal">
         <ModalHeader className="slide-tag-modal-header" toggle={toggle}>
