@@ -100,6 +100,7 @@ export const SlideDetails = () => {
     getSlideLikes(slideId).then(setLikes);
     getAllSlideTagsBySlideId(slideId).then(setSlideTags);
     console.log(userLike);
+    getSlideLikeByUser(slideId, firebaseId).then(setUserLike);
     getUserByFirebaseId(firebaseId).then(setCurrentUserObj);
 
   }, [location, slideTagModalToggle]);
@@ -126,9 +127,9 @@ export const SlideDetails = () => {
 
   const slideTagModalDisplay = () => {
     if (currrentUserObj.id === slide.microscope.user.id) {
-      return(
+      setSlideTagModal(
         <SlideTagModal
-          key={Math.random()}
+          key={Math.random}
           slideTagModalToggle={slideTagModalToggle}
           toggleSlideTagModal={toggleSlideTagModal}
           slide={slide}
@@ -137,7 +138,8 @@ export const SlideDetails = () => {
         />
       );
     } else {
-      return    }
+      setSlideTagModal(<></>);
+    }
   };
 
   return (
@@ -172,15 +174,7 @@ export const SlideDetails = () => {
             <Button className="slide-btn" onClick={handleDelete}>
               Delete Slide
             </Button>
-            {/* <SlideTagModal
-          key={slide.id}
-          slideTagModalToggle={slideTagModalToggle}
-          toggleSlideTagModal={toggleSlideTagModal}
-          slide={slide}
-          slideId={slideId}
-          addSlideTag={addSlideTag}
-        /> */}
-            {slideTagModalDisplay()}
+            {slideTagModal}
             {/* {currrentUserObj.id === slide.microscope.user.id ? <SlideTagModal key={slide.id} slide={slide} slideId={slideId} addSlideTag={addSlideTag}/> : <></>} */}
             <SlideCommentModal
               key={slide.id}
