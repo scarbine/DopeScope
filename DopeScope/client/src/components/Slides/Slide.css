@@ -118,7 +118,7 @@
 display: flex;
 justify-content: space-between;
 border: solid rgb(219, 219, 219) .1rem;
-margin: 1rem;
+margin: 1rem 10rem 1rem 10rem;
 }
 .slide-card-mini:hover{
     cursor: pointer;
@@ -168,8 +168,8 @@ width: 5rem;
 
 .slide-detail-scope-img{
     padding: 1rem;
-    height: max-content;
-    width: auto;
+    height: auto;
+    width: 45rem;
 }
 
 .slides-list-header{
