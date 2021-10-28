@@ -102,8 +102,12 @@ export const SlideDetails = () => {
     console.log(userLike);
     getSlideLikeByUser(slideId, firebaseId).then(setUserLike);
     getUserByFirebaseId(firebaseId).then(setCurrentUserObj);
-    slideTagModalDisplay();
+
   }, [location, slideTagModalToggle]);
+
+  useEffect(()=>{
+    slideTagModalDisplay();
+  },[slideTagModalToggle])
 
   useEffect(() => {
     getNotesBySlideId(slideId).then(setNotes);
