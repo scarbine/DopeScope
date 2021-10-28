@@ -72,8 +72,8 @@ CREATE TABLE [SlideTag] (
   [TagId] integer NOT NULL,
   [SlideId] integer NOT NULL,
 
-CONSTRAINT [FK_SlideTag_Tag] FOREIGN KEY ([tagId]) REFERENCES [Tag] ([Id])ON DELETE CASCADE,
-CONSTRAINT [FK_SlideTag_Slide] FOREIGN KEY ([slideId]) REFERENCES [Slide] ([Id]) ON DELETE CASCADE
+CONSTRAINT [FK_SlideTag_Tag] FOREIGN KEY ([tagId]) REFERENCES [Tag] ([Id]),
+CONSTRAINT [FK_SlideTag_Slide] FOREIGN KEY ([slideId]) REFERENCES [Slide] ([Id])
 )
 GO
 
