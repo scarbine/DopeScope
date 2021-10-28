@@ -100,14 +100,13 @@ export const SlideDetails = () => {
     getSlideLikes(slideId).then(setLikes);
     getAllSlideTagsBySlideId(slideId).then(setSlideTags);
     console.log(userLike);
-    getSlideLikeByUser(slideId, firebaseId).then(setUserLike);
     getUserByFirebaseId(firebaseId).then(setCurrentUserObj);
 
   }, [location, slideTagModalToggle]);
 
   useEffect(()=>{
     slideTagModalDisplay();
-  },[slideTagModalToggle])
+  },[location, slideTagModalToggle])
 
   useEffect(() => {
     getNotesBySlideId(slideId).then(setNotes);
@@ -117,6 +116,7 @@ export const SlideDetails = () => {
     getSlideLikes(slideId).then(setLikes);
     getSlideLikeByUser(slideId, firebaseId).then(setUserLike);
     console.log(userLike);
+    setTimeout(100)
     likeButton();
   }, [likeToggle]);
 
@@ -126,9 +126,9 @@ export const SlideDetails = () => {
 
   const slideTagModalDisplay = () => {
     if (currrentUserObj.id === slide.microscope.user.id) {
-      setSlideTagModal(
+      return(
         <SlideTagModal
-          key={slide.id}
+          key={Math.random()}
           slideTagModalToggle={slideTagModalToggle}
           toggleSlideTagModal={toggleSlideTagModal}
           slide={slide}
@@ -137,8 +137,7 @@ export const SlideDetails = () => {
         />
       );
     } else {
-      setSlideTagModal(<></>);
-    }
+      return    }
   };
 
   return (
@@ -173,7 +172,15 @@ export const SlideDetails = () => {
             <Button className="slide-btn" onClick={handleDelete}>
               Delete Slide
             </Button>
-            {slideTagModal}
+            {/* <SlideTagModal
+          key={slide.id}
+          slideTagModalToggle={slideTagModalToggle}
+          toggleSlideTagModal={toggleSlideTagModal}
+          slide={slide}
+          slideId={slideId}
+          addSlideTag={addSlideTag}
+        /> */}
+            {slideTagModalDisplay()}
             {/* {currrentUserObj.id === slide.microscope.user.id ? <SlideTagModal key={slide.id} slide={slide} slideId={slideId} addSlideTag={addSlideTag}/> : <></>} */}
             <SlideCommentModal
               key={slide.id}
