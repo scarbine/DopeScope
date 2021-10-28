@@ -226,6 +226,8 @@ export const SlideDetails = () => {
               key={slide.id}
               slide={slide}
               updateList={updateList}
+              setUpdate={setUpdate}
+              update={update}
             />
           </div>
           <section className="slide-detail-info-container">

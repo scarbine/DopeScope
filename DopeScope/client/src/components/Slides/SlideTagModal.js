@@ -15,12 +15,15 @@ export const SlideTagModal = (props) => {
   const [tags, setTags] = useState([]);
   const [slideTags, setSlideTags] = useState([]);
 
+
   const { slideId } = useParams();
   let foundTag = {};
   useEffect(() => {
     getAllTags().then(setTags);
     getAllSlideTagsBySlideId(props.slideId).then(setSlideTags);
   }, [props.slideTagModalToggle]);
+
+
 
   const toggle = () => {
     setModal(!modal);
@@ -42,6 +45,7 @@ export const SlideTagModal = (props) => {
         </ModalHeader>
         <ModalBody>
           <div className="tags-container">
+         
             {tags.map((tag) => {
               let isActive = false;
               foundTag = slideTags.find(
