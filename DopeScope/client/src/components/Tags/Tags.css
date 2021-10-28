@@ -1,0 +1,12 @@
+.tag-active-true{
+    border:.1rem solid slategray;
+    background-color: steelblue;
+    color: whitesmoke;
+    padding:.25rem;
+    border-radius: .25rem;
+}
+.tag-active-false{
+    border:.1rem solid slategray;
+    padding:.25rem;
+    border-radius: .25rem;
+}

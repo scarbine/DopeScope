@@ -1,9 +1,9 @@
-import React from "react";
+
 import { getToken } from "./authManager";
 
-const apiUrl = "/api/slidetag"
+const apiUrl = "/api/tag"
 
-export const getAllSlideTags = () => {
+export const getAllTags = () => {
     return getToken().then((token) => {
       return fetch(apiUrl, {
         method: "GET",
@@ -15,33 +15,15 @@ export const getAllSlideTags = () => {
           return resp.json();
         } else {
           throw new Error(
-            "An unknown error occurred while trying to get Slide Tags."
+            "An unknown error occurred while trying to get Tags."
           );
         }
       });
     });
   };
 
-export const getAllSlideTagsBySlideId = (id) => {
-    return getToken().then((token) => {
-      return fetch(`${apiUrl}/SlideTagList?id=${id}`, {
-        method: "GET",
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      }).then((resp) => {
-        if (resp.ok) {
-          return resp.json();
-        } else {
-          throw new Error(
-            "An unknown error occurred while trying to get Slide Tags."
-          );
-        }
-      });
-    });
-  };
 
-  export const addSlideTag = (slideTag) => {
+  export const addTag = (Tag) => {
     return getToken().then((token) => {
       return fetch(apiUrl, {
         method: "POST",
@@ -49,7 +31,7 @@ export const getAllSlideTagsBySlideId = (id) => {
           Authorization: `Bearer ${token}`,
           "Content-Type": "application/json",
         },
-        body: JSON.stringify(slideTag),
+        body: JSON.stringify(Tag),
       }).then((resp) => {
         if (resp.ok) {
           return resp.json();
@@ -57,7 +39,7 @@ export const getAllSlideTagsBySlideId = (id) => {
           throw new Error("Unauthorized");
         } else {
           throw new Error(
-            "An unknown error occurred while trying to save a new Slide Tag."
+            "An unknown error occurred while trying to save a new Tag."
           );
         }
       });
@@ -65,7 +47,7 @@ export const getAllSlideTagsBySlideId = (id) => {
   };
 
 
-  export const deleteSlideTag = (id) => {
+  export const deleteTag = (id) => {
     return getToken().then((token) => {
       return fetch((apiUrl + "/" + id), {
         method: "DELETE",
