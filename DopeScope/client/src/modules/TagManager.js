@@ -47,3 +47,17 @@ export const getAllTags = () => {
   };
 
 
+  export const deleteTag = (id) => {
+    return getToken().then((token) => {
+      return fetch((apiUrl + "/" + id), {
+        method: "DELETE",
+        headers: {
+          Authorization: `Bearer ${token}`,
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(id),
+      });
+    });
+  };
+
+

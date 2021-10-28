@@ -1,31 +1,50 @@
-import React from "react"
-import { useEffect, useState } from "react/cjs/react.development"
+import React from "react";
+import { useEffect, useState } from "react/cjs/react.development";
+import { addSlideTag, deleteSlideTag } from "../../modules/SlideTagManager";
 
-import "./Tags.css"
+
+import "./Tags.css";
 
 export const TagCard = (props) => {
+  const [isActive, setIsActive] = useState(false);
+  const [tagFound, setTagFound] = useState({});
 
-    const [isActive, setIsActive] = useState(false)
+  useEffect(() => {
+    setIsActive(props.isActive);
+    setTagFound(props.foundTag);
+  }, [tagFound]);
 
-    useEffect(()=>{
-       
-     setIsActive(props.isActive)
+  const handleInactiveTagClick = () => {
+    const newSlideTagObj = {
+      tagId: props.tag.id,
+      slideId: parseInt(props.slideId),
+    };
+    addSlideTag(newSlideTagObj);
+    setIsActive(!isActive);
+  };
+  const handleActiveTagClick = () => {
+    deleteSlideTag(tagFound.id);
+    setIsActive(!isActive);
+  };
 
-    },[])
-
-    const handleInactiveTagClick =()=>{
-        
-        setIsActive(!isActive)
-    }
-    const handleActiveTagClick =()=>{
-
-        setIsActive(!isActive)
-    }
-
-    return (
-        <>
-        {console.log(props.tag.id, "is", isActive)}
-           {isActive ? <div className={`tag-active-${isActive}`} onClick={handleActiveTagClick}>{props.tag.tagName}</div> : <div className={`tag-active-${isActive}`} onClick={handleInactiveTagClick}>{props.tag.tagName}</div> }
-        </>
-    )
-}
+  return (
+    <>
+      {console.log(props.tag.id, "is", isActive, "tagFound", tagFound)}
+      {isActive ? (
+        <div
+          className={`tag-active-${isActive}`}
+          onClick={handleActiveTagClick}
+        >
+          {props.tag.tagName}
+        </div>
+      ) : (
+        <div
+          className={`tag-active-${isActive}`}
+          onClick={handleInactiveTagClick}
+        >
+          {props.tag.tagName}
+        </div>
+      )}
+    </>
+  );
+};
