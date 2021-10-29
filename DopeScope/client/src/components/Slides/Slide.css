@@ -21,6 +21,13 @@
     justify-content: space-evenly;
 }
 
+/* .slide-card-image{
+    float: left;
+    width:  100px;
+    height: 100px;
+    object-fit: cover;
+} */
+
 .new-slide-form{
     margin:3rem;
     display: flex;
