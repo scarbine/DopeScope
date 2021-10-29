@@ -21,12 +21,34 @@
     justify-content: space-evenly;
 }
 
-/* .slide-card-image{
-    float: left;
-    width:  100px;
-    height: 100px;
-    object-fit: cover;
-} */
+.slide-card-image{
+    /* position: absolute; Take your picture out of the flow */
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0; /* Make the picture taking the size of it's parent */
+    width: 100%; /* This if for the object-fit */
+    height: 100%; /* This if for the object-fit */
+    object-fit: cover; /* Equivalent of the background-size: cover; of a background-image */
+    object-position: center;
+}
+
+.slide-tag-card{
+    border: .1rem lightgrey solid;
+    border-radius: 3rem;
+    padding: .25rem .5rem .25rem .5rem;
+    background-color: rgb(124, 196, 219);
+    color: white;
+
+}
+.likes-item{
+    margin-left: .5rem;
+}
+
+.likes-container{
+    display: flex;
+    justify-content: space-evenly;
+}
 
 .new-slide-form{
     margin:3rem;
@@ -87,6 +109,7 @@
 .image-container{
     display: flex;
     width: 30rem;
+    flex-direction: column;
 }
 
 .slide-card-wrapper{
@@ -109,7 +132,7 @@
 }
 
 .slide-details-column{
-    margin: 1rem 6rem 1rem 6rem;
+    margin: 1rem 2rem 1rem 6rem;
     justify-content: center;
 }
 

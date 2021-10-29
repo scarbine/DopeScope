@@ -202,14 +202,17 @@ export const SlideDetails = () => {
               src={slide.imageUrl}
               alt={slide.name}
             />
-          </div>
           <div className="sub-image-info">
             <div>
-              {" "}
+           
               {slide.microscope.make} {slide.microscope.model}
             </div>
             <div>{slide.microscope.user.fullName} </div>
-            {likeButton()}
+            <div className="likes-container">
+            <div className="likes-item">{likeButton()}</div>
+            <div className="likes-item">{likeCounter()}</div>
+            </div>
+          </div>
           </div>
           <div className="slideTagList">
             {slideTags.map((slideTag) => {
@@ -256,7 +259,6 @@ export const SlideDetails = () => {
             <h5></h5>
 
             {console.log("userLike", userLike)}
-            <h5>Likes: {likeCounter()}</h5>
             <h5>Magnifiaction: {slide.magnification}</h5>
             <h5>Description: {slide.description}</h5>
             <h5>Uploaded: {date}</h5>

@@ -16,7 +16,7 @@ export const MiniSlideCardList = () => {
         <>
         <div className="mini-slide-list-container">
             <h3>Latest Slides</h3>
-            {slides?.slice(0,7).reverse().map(slide=>{
+            {slides?.reverse().slice(0,5).map(slide=>{
                 return <MiniSlideCard key={slide.id} slide={slide} />
             })}
             </div>

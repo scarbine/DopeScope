@@ -3,8 +3,10 @@ import React from "react";
  
 const baseUrl = 'https://www.googleapis.com/customsearch/v1'
 const key = 'AIzaSyANAiKjGhwguIaj_lRn9bwog6KLEZ_timU'
-const cx = '2d3ec381415dd57e8'
+// const cx = '2d3ec381415dd57e8'
 
+
+const cx = 'ce0bbc78ebd356e37'
 
 
  

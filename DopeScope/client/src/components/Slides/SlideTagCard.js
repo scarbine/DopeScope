@@ -3,7 +3,7 @@ import React from "react";
 export const SlideTagCard = (props) => {
   return (
     <>
-      <h5>{props.slideTag.tag.tagName}</h5>
+      <div className="slide-tag-card">{props.slideTag.tag.tagName}</div>
     </>
   );
 };
