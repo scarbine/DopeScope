@@ -26,8 +26,10 @@ export const getSlideLikes = (id) => {
         Authorization: `Bearer ${token}`,
       },
     }).then((resp) => {
-      if (resp.ok) {
+      if (resp.status === 200 ) {
         return resp.json();
+      } else if (resp.status === 204) {
+        
       } else {
         throw new Error("An unknown error occurred while trying to get Likes.");
       }

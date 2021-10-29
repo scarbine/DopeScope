@@ -15,6 +15,7 @@ import { getAllSlideTagsBySlideId } from "../../modules/SlideTagManager";
 import { SlideTagCard } from "./SlideTagCard";
 import { SlideTagModal } from "./SlideTagModal";
 import { getUserByFirebaseId } from "../../modules/UserManager";
+import { MiniSlideCardList } from "./MiniSlideCardList";
 
 export const SlideDetails = () => {
   const { slideId } = useParams();
@@ -253,7 +254,8 @@ export const SlideDetails = () => {
         </section>
         <section className="right-container">
           <div>
-            <SlideList />
+            {/* <SlideList /> */}
+            <MiniSlideCardList />
           </div>
           <img
             onClick={handleScopeClick}

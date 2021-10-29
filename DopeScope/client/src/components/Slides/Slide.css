@@ -21,6 +21,13 @@
     justify-content: space-evenly;
 }
 
+/* .slide-card-image{
+    float: left;
+    width:  100px;
+    height: 100px;
+    object-fit: cover;
+} */
+
 .new-slide-form{
     margin:3rem;
     display: flex;
@@ -142,12 +149,14 @@ width: 5rem;
     display: flex;
     flex-direction: column;
     width: 7rem;
+    justify-content: space-between;
+    text-align: center;
 }
 
 .right-box-text{
     text-align: right;
     padding-right: .5rem;
-    padding-top: 3.25rem;
+    padding-top: 2rem;
     bottom: 0;
 }
 .search-text-area{

@@ -12,3 +12,8 @@
     color:whitesmoke;
     text-decoration: none;
 }
+
+.add-tag-button:hover{
+    cursor: pointer;
+    color: blue;
+}
