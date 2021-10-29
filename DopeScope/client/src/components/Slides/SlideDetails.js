@@ -16,6 +16,7 @@ import { SlideTagCard } from "./SlideTagCard";
 import { SlideTagModal } from "./SlideTagModal";
 import { getUserByFirebaseId } from "../../modules/UserManager";
 import { MiniSlideCardList } from "./MiniSlideCardList";
+import { CustomImageSearch } from "../CustomImageSearch/CustomImageSearch";
 
 export const SlideDetails = () => {
   const { slideId } = useParams();
@@ -32,6 +33,7 @@ export const SlideDetails = () => {
   const [slideTagModal, setSlideTagModal] = useState(null);
   const [useEffectTrigger, setEseEffectTrigger] = useState(false);
   const [slideTagModalToggle, setSlideTagModalToggle] = useState(false);
+  const [searchResults, setSearchResults] = useState([]);
   const [slide, setSlide] = useState({
     dateCreated: "",
     name: "",
@@ -113,7 +115,8 @@ export const SlideDetails = () => {
             fill="currentColor"
             class="bi bi-heart-fill"
             viewBox="0 0 16 16"
-            onClick={handleDeleteLike}>
+            onClick={handleDeleteLike}
+          >
             <path
               fill-rule="evenodd"
               d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z"
@@ -230,7 +233,25 @@ export const SlideDetails = () => {
               setUpdate={setUpdate}
               update={update}
             />
+            <CustomImageSearch
+              slide={slide}
+              searchResults={searchResults}
+              setSearchResults={setSearchResults}
+            />
           </div>
+          {searchResults !== undefined ? (
+            searchResults.items?.map((sr) => {
+              return (
+                <>
+                  <a >
+                    <h5>{sr.title}</h5>{" "}
+                  </a>
+                </>
+              );
+            })
+          ) : (
+            <> </>
+          )}
           <section className="slide-detail-info-container">
             <h5></h5>
 
