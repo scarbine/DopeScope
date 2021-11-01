@@ -17,7 +17,7 @@ export default function Header({ isLoggedIn }) {
   const toggle = () => setIsOpen(!isOpen);
 
   return (
-    <div>
+    <div className="navbar-container">
       <Navbar color="dark" dark expand="md">
         <NavbarBrand className="logo" tag={RRNavLink} to="/">
           DopeScope

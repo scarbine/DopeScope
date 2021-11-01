@@ -11,8 +11,6 @@ import {
   CloudinaryContext,
 } from "cloudinary-react";
 
-
-
 import "./Slide.css";
 
 export const SlideCard = ({ slide, updateList }) => {
@@ -34,7 +32,6 @@ export const SlideCard = ({ slide, updateList }) => {
     <>
       <div className="slide-card-container">
         <Card className="slide-card">
-          
           {/* <Image
             top
             className="slide-card-image"
@@ -44,17 +41,21 @@ export const SlideCard = ({ slide, updateList }) => {
             onClick={handleDetails}
             thumbnail={true} 
           /> */}
-           <CloudinaryContext cloudName="ddaeunjfu" secure="true">
-        <Image publicId={`DopeScope/${imagePublicId}`} secure="true">
-          <Transformation
-            width="237"
-            height="237"
-            // gravity="face"
-            crop="thumb"
-          />
-        </Image>
-      </CloudinaryContext>
-          
+          <CloudinaryContext
+            cloudName="ddaeunjfu"
+            secure="true"
+            onClick={handleDetails}
+          >
+            <Image publicId={`DopeScope/${imagePublicId}`} secure="true">
+              <Transformation
+                width="237"
+                height="237"
+                // gravity="face"
+                crop="thumb"
+              />
+            </Image>
+          </CloudinaryContext>
+
           <CardBody>
             <div className="card-subtitle">
               <CardTitle tag="h5">{slide.name}</CardTitle>

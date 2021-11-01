@@ -27,7 +27,7 @@ export const MiniSlideCard = (props) => {
 
   return (
     <>
-      {console.log(imagePublicId)}
+      {/* {console.log(imagePublicId)} */}
       <div className="slide-card-mini" onClick={handleClick}>
         <div className="left-box">
           <div className="left-box-text">{props.slide.name}</div>
@@ -41,8 +41,8 @@ export const MiniSlideCard = (props) => {
       <CloudinaryContext cloudName="ddaeunjfu" secure="true">
         <Image publicId={`DopeScope/${imagePublicId}`} secure="true">
           <Transformation
-            width="75"
-            height="75"
+            width="80"
+            height="80"
             // gravity="face"
             crop="thumb"
           />

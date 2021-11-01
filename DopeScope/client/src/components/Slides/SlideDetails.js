@@ -17,12 +17,8 @@ import { SlideTagModal } from "./SlideTagModal";
 import { getUserByFirebaseId } from "../../modules/UserManager";
 import { MiniSlideCardList } from "./MiniSlideCardList";
 import { CustomImageSearch } from "../CustomImageSearch/CustomImageSearch";
-import {
-  Image,
-  Video,
-  Transformation,
-  CloudinaryContext,
-} from "cloudinary-react";
+import { SlideDetailImage } from "./SlideDetailImage";
+import { LargeScopeImage } from "../Microscopes/LargeScopeImage";
 
 export const SlideDetails = () => {
   const { slideId } = useParams();
@@ -148,13 +144,17 @@ export const SlideDetails = () => {
     getSlideLikeByUser(slideId, firebaseId).then(setUserLike);
     getUserByFirebaseId(firebaseId).then(setCurrentUserObj);
     setEseEffectTrigger(!useEffectTrigger);
+    getNotesBySlideId(slideId).then(setNotes);
   }, [location, slideTagModalToggle]);
+
+  useEffect(()=>{
+  },[])
 
   useEffect(() => {
     setTimeout(1000);
     slideTagModalDisplay();
     mapSearchResults();
-  }, [useEffectTrigger, location, slideTagModalToggle]);
+  }, [useEffectTrigger, location, slideTagModalToggle, slideId]);
 
   useEffect(() => {
     getNotesBySlideId(slideId).then(setNotes);
@@ -162,11 +162,15 @@ export const SlideDetails = () => {
 
   useEffect(() => {
     getSlideLikes(slideId).then(setLikes);
-    getSlideLikeByUser(slideId, firebaseId).then(setUserLike);
-    console.log(userLike);
-    setTimeout(100);
-    likeButton();
+ ;
   }, [likeToggle]);
+
+  useEffect(()=>{
+    getSlideLikeByUser(slideId, firebaseId).then(setUserLike);
+    likeButton()
+  },[likeToggle])
+
+
 
   const handleScopeClick = () => {
     history.push(`/microscope/${slide.microscope.id}`);
@@ -204,10 +208,11 @@ export const SlideDetails = () => {
       searchResults.items?.map((sr) => {
         return (
           <>
-            <div className="search-return-card">
+            <div className="search-return-container">
               <a className="search-return-card" href={sr.image.contextLink}>
-                <img src={sr.image.thumbnailLink} alt={sr.title} />
-                <h5>{sr.title}</h5>
+                <img className="search-results-image" src={sr.image.thumbnailLink} alt={sr.title} />
+                {/* <div className="search-result-title">{sr.title}</div> */}
+                <div className="search-result-title">{sr.snippet}</div>
               </a>
             </div>
           </>
@@ -224,26 +229,18 @@ export const SlideDetails = () => {
         <section className="slide-details-column">
           <h1 className="slide-detail-header">{slide.name}</h1>
           <div className="image-container">
-            <img
+            {/* <img
               className="slide-detail-img"
               src={slide.imageUrl}
               alt={slide.name}
-            />
-            {/* <CloudinaryContext cloudName="ddaeunjfu" secure="true">
-              <Image publicId={`DopeScope/${imagePublicId}`} secure="true">
-                <Transformation
-                  width="75"
-                  height="75"
-                  // gravity="face"
-                  crop="thumb"
-                />
-              </Image>
-            </CloudinaryContext> */}
+            /> */}
+            <SlideDetailImage slide={slide} location={location}/>
             <div className="sub-image-info">
               <div>
                 {slide.microscope.make} {slide.microscope.model}
               </div>
-              <div>{slide.microscope.user.fullName} </div>
+              <div className="sub-image-full-name">{slide.microscope.user.fullName} </div>
+              <div> x{slide.magnification}</div>
               <div className="likes-container">
                 <div className="likes-item">{likeButton()}</div>
                 <div className="likes-item">{likeCounter()}</div>
@@ -263,14 +260,15 @@ export const SlideDetails = () => {
               Delete Slide
             </Button>
             {slideTagModal}
-
-            {/* {currrentUserObj.id === slide.microscope.user.id ? <SlideTagModal key={slide.id} slide={slide} slideId={slideId} addSlideTag={addSlideTag}/> : <></>} */}
             <SlideCommentModal
               key={slide.id}
               slide={slide}
               updateList={updateList}
               setUpdate={setUpdate}
               update={update}
+              setNotes={setNotes}
+              slideId={slideId}
+              getNotesBySlideId={getNotesBySlideId}
             />
             <CustomImageSearch
               slide={slide}
@@ -278,30 +276,13 @@ export const SlideDetails = () => {
               setSearchResults={setSearchResults}
             />
           </div>
-          {/* {searchResults !== undefined ? (
-            searchResults.items?.map((sr) => {
-              return (
-                <>
-                <div className="search-return-card">
-                  <a className="search-return-card" href={sr.image.contextLink}>
-                    <img src={sr.image.thumbnailLink} alt={sr.title} />
-                    <h5>{sr.title}</h5>{" "}
-                  </a>
-                  </div>
-                </>
-              );
-            })
-          ) : (
-            <> </>
-          )} */}
           {mapSearchResults()}
-          <section className="slide-detail-info-container">
+          {/* <section className="slide-detail-info-container">
             <h5></h5>
 
-            <h5>Magnifiaction: {slide.magnification}</h5>
             <h5>Description: {slide.description}</h5>
             <h5>Uploaded: {date}</h5>
-          </section>
+          </section> */}
           <h3 className="slide-comments"> Comments</h3>
           <div>
             {notes?.length !== 0 ? (
@@ -315,15 +296,11 @@ export const SlideDetails = () => {
         </section>
         <section className="right-container">
           <div>
-            {/* <SlideList /> */}
-            <MiniSlideCardList />
+            <MiniSlideCardList likes={likes}/>
           </div>
-          <img
-            onClick={handleScopeClick}
-            className="slide-detail-scope-img"
-            src={slide.microscope.imageUrl}
-            alt={slide.microscope.Make}
-          />
+          <div className="large-scope-img">
+          <LargeScopeImage slide={slide} location={location} />
+          </div>
         </section>
       </div>
     </>

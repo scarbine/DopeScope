@@ -27,10 +27,10 @@ export const SlideCommentModal = (props) => {
 
   const submit = () =>{
       
-      console.log(note)
-      addNote(note).then(props.updateList())
-      setModal(!modal)
+      // console.log(note)
+      addNote(note).then(props.getNotesBySlideId(props.slideId)).then(props.setNotes())
       props.setUpdate(!props.update)
+      setModal(!modal)
   }
 
   return (

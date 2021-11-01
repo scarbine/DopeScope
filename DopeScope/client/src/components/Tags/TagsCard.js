@@ -29,7 +29,7 @@ export const TagCard = (props) => {
 
   return (
     <>
-      {console.log(props.tag.id, "is", isActive, "tagFound", tagFound)}
+      {/* {console.log(props.tag.id, "is", isActive, "tagFound", tagFound)} */}
       {isActive ? (
         <div
           className={`tag-active-${isActive}`}

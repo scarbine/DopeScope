@@ -7,10 +7,10 @@ export const SideBar = () => {
     return(
 
         <>  <div className="sidebar">
-            <Link className="sidebar-link" to="/slide"><div> All Slides </div></Link>
-            <Link className="sidebar-link" to="/microscope"><div>All Scopes</div></Link>
-            <Link className="sidebar-link" to="/slide/form"><div>Add New Slide</div></Link>
-            <Link className="sidebar-link" to="/microscope/form"><div>Add Scope</div></Link>
+            <Link className="sidebar-link" to="/slide"><h5> All Slides </h5></Link>
+            <Link className="sidebar-link" to="/microscope"><h5>All Scopes</h5></Link>
+            <Link className="sidebar-link" to="/slide/form"><h5>Add New Slide</h5></Link>
+            <Link className="sidebar-link" to="/microscope/form"><h5>Add Scope</h5></Link>
             <AddTagModal />
             </div>
         </>
