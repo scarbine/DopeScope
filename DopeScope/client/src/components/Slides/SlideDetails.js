@@ -5,7 +5,7 @@ import { getNotesBySlideId } from "../../modules/NotesManager";
 import { getSlideById } from "../../modules/SlideManager";
 import { NoteCard } from "../Notes/NotesCard";
 import { deleteSlide } from "../../modules/SlideManager";
-import { Button } from "reactstrap";
+import { Button, Card } from "reactstrap";
 import { SlideCommentModal } from "./SlideCommentModal";
 import { SlideList } from "./SlideList";
 import { addLike, deleteLike, getSlideLikes } from "../../modules/Likemanager";
@@ -17,6 +17,12 @@ import { SlideTagModal } from "./SlideTagModal";
 import { getUserByFirebaseId } from "../../modules/UserManager";
 import { MiniSlideCardList } from "./MiniSlideCardList";
 import { CustomImageSearch } from "../CustomImageSearch/CustomImageSearch";
+import {
+  Image,
+  Video,
+  Transformation,
+  CloudinaryContext,
+} from "cloudinary-react";
 
 export const SlideDetails = () => {
   const { slideId } = useParams();
@@ -49,7 +55,9 @@ export const SlideDetails = () => {
     },
   });
   const [notes, setNotes] = useState([]);
-
+  // const [, imagePublicIdWithFileExt] = slide.imageUrl.split("DopeScope/");
+  // const [imagePublicId] = imagePublicIdWithFileExt.split(".");
+  
   const updateList = () => {
     setUpdate(!update);
   };
@@ -96,7 +104,7 @@ export const SlideDetails = () => {
             width="16"
             height="16"
             fill="currentColor"
-            class="bi bi-heart"
+            className="bi bi-heart"
             viewBox="0 0 16 16"
             onClick={handleAddLike}
           >
@@ -113,7 +121,7 @@ export const SlideDetails = () => {
             width="16"
             height="16"
             fill="currentColor"
-            class="bi bi-heart-fill"
+            className="bi bi-heart-fill"
             viewBox="0 0 16 16"
             onClick={handleDeleteLike}
           >
@@ -145,6 +153,7 @@ export const SlideDetails = () => {
   useEffect(() => {
     setTimeout(1000);
     slideTagModalDisplay();
+    mapSearchResults();
   }, [useEffectTrigger, location, slideTagModalToggle]);
 
   useEffect(() => {
@@ -190,9 +199,27 @@ export const SlideDetails = () => {
     );
   };
 
+  const mapSearchResults = () => {
+    return searchResults !== undefined ? (
+      searchResults.items?.map((sr) => {
+        return (
+          <>
+            <div className="search-return-card">
+              <a className="search-return-card" href={sr.image.contextLink}>
+                <img src={sr.image.thumbnailLink} alt={sr.title} />
+                <h5>{sr.title}</h5>
+              </a>
+            </div>
+          </>
+        );
+      })
+    ) : (
+      <> </>
+    );
+  };
+
   return (
     <>
-      {console.log(currrentUserObj)}
       <div className="slide-detail-container">
         <section className="slide-details-column">
           <h1 className="slide-detail-header">{slide.name}</h1>
@@ -202,17 +229,26 @@ export const SlideDetails = () => {
               src={slide.imageUrl}
               alt={slide.name}
             />
-          <div className="sub-image-info">
-            <div>
-           
-              {slide.microscope.make} {slide.microscope.model}
+            {/* <CloudinaryContext cloudName="ddaeunjfu" secure="true">
+              <Image publicId={`DopeScope/${imagePublicId}`} secure="true">
+                <Transformation
+                  width="75"
+                  height="75"
+                  // gravity="face"
+                  crop="thumb"
+                />
+              </Image>
+            </CloudinaryContext> */}
+            <div className="sub-image-info">
+              <div>
+                {slide.microscope.make} {slide.microscope.model}
+              </div>
+              <div>{slide.microscope.user.fullName} </div>
+              <div className="likes-container">
+                <div className="likes-item">{likeButton()}</div>
+                <div className="likes-item">{likeCounter()}</div>
+              </div>
             </div>
-            <div>{slide.microscope.user.fullName} </div>
-            <div className="likes-container">
-            <div className="likes-item">{likeButton()}</div>
-            <div className="likes-item">{likeCounter()}</div>
-            </div>
-          </div>
           </div>
           <div className="slideTagList">
             {slideTags.map((slideTag) => {
@@ -242,23 +278,26 @@ export const SlideDetails = () => {
               setSearchResults={setSearchResults}
             />
           </div>
-          {searchResults !== undefined ? (
+          {/* {searchResults !== undefined ? (
             searchResults.items?.map((sr) => {
               return (
                 <>
-                  <a >
+                <div className="search-return-card">
+                  <a className="search-return-card" href={sr.image.contextLink}>
+                    <img src={sr.image.thumbnailLink} alt={sr.title} />
                     <h5>{sr.title}</h5>{" "}
                   </a>
+                  </div>
                 </>
               );
             })
           ) : (
             <> </>
-          )}
+          )} */}
+          {mapSearchResults()}
           <section className="slide-detail-info-container">
             <h5></h5>
 
-            {console.log("userLike", userLike)}
             <h5>Magnifiaction: {slide.magnification}</h5>
             <h5>Description: {slide.description}</h5>
             <h5>Uploaded: {date}</h5>
@@ -272,7 +311,6 @@ export const SlideDetails = () => {
             ) : (
               <div>No Comments</div>
             )}
-            {console.log(slideTags)}
           </div>
         </section>
         <section className="right-container">

@@ -1,5 +1,5 @@
 import React from "react";
-import { useEffect, useState } from "react/cjs/react.development";
+
 import { getSearchResults } from "../../modules/CustomerSearchmanager";
 
 
@@ -7,11 +7,11 @@ export const CustomImageSearch = (props) => {
 
     
    
-    const cx = '2d3ec381415dd57e8'
+    // const cx = '2d3ec381415dd57e8'
     const num = 5
     const q = props.slide.name
     const searchType = 'image'
-    const key = 'AIzaSyANAiKjGhwguIaj_lRn9bwog6KLEZ_timU'
+    // const key = 'AIzaSyANAiKjGhwguIaj_lRn9bwog6KLEZ_timU'
 
 
     const handleOnClick = () => {

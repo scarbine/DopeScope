@@ -85,7 +85,8 @@
     margin: 1rem 0rem 1rem 0rem;
 }
 .slide-detail-img{
-    height: 35rem;
+    width: max-content;
+    height: 37rem;
 }
 
 .scope-name{
@@ -235,3 +236,8 @@ width: 5rem;
 /* .tag-card{
     margin: 1rem;
 } */
+
+.search-return-card{
+    display: flex;
+    margin: .5rem;
+}
