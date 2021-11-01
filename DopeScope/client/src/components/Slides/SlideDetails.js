@@ -153,7 +153,7 @@ export const SlideDetails = () => {
     setTimeout(1000);
     slideTagModalDisplay();
     mapSearchResults();
-  }, [useEffectTrigger, location, slideTagModalToggle]);
+  }, [useEffectTrigger, location, slideTagModalToggle, slideId]);
 
   useEffect(() => {
     getNotesBySlideId(slideId).then(setNotes);
@@ -168,6 +168,8 @@ export const SlideDetails = () => {
     getSlideLikeByUser(slideId, firebaseId).then(setUserLike);
     likeButton()
   },[likeToggle])
+
+
 
   const handleScopeClick = () => {
     history.push(`/microscope/${slide.microscope.id}`);
@@ -205,10 +207,11 @@ export const SlideDetails = () => {
       searchResults.items?.map((sr) => {
         return (
           <>
-            <div className="search-return-card">
+            <div className="search-return-container">
               <a className="search-return-card" href={sr.image.contextLink}>
-                <img src={sr.image.thumbnailLink} alt={sr.title} />
-                <h5>{sr.title}</h5>
+                <img className="search-results-image" src={sr.image.thumbnailLink} alt={sr.title} />
+                {/* <div className="search-result-title">{sr.title}</div> */}
+                <div className="search-result-title">{sr.snippet}</div>
               </a>
             </div>
           </>
@@ -271,22 +274,6 @@ export const SlideDetails = () => {
               setSearchResults={setSearchResults}
             />
           </div>
-          {/* {searchResults !== undefined ? (
-            searchResults.items?.map((sr) => {
-              return (
-                <>
-                <div className="search-return-card">
-                  <a className="search-return-card" href={sr.image.contextLink}>
-                    <img src={sr.image.thumbnailLink} alt={sr.title} />
-                    <h5>{sr.title}</h5>{" "}
-                  </a>
-                  </div>
-                </>
-              );
-            })
-          ) : (
-            <> </>
-          )} */}
           {mapSearchResults()}
           <section className="slide-detail-info-container">
             <h5></h5>

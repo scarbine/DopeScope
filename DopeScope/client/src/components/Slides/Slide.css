@@ -154,6 +154,7 @@ display: flex;
 justify-content: space-between;
 border: solid rgb(219, 219, 219) .1rem;
 margin: 1rem 10rem 1rem 10rem;
+box-shadow: rgba(211, 211, 211, 0.582) .25rem .25rem;
 }
 .slide-card-mini:hover{
     cursor: pointer;
@@ -221,6 +222,21 @@ width: 5rem;
     flex-direction: column;
     text-align: center;
     margin-left: 2rem;
+   
+}
+
+.search-return-container{
+    border: .1rem lightgray solid;
+    margin:.25rem;
+    border-radius: 1rem;
+    text-decoration: none;
+
+}
+
+.search-result-title{
+    text-decoration: none;
+    color: inherit;
+    padding:1rem 1rem 1rem 2rem;
 }
 
 .slideTagList{
@@ -244,5 +260,8 @@ width: 5rem;
 
 .search-return-card{
     display: flex;
-    margin: .5rem;
+    margin: 1rem;
+    padding:.15rem;
+    text-decoration: none;
+    color: black;
 }

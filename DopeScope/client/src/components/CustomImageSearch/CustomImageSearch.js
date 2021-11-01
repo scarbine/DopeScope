@@ -16,13 +16,13 @@ export const CustomImageSearch = (props) => {
 
     const handleOnClick = () => {
             getSearchResults(num,q,searchType).then(props.setSearchResults)
-          console.log(props.searchResults.items)
+        //   console.log(props.searchResults.items)
     }
 
     return (
         <>
             <div onClick={handleOnClick} className="slide-btn btn btn-secondary">
-                Web Search
+                Learn More
             </div>
      
         </>
