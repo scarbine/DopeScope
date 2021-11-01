@@ -143,7 +143,11 @@ export const SlideDetails = () => {
     getSlideLikeByUser(slideId, firebaseId).then(setUserLike);
     getUserByFirebaseId(firebaseId).then(setCurrentUserObj);
     setEseEffectTrigger(!useEffectTrigger);
+    getNotesBySlideId(slideId).then(setNotes);
   }, [location, slideTagModalToggle]);
+
+  useEffect(()=>{
+  },[])
 
   useEffect(() => {
     setTimeout(1000);
@@ -157,11 +161,13 @@ export const SlideDetails = () => {
 
   useEffect(() => {
     getSlideLikes(slideId).then(setLikes);
-    getSlideLikeByUser(slideId, firebaseId).then(setUserLike);
-    console.log(userLike);
-    setTimeout(100);
-    likeButton();
+ ;
   }, [likeToggle]);
+
+  useEffect(()=>{
+    getSlideLikeByUser(slideId, firebaseId).then(setUserLike);
+    likeButton()
+  },[likeToggle])
 
   const handleScopeClick = () => {
     history.push(`/microscope/${slide.microscope.id}`);
@@ -255,6 +261,9 @@ export const SlideDetails = () => {
               updateList={updateList}
               setUpdate={setUpdate}
               update={update}
+              setNotes={setNotes}
+              slideId={slideId}
+              getNotesBySlideId={getNotesBySlideId}
             />
             <CustomImageSearch
               slide={slide}
@@ -282,7 +291,7 @@ export const SlideDetails = () => {
           <section className="slide-detail-info-container">
             <h5></h5>
 
-            <h5>Magnifiaction: {slide.magnification}</h5>
+            <h5>Magnifiaction: x{slide.magnification}</h5>
             <h5>Description: {slide.description}</h5>
             <h5>Uploaded: {date}</h5>
           </section>
@@ -299,7 +308,7 @@ export const SlideDetails = () => {
         </section>
         <section className="right-container">
           <div>
-            <MiniSlideCardList />
+            <MiniSlideCardList likes={likes}/>
           </div>
           <img
             onClick={handleScopeClick}

@@ -233,7 +233,8 @@ namespace DopeScope.Repository
             {
                 return @"SELECT s.Id, s.Magnification, s.MicroscopeId,s.Description, s.ImageUrl, s.Name, s.DateCreated, m.Id AS MId, m.Make, m.Model, m.ImageUrl AS ScopeImageUrl, m.UserId AS MUID, u.Id AS UserId, u.FirebaseId, u.FirstName, u.Lastname, u.Email FROM Slide s
                         JOIN Microscope m ON s.MicroscopeId = m.Id
-                        JOIN [USER] u ON u.Id = m.UserId";
+                        JOIN [USER] u ON u.Id = m.UserId
+                        ORDER BY s.Id DESC";
 
             }
         }

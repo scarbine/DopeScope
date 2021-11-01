@@ -226,6 +226,7 @@ width: 5rem;
 .slideTagList{
     display: flex;
     justify-content: space-evenly;
+    margin: 1rem;
 }
 
 .tags-container{
