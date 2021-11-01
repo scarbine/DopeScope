@@ -18,6 +18,7 @@ import { getUserByFirebaseId } from "../../modules/UserManager";
 import { MiniSlideCardList } from "./MiniSlideCardList";
 import { CustomImageSearch } from "../CustomImageSearch/CustomImageSearch";
 import { SlideDetailImage } from "./SlideDetailImage";
+import { LargeScopeImage } from "../Microscopes/LargeScopeImage";
 
 export const SlideDetails = () => {
   const { slideId } = useParams();
@@ -238,7 +239,7 @@ export const SlideDetails = () => {
               <div>
                 {slide.microscope.make} {slide.microscope.model}
               </div>
-              <div>{slide.microscope.user.fullName} </div>
+              <div className="sub-image-full-name">{slide.microscope.user.fullName} </div>
               <div className="likes-container">
                 <div className="likes-item">{likeButton()}</div>
                 <div className="likes-item">{likeCounter()}</div>
@@ -297,12 +298,9 @@ export const SlideDetails = () => {
           <div>
             <MiniSlideCardList likes={likes}/>
           </div>
-          <img
-            onClick={handleScopeClick}
-            className="slide-detail-scope-img"
-            src={slide.microscope.imageUrl}
-            alt={slide.microscope.Make}
-          />
+          <div className="large-scope-img">
+          <LargeScopeImage slide={slide} location={location} />
+          </div>
         </section>
       </div>
     </>
