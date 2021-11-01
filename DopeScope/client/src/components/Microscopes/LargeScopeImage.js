@@ -46,8 +46,8 @@ export const LargeScopeImage = ({ slide, location }) => {
             onClick={handleScopeClick}
           >
             <Transformation
-              width="450"
-              height="650"
+              width="375"
+              height="550"
               // gravity="face"
               crop="thumb"
             />

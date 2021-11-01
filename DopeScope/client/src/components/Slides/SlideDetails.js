@@ -240,6 +240,7 @@ export const SlideDetails = () => {
                 {slide.microscope.make} {slide.microscope.model}
               </div>
               <div className="sub-image-full-name">{slide.microscope.user.fullName} </div>
+              <div> x{slide.magnification}</div>
               <div className="likes-container">
                 <div className="likes-item">{likeButton()}</div>
                 <div className="likes-item">{likeCounter()}</div>
@@ -276,13 +277,12 @@ export const SlideDetails = () => {
             />
           </div>
           {mapSearchResults()}
-          <section className="slide-detail-info-container">
+          {/* <section className="slide-detail-info-container">
             <h5></h5>
 
-            <h5>Magnifiaction: x{slide.magnification}</h5>
             <h5>Description: {slide.description}</h5>
             <h5>Uploaded: {date}</h5>
-          </section>
+          </section> */}
           <h3 className="slide-comments"> Comments</h3>
           <div>
             {notes?.length !== 0 ? (

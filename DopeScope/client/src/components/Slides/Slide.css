@@ -19,14 +19,14 @@
 }
 
 .slide-detail-container{
-    margin:2rem;
+    margin:.5rem;
     display: flex;
     justify-content: space-evenly;
 }
 
 .slide-detail-image{
     box-shadow: rgba(211, 211, 211, 0.582) .25rem .25rem 5px;
-    margin-left: 1rem;
+    margin-left: .25rem;
 }
 
 .slide-card-image{
@@ -55,7 +55,7 @@
 
 }
 .large-scope-img{
-    margin-left: 7rem;
+    margin-left: 10rem;
 }
 .likes-item{
     margin-left: .5rem;
@@ -74,7 +74,7 @@
 
 .slide-detail-header{
     text-align: center;
-    margin-left: 1rem;
+    margin-left: .25rem;
     
 }
 .scope-slide-container-flex{
@@ -239,7 +239,7 @@ width: 5rem;
     flex-direction: column;
     text-align: center;
     margin-left: 2rem;
-    margin-top: 3rem
+    margin-top: 2rem
    
 }
 
