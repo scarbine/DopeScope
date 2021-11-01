@@ -1,10 +1,13 @@
 
 .slide-btn{
     margin: 1rem;
+    box-shadow: rgba(211, 211, 211, 0.582) .25rem .25rem 5px;
+
 }
 
 .slide-card{
     width: 15rem;
+    box-shadow: rgba(211, 211, 211, 0.596) .25rem .25rem 5px;
 }
 
 .slide-container{
@@ -19,6 +22,10 @@
     margin:2rem;
     display: flex;
     justify-content: space-evenly;
+}
+
+.slide-detail-image{
+    box-shadow: rgba(211, 211, 211, 0.582) .25rem .25rem 5px;
 }
 
 .slide-card-image{
@@ -39,6 +46,7 @@
     padding: .25rem .5rem .25rem .5rem;
     background-color: rgb(124, 196, 219);
     color: white;
+    box-shadow: rgba(211, 211, 211, 0.582) .25rem .25rem 5px;
 
 }
 .likes-item{
@@ -154,7 +162,7 @@ display: flex;
 justify-content: space-between;
 border: solid rgb(219, 219, 219) .1rem;
 margin: 1rem 10rem 1rem 10rem;
-box-shadow: rgba(211, 211, 211, 0.582) .25rem .25rem;
+box-shadow: rgba(211, 211, 211, 0.582) .25rem .25rem 5px;
 }
 .slide-card-mini:hover{
     cursor: pointer;
@@ -222,6 +230,7 @@ width: 5rem;
     flex-direction: column;
     text-align: center;
     margin-left: 2rem;
+    margin-top: 3rem
    
 }
 

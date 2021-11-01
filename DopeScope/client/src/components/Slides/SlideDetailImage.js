@@ -39,7 +39,7 @@ export const SlideDetailImage = ({ slide, location }) => {
     {/* {console.log(imagePublicId , slide)} */}
       <div className="slide-card-container">
         <CloudinaryContext cloudName="ddaeunjfu" secure="true">
-          <Image publicId={`DopeScope/${imagePublicId}`} secure="true">
+          <Image className="slide-detail-image" publicId={`DopeScope/${imagePublicId}`} secure="true">
             <Transformation
               width="550"
               height="550"
