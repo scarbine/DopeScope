@@ -32,7 +32,7 @@ export const AddTagModal = (props) => {
   return (
     <div>
       
-      <div onClick={toggle} className="sidebar-link add-tag-button">Add Tag</div>
+      <h5 onClick={toggle} className="sidebar-link add-tag-button">Add Tag</h5>
       <Modal isOpen={modal} toggle={toggle} className={className}>
         <ModalHeader toggle={toggle}>Add Tag</ModalHeader>
         <ModalBody>

@@ -36,10 +36,14 @@ html, body {
 
 .dashboard-header{
 
-  /* margin-left: 2rem; */
+  margin-left: 2rem;
   text-align: center;
 }
 
 .mini-slide-list-dashboard{
   margin-top: 2rem;
+}
+
+.navbar-container{
+  box-shadow: rgba(211, 211, 211, 0.582) .25rem .25rem 5px;
 }
