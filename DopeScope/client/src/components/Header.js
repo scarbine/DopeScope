@@ -28,14 +28,14 @@ export default function Header({ isLoggedIn }) {
             {isLoggedIn && (
               <>
                 <NavItem className="logout">
-                  <a
+                  <div
                     aria-current="page"
                     className="nav-link"
                     style={{ cursor: "pointer" }}
                     onClick={logout}
                   >
                     Logout
-                  </a>
+                  </div>
                 </NavItem>
               </>
             )}
