@@ -27,7 +27,7 @@ export const MiniSlideCard = (props) => {
 
   return (
     <>
-      {console.log(imagePublicId)}
+      {/* {console.log(imagePublicId)} */}
       <div className="slide-card-mini" onClick={handleClick}>
         <div className="left-box">
           <div className="left-box-text">{props.slide.name}</div>

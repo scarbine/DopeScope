@@ -77,6 +77,8 @@
     justify-content: space-between;
     margin: .5rem 1rem .5rem 1rem;
     font-size: large;
+    width: 600px;
+    padding: 0rem 4rem 0rem 1rem;
 }
 
 .comments-header{
@@ -109,7 +111,7 @@
 
 .image-container{
     display: flex;
-    width: 30rem;
+    width: 45rem;
     flex-direction: column;
 }
 
@@ -135,6 +137,7 @@
 .slide-details-column{
     margin: 1rem 2rem 1rem 6rem;
     justify-content: center;
+    width: 600px;
 }
 
 .scope-slides{

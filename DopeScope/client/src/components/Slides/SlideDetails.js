@@ -17,12 +17,7 @@ import { SlideTagModal } from "./SlideTagModal";
 import { getUserByFirebaseId } from "../../modules/UserManager";
 import { MiniSlideCardList } from "./MiniSlideCardList";
 import { CustomImageSearch } from "../CustomImageSearch/CustomImageSearch";
-import {
-  Image,
-  Video,
-  Transformation,
-  CloudinaryContext,
-} from "cloudinary-react";
+import { SlideDetailImage } from "./SlideDetailImage";
 
 export const SlideDetails = () => {
   const { slideId } = useParams();
@@ -224,21 +219,12 @@ export const SlideDetails = () => {
         <section className="slide-details-column">
           <h1 className="slide-detail-header">{slide.name}</h1>
           <div className="image-container">
-            <img
+            {/* <img
               className="slide-detail-img"
               src={slide.imageUrl}
               alt={slide.name}
-            />
-            {/* <CloudinaryContext cloudName="ddaeunjfu" secure="true">
-              <Image publicId={`DopeScope/${imagePublicId}`} secure="true">
-                <Transformation
-                  width="75"
-                  height="75"
-                  // gravity="face"
-                  crop="thumb"
-                />
-              </Image>
-            </CloudinaryContext> */}
+            /> */}
+            <SlideDetailImage slide={slide} location={location}/>
             <div className="sub-image-info">
               <div>
                 {slide.microscope.make} {slide.microscope.model}
@@ -263,8 +249,6 @@ export const SlideDetails = () => {
               Delete Slide
             </Button>
             {slideTagModal}
-
-            {/* {currrentUserObj.id === slide.microscope.user.id ? <SlideTagModal key={slide.id} slide={slide} slideId={slideId} addSlideTag={addSlideTag}/> : <></>} */}
             <SlideCommentModal
               key={slide.id}
               slide={slide}
@@ -315,7 +299,6 @@ export const SlideDetails = () => {
         </section>
         <section className="right-container">
           <div>
-            {/* <SlideList /> */}
             <MiniSlideCardList />
           </div>
           <img
