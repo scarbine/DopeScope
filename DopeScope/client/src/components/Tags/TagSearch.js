@@ -5,6 +5,7 @@ import { SlideCard } from "../Slides/SlideCard";
 import { searchSlidesByTagId } from "../../modules/SlideTagManager";
 import { TagCardSearch } from "./TagCardSearch";
 import { getAllSlides } from "../../modules/SlideManager";
+import { Container } from "reactstrap";
 
 export const TagSearch = () => {
   const [foundSlides, setFoundSlides] = useState([]);
@@ -42,6 +43,7 @@ export const TagSearch = () => {
 
   return (
     <>
+    <div className="tag-slide-page">
       <div>
         <h5 className="found-slides-header-tags">Search By Tag</h5>
         <div className="all-tags-container">
@@ -67,6 +69,8 @@ export const TagSearch = () => {
           return <SlideCard key={slide.id} slide={slide} />;
         })}
         </div>
+
+      </div>
 
       </div>
     </>

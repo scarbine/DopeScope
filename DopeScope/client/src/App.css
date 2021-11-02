@@ -41,4 +41,17 @@
   display: flex;
 }
 
+.full-screen{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.application-views{
+  padding-bottom: 4rem;
+  height: 64rem;
+  margin-left: 2rem;
+  overflow: auto;
+}
+
 
