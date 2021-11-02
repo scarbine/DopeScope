@@ -29,7 +29,7 @@ function App() {
       <ApplicationViews isLoggedIn={isLoggedIn} />
       </div>
       </div>
-      <Footer isLoggedIn={isLoggedIn}/>
+      {/* <Footer isLoggedIn={isLoggedIn}/> */}
       </div>
     </Router>
   );

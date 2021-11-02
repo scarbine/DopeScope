@@ -5,6 +5,7 @@
     /* margin: 1rem; */
     background-color: rgba(67, 98, 104, 0.829);
     min-width: 225px;
+    min-height: 2000px;
     box-shadow: rgba(211, 211, 211, 0.582) .25rem .25rem 5px;
 
 }
