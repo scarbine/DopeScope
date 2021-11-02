@@ -9,6 +9,7 @@ import { MicroscopeForm } from "./components/Microscopes/MicroscopeForm";
 import { SlideForm } from "./components/Slides/SlideForm";
 import { MicroscopeDetail } from "./components/Microscopes/MicroscopeDetails";
 import { SlideDetails } from "./components/Slides/SlideDetails";
+import { TagSearch } from "./components/Tags/TagSearch";
 
 export default function ApplicationViews({ isLoggedIn }) {
   return (
@@ -52,6 +53,9 @@ export default function ApplicationViews({ isLoggedIn }) {
         </Route>
         <Route path="/slide/:slideId(\d+)">
           {isLoggedIn ? <SlideDetails /> : <Redirect to="/login" />}
+        </Route>
+        <Route path="/tag/search">
+          {isLoggedIn ? <TagSearch /> : <Redirect to="/login" />}
         </Route>
 
         <Route path="/register">

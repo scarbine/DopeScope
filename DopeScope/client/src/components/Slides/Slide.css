@@ -81,7 +81,14 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
-    max-width: 75rem;
+    max-width: 80rem;
+    /* position: fixed; */
+    /* top: 10px;
+    left: 10px;
+    bottom: 10px; */
+    /* width: 180px; */
+    overflow-y: scroll;
+    height: 45rem;
 }
 
 .scope-slide-contaier-column{

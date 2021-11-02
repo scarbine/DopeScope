@@ -57,6 +57,12 @@ namespace DopeScope.Controllers
             return Ok(slideTag);
         }
 
+        [HttpGet("search")]
+        public IActionResult Search(int id)
+        {
+            return Ok(_slideTagRepository.GetAllBySlidesByTagId(id));
+        }
+
         [HttpPost]
         public IActionResult Post(SlideTag slideTag)
         {

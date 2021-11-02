@@ -68,6 +68,36 @@ namespace DopeScope.Repository
             }
         }
 
+        public List<SlideTag> GetAllBySlidesByTagId(int id)
+        {
+            using (var conn = Connection)
+            {
+                conn.Open();
+                using (var cmd = conn.CreateCommand())
+                {
+                    cmd.CommandText = @"SELECT st.Id, st.TagId, st.SlideId , s.Id AS SlideId, s.Magnification, s.Microscopeid, s.ImageUrl, s.Description, s.DateCreated, s.Name, t.Id, t.Tag FROM SlideTag st
+                        LEFT JOIN[Tag] t ON t.id = st.TagId
+                        LEFT JOIN Slide s ON s.id = st.SlideId
+                        WHERE  t.id = @Id ";
+
+                    DbUtils.AddParameter(cmd, @"Id", id);
+
+                    var slideTags = new List<SlideTag>();
+
+                    var reader = cmd.ExecuteReader();
+                    while (reader.Read())
+                    {
+                        slideTags.Add(NewSlideTag(reader));
+                    }
+
+                    reader.Close();
+
+                    return slideTags;
+
+                }
+            }
+        }
+
 
 
 

@@ -148,3 +148,4 @@ export const searchSlides = (searchTerm) => {
   });
 });
 };
+

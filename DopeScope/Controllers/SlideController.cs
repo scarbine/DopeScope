@@ -91,6 +91,7 @@ namespace DopeScope.Controllers
             return Ok(_slideRepository.SearchSlides(q));
         }
 
+
         private UserProfile GetCurrentUserProfile()
             {
                 var firebaseUserId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
