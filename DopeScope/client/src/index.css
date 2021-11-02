@@ -32,7 +32,7 @@ html, body {
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
-  min-width: 65rem;
+  min-width: 56rem;
 }
 
 .dashboard-header{
