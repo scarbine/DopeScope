@@ -25,8 +25,8 @@ export const LargeScopeImage = ({ slide, location }) => {
     // setCurrentSlide(slide);
     // setTimeout(500)
     if (slide.name !== "") {
-      const [, pid] = slide.microscope.imageUrl.split("DopeScope/");
-      const [iPid] = pid.split(".");
+      const [, pid] = slide.microscope.imageUrl?.split("DopeScope/");
+      const [iPid] = pid?.split(".");
       setImagePublicId(iPid);
     }
   }, [location, slide.name]);

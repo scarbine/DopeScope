@@ -57,7 +57,7 @@
 
 }
 .large-scope-img{
-    margin-left: 10rem;
+    margin-left: 4rem;
 }
 .likes-item{
     margin-left: .5rem;
@@ -180,7 +180,7 @@
 display: flex;
 justify-content: space-between;
 border: solid rgb(219, 219, 219) .1rem;
-margin: 1rem 10rem 1rem 10rem;
+margin: 1rem 5rem 1rem 5rem;
 box-shadow: rgba(211, 211, 211, 0.582) .25rem .25rem 5px;
 }
 .slide-card-mini:hover{
@@ -248,7 +248,9 @@ width: 5rem;
     display: flex;
     flex-direction: column;
     text-align: center;
-    margin-top: 2rem
+    margin-top: 2rem;
+    max-width: 40rem;
+   
    
 }
 
