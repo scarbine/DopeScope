@@ -7,6 +7,7 @@ import { SlideList } from "./Slides/SlideList";
 import "../index.css";
 import { MiniSlideCardList } from "./Slides/MiniSlideCardList";
 
+
 export const Home = () => {
 
 
@@ -51,6 +52,7 @@ export const Home = () => {
         {DisplayView()}
         </div>
         <div className="mini-slide-list-dashboard">
+  
         <MiniSlideCardList />
         </div>
       </div>

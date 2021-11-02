@@ -10,8 +10,8 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace DopeScope.Controllers
 {
-        //[Authorize]
-        [Route("api/[controller]")]
+        [Authorize]
+    [Route("api/[controller]")]
         [ApiController]
         public class SlideController : ControllerBase
         {

@@ -58,6 +58,7 @@
 }
 .large-scope-img{
     margin-left: 4rem;
+    margin-top: 2rem;
 }
 .likes-item{
     margin-left: .5rem;
@@ -251,9 +252,10 @@ width: 5rem;
 
 .search-return-container{
     border: .1rem lightgray solid;
-    margin:.25rem;
+    margin: 1.5rem;
     border-radius: 1rem;
     text-decoration: none;
+    box-shadow: rgba(211, 211, 211, 0.582) .25rem .25rem 5px;
 
 }
 
@@ -288,5 +290,10 @@ width: 5rem;
     padding:.15rem;
     text-decoration: none;
     color: black;
+   
+}
+
+.latest-slide-image{
+    max-width: 14rem;
 }
 

@@ -28,8 +28,10 @@ html, body {
   
 }
 
-
-
+.navbar-items{
+  display: flex;
+  justify-content: space-between;
+}
 .dashboard-container-left{
   display: flex;
   flex-direction: column;

@@ -11,6 +11,7 @@ using System.Security.Claims;
 
 namespace DopeScope.Controllers
 {
+    [Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class LikeController : ControllerBase

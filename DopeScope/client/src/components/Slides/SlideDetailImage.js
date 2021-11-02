@@ -13,39 +13,36 @@ import {
 
 import "./Slide.css";
 
-export const SlideDetailImage = ({ slide, location }) => {
-//   const [currentSlide, setCurrentSlide] = useState({});
-//   const [imagePublicIdWithFileExt, setImagePublicIdWithFlieExt ] = useState("")
-  const [imagePublicId, setImagePublicId] = useState("")
-
-    
+export const SlideDetailImage = ({ slide, location,height,width }) => {
+  //   const [currentSlide, setCurrentSlide] = useState({});
+  //   const [imagePublicIdWithFileExt, setImagePublicIdWithFlieExt ] = useState("")
+  const [imagePublicId, setImagePublicId] = useState("");
 
   useEffect(() => {
     // setCurrentSlide(slide);
     // setTimeout(500)
-    if(slide.name !== ""){
-        const [,pid] =  slide.imageUrl.split("DopeScope/");
-        const [iPid,] = pid.split(".")
-        setImagePublicId(iPid)
+    if (slide.name !== "") {
+      const [, pid] = slide.imageUrl.split("DopeScope/");
+      const [iPid] = pid.split(".");
+      setImagePublicId(iPid);
     }
   }, [location, slide.name]);
 
-//   const [, imagePublicIdWithFileExt] =
-//     slide.imageUrl?.split("DopeScope/");
-//   const [imagePublicId,] = imagePublicIdWithFileExt.split(".");
+  //   const [, imagePublicIdWithFileExt] =
+  //     slide.imageUrl?.split("DopeScope/");
+  //   const [imagePublicId,] = imagePublicIdWithFileExt.split(".");
 
   return (
     <>
-    {/* {console.log(imagePublicId , slide)} */}
+      {/* {console.log(imagePublicId , slide)} */}
       <div className="slide-card-container">
         <CloudinaryContext cloudName="ddaeunjfu" secure="true">
-          <Image className="slide-detail-image" publicId={`DopeScope/${imagePublicId}`} secure="true">
-            <Transformation
-              width="550"
-              height="550"
-              // gravity="face"
-              crop="thumb"
-            />
+          <Image
+            className="slide-detail-image"
+            publicId={`DopeScope/${imagePublicId}`}
+            secure="true"
+          >
+            <Transformation width={width} height={height} crop="thumb" />
           </Image>
         </CloudinaryContext>
       </div>

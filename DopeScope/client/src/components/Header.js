@@ -18,7 +18,7 @@ export default function Header({ isLoggedIn }) {
 
   return (
     <div className="navbar-container">
-      <Navbar color="dark" dark expand="md">
+      <Navbar className="navbar-items" color="dark" dark expand="md">
         <NavbarBrand className="logo" tag={RRNavLink} to="/">
           DopeScope
         </NavbarBrand>
