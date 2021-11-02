@@ -11,6 +11,8 @@ export const TagSearch = () => {
   const [allTags, setAllTags] = useState([]);
   const [searchTagId, setSearchTagId] = useState(0);
   const [slideTagList, setSlideTagList] = useState([]);
+  const [searchTagName, setSearchTagName] = useState('');
+ 
 
   useEffect(() => {
     getAllTags().then(setAllTags);
@@ -37,14 +39,7 @@ export const TagSearch = () => {
       
   },[slideTagList])
 
-  
 
-//   for (let i = 0 ; i < foundSlides.length ; i++){
-      
-//         foundSlides[i].slide.map
-
-        
-//   }
   return (
     <>
       <div>
@@ -57,6 +52,7 @@ export const TagSearch = () => {
               key={tag.id}
               tag={tag}
               setSearchTagId={setSearchTagId}
+              setSearchTagName={setSearchTagName}
             />
           );
         })}
@@ -64,7 +60,7 @@ export const TagSearch = () => {
       </div>
 
       <div>
-        <h5 className="found-slides-header">{foundSlides.length} Found Slides List</h5>
+        <h5 className="found-slides-header">{foundSlides.length} {searchTagName} {foundSlides.length === 0 || foundSlides.length === 1 ? "Slide" : "Slides" } </h5>
         {console.log(foundSlides)}
         <div className="found-slides-cotainer">
         {foundSlides?.map((slide) => {

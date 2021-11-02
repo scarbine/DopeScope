@@ -4,17 +4,21 @@ import { addSlideTag, deleteSlideTag } from "../../modules/SlideTagManager";
 
 import "./Tags.css";
 
-export const TagCardSearch = ({ tag,  setSearchTagId }) => {
+export const TagCardSearch = ({ tag,  setSearchTagId, setSearchTagName }) => {
+
   
     const handleTagClick = (e) => {
     e.preventDefault()
     setSearchTagId(tag.id)
-    console.log(tag.id)
+    setSearchTagName(tag.tagName)
+    console.log(tag.id, tag.tagName)
   };
+
+
 
   return (
     <>
-      <div className="search-tag-container">
+      <div className='search-tag-container'>
         <div onClick={handleTagClick}>{tag.tagName}</div>
       </div>
     </>
