@@ -44,7 +44,7 @@ export const MicroscopeDetail = () => {
           {/* <h5>{scope.user.fullName}</h5> */}
           {/* <h5>Scopes Slides</h5> */}
           <div className="scope-slides-wrapper">
-            <h5 className="scope-slide-title">Slides</h5>
+            <h5 className="scope-slide-title"> {slides.length !== 0 ? <>{slides.length} {slides.length === 1 ? <>Slide</> : <>Slides</> }</> : <>Slides</>}</h5>
             <h5 className="scope-slide-title">
               ________________________________________________________________________________________
             </h5>

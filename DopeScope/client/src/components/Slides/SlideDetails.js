@@ -94,7 +94,6 @@ export const SlideDetails = () => {
     if (userLike === undefined) {
       return (
         <>
-          {/* <Button onClick={handleAddLike}>Like</Button> */}
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="16"
@@ -111,7 +110,6 @@ export const SlideDetails = () => {
     } else {
       return (
         <>
-          {/* <Button onClick={handleDeleteLike}>UnLike</Button> */}
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="16"
@@ -171,26 +169,8 @@ export const SlideDetails = () => {
   },[likeToggle])
 
 
-
-  const handleScopeClick = () => {
-    history.push(`/microscope/${slide.microscope.id}`);
-  };
-
   const slideTagModalDisplay = () => {
-    // if (currrentUserObj.id === slide.microscope.user.id) {
-    //   setSlideTagModal(
-    //     <SlideTagModal
-    //       key={Math.random}
-    //       slideTagModalToggle={slideTagModalToggle}
-    //       toggleSlideTagModal={toggleSlideTagModal}
-    //       slide={slide}
-    //       slideId={slideId}
-    //       addSlideTag={addSlideTag}
-    //     />
-    //   );
-    // } else {
-    //   setSlideTagModal(<></>);
-    // }
+
     setSlideTagModal(
       <SlideTagModal
         key={Math.random}
@@ -234,7 +214,7 @@ export const SlideDetails = () => {
               src={slide.imageUrl}
               alt={slide.name}
             /> */}
-            <SlideDetailImage slide={slide} location={location}/>
+            <SlideDetailImage slide={slide} location={location} height={550} width={550}/>
             <div className="sub-image-info">
               <div>
                 {slide.microscope.make} {slide.microscope.model}
@@ -296,6 +276,7 @@ export const SlideDetails = () => {
         </section>
         <section className="right-container">
           <div>
+            
             <MiniSlideCardList likes={likes}/>
           </div>
           <div className="large-scope-img">

@@ -6,6 +6,7 @@ import Header from "./components/Header";
 import { SideBar } from "./components/SideBar/SideBar";
 import { onLoginStatusChange } from "./modules/authManager";
 import "./App.css"
+import { Footer } from "./components/Footer/Footer";
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(null);
@@ -20,10 +21,15 @@ function App() {
 
   return (
     <Router>
+      <div className="full-screen">
       <Header isLoggedIn={isLoggedIn} />
       <div className="container-nav">
       <SideBar isLoggedIn={isLoggedIn} />
+      <div className="application-views">
       <ApplicationViews isLoggedIn={isLoggedIn} />
+      </div>
+      </div>
+      {/* <Footer isLoggedIn={isLoggedIn}/> */}
       </div>
     </Router>
   );

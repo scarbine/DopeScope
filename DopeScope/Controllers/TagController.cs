@@ -10,6 +10,7 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace DopeScope.Controllers
 {
+    [Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class TagController : ControllerBase

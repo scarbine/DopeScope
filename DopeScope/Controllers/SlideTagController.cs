@@ -11,6 +11,7 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace DopeScope.Controllers
 {
+    [Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class SlideTagController : ControllerBase
@@ -55,6 +56,12 @@ namespace DopeScope.Controllers
                 NotFound();
             }
             return Ok(slideTag);
+        }
+
+        [HttpGet("search")]
+        public IActionResult Search(int id)
+        {
+            return Ok(_slideTagRepository.GetAllBySlidesByTagId(id));
         }
 
         [HttpPost]

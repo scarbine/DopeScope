@@ -12,6 +12,8 @@
 
 .slide-container{
     margin: 0rem 0rem 0rem 2rem;
+    display: flex;
+   
 }
 
 .slide-list-title{
@@ -55,7 +57,8 @@
 
 }
 .large-scope-img{
-    margin-left: 10rem;
+    margin-left: 4rem;
+    margin-top: 2rem;
 }
 .likes-item{
     margin-left: .5rem;
@@ -81,7 +84,8 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
-    max-width: 75rem;
+    min-width: 52rem;
+    max-width: 55rem;
 }
 
 .scope-slide-contaier-column{
@@ -160,6 +164,8 @@
 
 .scope-slides{
     justify-content: space-between;
+    min-width: 52rem;
+    max-width: 55rem;
 }
 
 .line{
@@ -170,7 +176,7 @@
 display: flex;
 justify-content: space-between;
 border: solid rgb(219, 219, 219) .1rem;
-margin: 1rem 10rem 1rem 10rem;
+margin: 1rem 5rem 1rem 5rem;
 box-shadow: rgba(211, 211, 211, 0.582) .25rem .25rem 5px;
 }
 .slide-card-mini:hover{
@@ -238,16 +244,18 @@ width: 5rem;
     display: flex;
     flex-direction: column;
     text-align: center;
-    margin-left: 2rem;
-    margin-top: 2rem
+    margin-top: 2rem;
+    max-width: 40rem;
+   
    
 }
 
 .search-return-container{
     border: .1rem lightgray solid;
-    margin:.25rem;
+    margin: 1.5rem;
     border-radius: 1rem;
     text-decoration: none;
+    box-shadow: rgba(211, 211, 211, 0.582) .25rem .25rem 5px;
 
 }
 
@@ -282,4 +290,10 @@ width: 5rem;
     padding:.15rem;
     text-decoration: none;
     color: black;
+   
 }
+
+.latest-slide-image{
+    max-width: 14rem;
+}
+

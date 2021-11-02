@@ -51,7 +51,7 @@ export const MicroscopeForm = () => {
           formData
         )
         .then((res) => {
-          const newMicroscope = { ...microscope };
+         const newMicroscope = { ...microscope };
          newMicroscope.imageUrl = res.data.secure_url;
           setMicroscope(newMicroscope); 
         })

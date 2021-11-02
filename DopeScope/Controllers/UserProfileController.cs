@@ -2,10 +2,11 @@
 using System;
 using DopeScope.Models;
 using DopeScope.Repository;
+using Microsoft.AspNetCore.Authorization;
 
 namespace DopeScope.Controllers
 {
-
+    [Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class UserProfileController : ControllerBase

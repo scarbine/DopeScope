@@ -11,5 +11,7 @@ namespace DopeScope.Repository
         SlideTag GetById(int id);
         void Update(SlideTag slideTag);
         List<SlideTag> GetAllBySlideId(int id);
+
+        List<SlideTag> GetAllBySlidesByTagId(int id);
     }
 }

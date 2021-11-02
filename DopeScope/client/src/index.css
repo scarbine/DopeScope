@@ -28,15 +28,20 @@ html, body {
   
 }
 
+.navbar-items{
+  display: flex;
+  justify-content: space-between;
+}
 .dashboard-container-left{
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
+  min-width: 56rem;
 }
 
 .dashboard-header{
-
-  margin-left: 2rem;
+  margin-top: 1rem;
+  /* margin-left: 2rem; */
   text-align: center;
 }
 
@@ -46,4 +51,23 @@ html, body {
 
 .navbar-container{
   box-shadow: rgba(211, 211, 211, 0.582) .25rem .25rem 5px;
+}
+
+.dashboard-veiw-toggle-buttons{
+  display: flex;
+  justify-content: space-between;
+  margin: 2rem 14rem 0rem 14rem;
+}
+
+.view-toggle-buttons{
+  border: lightgrey .1rem solid;
+  padding: .5rem 2rem;
+  border-radius: 2rem;
+  box-shadow: rgba(211, 211, 211, 0.582) .25rem .25rem 5px;
+  background-color: lightskyblue;
+  color: white;
+}
+
+.view-toggle-buttons:hover{
+  cursor: pointer;
 }

@@ -75,3 +75,7 @@
 .scope-owner{
     text-align: center;
 }
+
+.scope-card-btn{
+    box-shadow: rgba(211, 211, 211, 0.582) .25rem .25rem 5px;
+}
