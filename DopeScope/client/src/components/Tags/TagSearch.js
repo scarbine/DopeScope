@@ -48,24 +48,29 @@ export const TagSearch = () => {
   return (
     <>
       <div>
-        <h5>Search By Tag</h5>
+        <h5 className="found-slides-header-tags">Search By Tag</h5>
+        <div className="all-tags-container">
         {allTags.map((tag) => {
           return (
             <TagCardSearch
+              className="search-tag-card"
               key={tag.id}
               tag={tag}
               setSearchTagId={setSearchTagId}
             />
           );
         })}
+        </div>
       </div>
 
       <div>
-        <h5>Found Slides List</h5>
+        <h5 className="found-slides-header">{foundSlides.length} Found Slides List</h5>
         {console.log(foundSlides)}
+        <div className="found-slides-cotainer">
         {foundSlides?.map((slide) => {
           return <SlideCard key={slide.id} slide={slide} />;
         })}
+        </div>
 
       </div>
     </>

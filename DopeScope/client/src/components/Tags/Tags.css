@@ -10,3 +10,30 @@
     padding:.25rem;
     border-radius: .25rem;
 }
+
+.all-tags-container{
+    display: flex;
+    text-align: center;
+    justify-content: space-between;
+    margin: 0rem 5rem 0rem 5rem;
+}
+
+.search-tag-container{
+    margin: 1rem;
+}
+
+.found-slides-cotainer{
+    display: flex;
+    flex-wrap: wrap;
+   width: 68rem;
+}
+
+.found-slides-header{
+    text-align: center;
+
+}
+
+.found-slides-header-tags{
+    text-align: center;
+    margin-top: 2rem;
+}
