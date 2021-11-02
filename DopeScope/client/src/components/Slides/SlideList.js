@@ -61,6 +61,7 @@ export const SlideList = () => {
       ? longLine
       : shortLine;
 
+
   return (
     <>
       <div className="slide-container">
@@ -94,12 +95,6 @@ export const SlideList = () => {
             )}
           </div>
         </div>
-        {/* <div className="mini-slide-list-container">
-            <h3>Latest Slides</h3>
-            {allSlides?.slice(0,5).map(slide=>{
-                return <MiniSlideCard key={slide.id} slide={slide} />
-            })}
-            </div> */}
       </div>
     </>
   );

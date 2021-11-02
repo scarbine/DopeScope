@@ -12,6 +12,8 @@
 
 .slide-container{
     margin: 0rem 0rem 0rem 2rem;
+    display: flex;
+    min-width: 65rem;
 }
 
 .slide-list-title{
@@ -291,6 +293,3 @@ width: 5rem;
     color: black;
 }
 
-.slide-container{
-    display: flex;
-}
