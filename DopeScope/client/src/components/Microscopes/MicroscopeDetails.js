@@ -5,6 +5,7 @@ import { Button, Container } from "reactstrap";
 import { getMicroscopesById } from "../../modules/MicroscopeManager";
 import { getSlideByScopeId } from "../../modules/SlideManager";
 import { SideBar } from "../SideBar/SideBar";
+import { MiniSlideCardList } from "../Slides/MiniSlideCardList";
 import { SlideCard } from "../Slides/SlideCard";
 
 export const MicroscopeDetail = () => {
@@ -62,11 +63,14 @@ export const MicroscopeDetail = () => {
             </Button>
           </div>
         </div>
+        <div>
+          <MiniSlideCardList />
         <img
           className="scope-detail-image"
           src={scope.imageUrl}
           alt={scope.model}
         />
+        </div>
       </container>
     </>
   );
