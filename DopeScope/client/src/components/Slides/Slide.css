@@ -84,8 +84,8 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
-    min-width: 52rem;
-    max-width: 55rem;
+    min-width: 68rem;
+    max-width: 69rem;
 }
 
 .scope-slide-contaier-column{
@@ -303,4 +303,17 @@ width: 5rem;
 
 .all-slides-view-wrapper{
     display: flex;
+}
+
+.dope-scope-logo-form{
+    margin-left: 4rem;
+}
+
+.form-container{
+    border-radius: 2rem;
+        border: lightgrey 0.1rem solid;
+        box-shadow: rgb(211 211 211 / 58%) 0.25rem 0.25rem 5px;
+        padding: 1rem 2rem 1rem 2rem;
+        margin: 3rem 10rem;
+
 }

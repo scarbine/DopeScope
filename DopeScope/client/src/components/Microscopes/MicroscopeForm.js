@@ -73,6 +73,7 @@ export const MicroscopeForm = () => {
   return (
 
     <>
+    <div className="form-container">
       <Image className="dope-scope-logo-form" cloudName="ddaeunjfu" publicId="sldw7e2sdswxiiwnqxng.png" secure="true">
               <Transformation width="275" height="170" crop="fill"/>
               </Image>
@@ -113,6 +114,7 @@ export const MicroscopeForm = () => {
         </Button>
       </FormGroup>
     </Form>
+    </div>
     </>
   );
 };

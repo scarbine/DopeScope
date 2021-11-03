@@ -16,7 +16,7 @@ export const MiniSlideCardList = () => {
     getAllSlides().then(setSlides)
 }, []);
 
-    const sliceNumber = location === "/" || "/slide" ? 5 : 3 
+    const sliceNumber = location === "/" || location === "/slide" || location.includes("/tag") ? 5 : 3 
 
 
   return (

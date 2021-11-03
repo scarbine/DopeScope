@@ -52,5 +52,6 @@
 }
 
 .tag-slide-page{
-    margin-left: 6rem;
+    margin-left: 2rem;
+    display: flex;
 }

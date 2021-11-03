@@ -81,6 +81,7 @@ export const SlideForm = () => {
 
   return (
     <>
+    <div className="form-container">
       <Image
         className="dope-scope-logo-form"
         cloudName="ddaeunjfu"
@@ -179,6 +180,7 @@ export const SlideForm = () => {
           </Button>
         </FormGroup>
       </Form>
+      </div>
     </>
   );
 };
