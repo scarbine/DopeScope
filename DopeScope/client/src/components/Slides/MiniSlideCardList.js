@@ -5,7 +5,7 @@ import { getAllSlides } from "../../modules/SlideManager";
 import { MiniSlideCard } from "./MiniSlideCard";
 
 
-export const MiniSlideCardList = () => {
+export const MiniSlideCardList = ({sliceNumber}) => {
   
   const history = useHistory()
   const [slides, setSlides] = useState([]);
@@ -16,7 +16,7 @@ export const MiniSlideCardList = () => {
     getAllSlides().then(setSlides)
 }, []);
 
-    const sliceNumber = location === "/" || location === "/slide" || location.includes("/tag") ? 5 : 3 
+   
 
 
   return (

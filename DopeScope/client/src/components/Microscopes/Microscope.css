@@ -83,3 +83,7 @@
 .dope-scope-logo-scope-list{
     margin-left: 20rem;
 }
+
+.all-scopes-view-wrapper{
+    display: flex;
+}

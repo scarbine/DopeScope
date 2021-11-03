@@ -282,7 +282,7 @@ export const SlideDetails = () => {
               <Transformation width="275" height="170" crop="fill"/>
               </Image>
            
-            <MiniSlideCardList likes={likes}/>
+            <MiniSlideCardList likes={likes} sliceNumber={3}/>
           </div>
           <div className="large-scope-img">
           <LargeScopeImage slide={slide} location={location} />

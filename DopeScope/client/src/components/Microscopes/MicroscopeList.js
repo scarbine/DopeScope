@@ -63,9 +63,9 @@ export const MicroscopeList = () => {
      
         <div>
           <div className="scope-slides-wrapper">
-            <h5 className="scope-slide-title">
+            <h3 className="scope-slide-title">
               {location === "/microscope" ? "All Scopes" : "Scopes"}
-            </h5>
+            </h3>
             {/* <ScopeSearch /> */}
             <h5 className="scope-slide-title line">
               ________________________________________________________________________________________

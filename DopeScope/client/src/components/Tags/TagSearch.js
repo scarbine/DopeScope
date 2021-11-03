@@ -92,7 +92,7 @@ export const TagSearch = () => {
           >
             <Transformation width="275" height="170" crop="fill" />
           </Image>
-          <MiniSlideCardList />
+          <MiniSlideCardList sliceNumber={7}/>
         </div>
       </div>
     </>

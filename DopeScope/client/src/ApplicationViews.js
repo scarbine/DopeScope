@@ -10,6 +10,7 @@ import { SlideForm } from "./components/Slides/SlideForm";
 import { MicroscopeDetail } from "./components/Microscopes/MicroscopeDetails";
 import { SlideDetails } from "./components/Slides/SlideDetails";
 import { TagSearch } from "./components/Tags/TagSearch";
+import { AllScopesView } from "./components/Microscopes/AllScopesView";
 import { AllSlidesView } from "./components/Slides/AllSlidesView";
 
 export default function ApplicationViews({ isLoggedIn }) {
@@ -25,7 +26,7 @@ export default function ApplicationViews({ isLoggedIn }) {
         </Route>
 
         <Route path="/microscope" exact>
-          {isLoggedIn ? <MicroscopeList /> : <Redirect to="/login" />}
+          {isLoggedIn ? <AllScopesView /> : <Redirect to="/login" />}
         </Route>
         <Route path="/myscopes" exact>
           {isLoggedIn ? <MicroscopeList /> : <Redirect to="/login" />}

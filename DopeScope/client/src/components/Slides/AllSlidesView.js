@@ -14,7 +14,7 @@ export const AllSlidesView = () => {
         <Image className="dope-scope-logo-mini" cloudName="ddaeunjfu" publicId="sldw7e2sdswxiiwnqxng.png" secure="true">
               <Transformation width="275" height="170" crop="fill"/>
               </Image>
-          <MiniSlideCardList />
+          <MiniSlideCardList sliceNumber={7}/>
         </div>
       </div>
     </>
