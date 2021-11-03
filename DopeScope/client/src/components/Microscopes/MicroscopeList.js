@@ -10,6 +10,8 @@ import { MicroscopeCard } from "./MicroscopeCard";
 import { getScopesByUserId } from "../../modules/MicroscopeManager";
 import firebase from "firebase";
 import "./Microscope.css";
+import { Image } from "cloudinary-react";
+import { Transformation } from "cloudinary-react";
 
 export const MicroscopeList = () => {
   const history = useHistory();
@@ -17,7 +19,7 @@ export const MicroscopeList = () => {
   const [microscopes, setMicroscopes] = useState([]);
   const [currentLocation, setCurrentLocation] = useState("");
   const user = firebase.auth().currentUser;
- 
+  
 
   useEffect(() => {
     if (location === "/microscope") {
@@ -58,6 +60,7 @@ export const MicroscopeList = () => {
   return (
     <>
       <div className="scope-container ">
+     
         <div>
           <div className="scope-slides-wrapper">
             <h5 className="scope-slide-title">

@@ -6,13 +6,17 @@ import { MicroscopeList } from "./Microscopes/MicroscopeList";
 import { SlideList } from "./Slides/SlideList";
 import "../index.css";
 import { MiniSlideCardList } from "./Slides/MiniSlideCardList";
+import { Image, Transformation } from "cloudinary-react";
 
 
 export const Home = () => {
 
-
+  const user = firebase.auth().currentUser;
+  const firebaseId = user.uid;
   const[viewToggle, setViewToggle] = useState(false)
   const[view, setView] =useState(0)
+  const [currentUser, setCurrentUser] = useState({})
+  
 
   const DisplayView = () =>{
     if(view === 0){
@@ -33,6 +37,7 @@ export const Home = () => {
   
   useEffect(()=>{
     DisplayView()
+    getUserByFirebaseId(firebaseId).then(setCurrentUser)
   },[view])
 
   return (
@@ -40,7 +45,7 @@ export const Home = () => {
      
       <div className="dashboard">
         <div className="dashboard-container-left">
-        <h3 className="dashboard-header">My Dashboard</h3>
+        <h3 className="dashboard-header">Welcome, {currentUser.fullName}!</h3>
         <div className="dashboard-veiw-toggle-buttons"><h5 className="view-toggle-buttons" onClick={handleMySlidesClick}>My Slides</h5> <h5 className="view-toggle-buttons" onClick={handleMyScopesClick}>My Scopes</h5></div>
        
         {/* <div className="scope-slides-wrapper">
@@ -52,7 +57,14 @@ export const Home = () => {
         {DisplayView()}
         </div>
         <div className="mini-slide-list-dashboard">
-  
+        <Image
+          className="dope-scope-logo-mini"
+          cloudName="ddaeunjfu"
+          publicId="sldw7e2sdswxiiwnqxng.png"
+          secure="true"
+        >
+          <Transformation width="275" height="170" crop="fill" />
+        </Image>
         <MiniSlideCardList />
         </div>
       </div>

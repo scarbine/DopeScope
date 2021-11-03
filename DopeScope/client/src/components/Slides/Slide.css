@@ -157,7 +157,7 @@
 }
 
 .slide-details-column{
-    margin: 1rem 2rem 1rem 6rem;
+    margin: 2rem 2rem 1rem 6rem;
     justify-content: center;
     width: 600px;
 }
@@ -297,3 +297,10 @@ width: 5rem;
     max-width: 14rem;
 }
 
+.dope-scope-logo-mini{
+    margin-left:6rem;
+}
+
+.all-slides-view-wrapper{
+    display: flex;
+}

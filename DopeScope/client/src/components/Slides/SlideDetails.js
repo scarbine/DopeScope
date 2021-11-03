@@ -19,6 +19,7 @@ import { MiniSlideCardList } from "./MiniSlideCardList";
 import { CustomImageSearch } from "../CustomImageSearch/CustomImageSearch";
 import { SlideDetailImage } from "./SlideDetailImage";
 import { LargeScopeImage } from "../Microscopes/LargeScopeImage";
+import { CloudinaryContext, Image, Transformation } from "cloudinary-react";
 
 export const SlideDetails = () => {
   const { slideId } = useParams();
@@ -277,6 +278,10 @@ export const SlideDetails = () => {
         <section className="right-container">
           <div>
             
+              <Image className="dope-scope-logo-mini" cloudName="ddaeunjfu" publicId="sldw7e2sdswxiiwnqxng.png" secure="true">
+              <Transformation width="275" height="170" crop="fill"/>
+              </Image>
+           
             <MiniSlideCardList likes={likes}/>
           </div>
           <div className="large-scope-img">
