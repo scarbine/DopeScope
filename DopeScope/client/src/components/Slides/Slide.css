@@ -80,12 +80,32 @@
     margin-left: .25rem;
     
 }
+
+.note-card-wrapper{
+    max-height: 18rem;
+    width:35rem;
+    overflow: auto;
+    max-height: 14rem;
+    border-radius: 1rem;
+    margin: 1rem;
+}
+
+.note-card-div{
+    max-height:20rem;
+    width:37rem;
+    border-radius: 2rem;
+    border: solid lightgrey .1rem;
+    box-shadow: rgba(211, 211, 211, 0.582) .25rem .25rem 5px;
+}
+
 .scope-slide-container-flex{
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
     min-width: 68rem;
     max-width: 69rem;
+    max-height: 64rem;
+    overflow: auto;
 }
 
 .scope-slide-contaier-column{
@@ -157,7 +177,7 @@
 }
 
 .slide-details-column{
-    margin: 2rem 2rem 1rem 6rem;
+    margin: .5rem 2rem 1rem 6rem;
     justify-content: center;
     width: 600px;
 }
@@ -299,6 +319,7 @@ width: 5rem;
 
 .dope-scope-logo-mini{
     margin-left:6rem;
+    margin-top: 2rem;
 }
 
 .all-slides-view-wrapper{

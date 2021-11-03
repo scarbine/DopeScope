@@ -169,9 +169,7 @@ export const SlideDetails = () => {
   },[likeToggle])
   
   useEffect(()=>{
-    likeButton()
-  
-    
+    likeButton()  
   },[likes])
 
 
@@ -270,7 +268,8 @@ export const SlideDetails = () => {
             <h5>Uploaded: {date}</h5>
           </section> */}
           <h3 className="slide-comments"> Comments</h3>
-          <div>
+          <div className="note-card-div">
+          <div className="note-card-wrapper">
             {notes?.length !== 0 ? (
               notes?.map((note) => {
                 return <NoteCard key={note.id} note={note} />;
@@ -278,6 +277,7 @@ export const SlideDetails = () => {
             ) : (
               <div>No Comments</div>
             )}
+          </div>
           </div>
         </section>
         <section className="right-container">
