@@ -7,6 +7,7 @@ import { getSlideByScopeId } from "../../modules/SlideManager";
 import { SideBar } from "../SideBar/SideBar";
 import { MiniSlideCardList } from "../Slides/MiniSlideCardList";
 import { SlideCard } from "../Slides/SlideCard";
+import { Image, Transformation } from "cloudinary-react";
 
 export const MicroscopeDetail = () => {
   const history = useHistory();
@@ -46,9 +47,9 @@ export const MicroscopeDetail = () => {
           {/* <h5>Scopes Slides</h5> */}
           <div className="scope-slides-wrapper">
             <h5 className="scope-slide-title"> {slides.length !== 0 ? <>{slides.length} {slides.length === 1 ? <>Slide</> : <>Slides</> }</> : <>Slides</>}</h5>
-            <h5 className="scope-slide-title">
+            {/* <h5 className="scope-slide-title">
               ________________________________________________________________________________________
-            </h5>
+            </h5> */}
             <div className="scope-slides">
               {slides.length === 0 ? (
                 <div>Currenlty No Slides </div>
@@ -64,7 +65,15 @@ export const MicroscopeDetail = () => {
           </div>
         </div>
         <div>
-          <MiniSlideCardList />
+        <Image
+            className="dope-scope-logo-mini"
+            cloudName="ddaeunjfu"
+            publicId="sldw7e2sdswxiiwnqxng.png"
+            secure="true"
+          >
+            <Transformation width="275" height="170" crop="fill" />
+          </Image>
+          <MiniSlideCardList sliceNumber={3}/>
         <img
           className="scope-detail-image"
           src={scope.imageUrl}
