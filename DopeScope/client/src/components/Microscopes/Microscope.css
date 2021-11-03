@@ -2,7 +2,7 @@
     margin : 1rem;
 }
 .scope-container{
-    margin: 2rem;
+    margin: 0rem 0rem 0rem 2rem;
 }
 
 .scope-card-container{
@@ -29,7 +29,7 @@
 .scope-slides-wrapper{
     display: flex;
     flex-direction: column;
-    margin-top: 1rem;
+    margin-top: 2rem;
 }
 
 .title-scope{
