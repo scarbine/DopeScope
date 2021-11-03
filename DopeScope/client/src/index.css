@@ -52,7 +52,14 @@ html, body {
 }
 
 .mini-slide-list-dashboard{
-  margin-top: 2rem;
+  margin-top: 4rem;
+}
+.dope-scope-logo-dashboard-main{
+  margin-left: 26rem;
+}
+
+.dashboard-logo{
+  margin-left:4rem;
 }
 
 .navbar-container{

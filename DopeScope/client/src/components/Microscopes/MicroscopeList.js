@@ -67,9 +67,9 @@ export const MicroscopeList = () => {
               {location === "/microscope" ? "All Scopes" : "Scopes"}
             </h3>
             {/* <ScopeSearch /> */}
-            <h5 className="scope-slide-title line">
+            {/* <h5 className="scope-slide-title line">
               ________________________________________________________________________________________
-            </h5>
+            </h5> */}
             <div className="scope-slides">
               {microscopes.length !== 0 ? (
                 microscopes.map((microscope) => {

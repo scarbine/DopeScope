@@ -68,7 +68,7 @@ export const SlideList = () => {
         <div className="scope-slides-wrapper">
           <div className="slides-list-header">
             <h3 className="scope-slide-title"> Slides</h3>
-            {slideLine}
+            {/* {slideLine} */}
             {location === "/slide" ? (
               <SlideSearch setSlides={setSlides} />
             ) : (
@@ -85,7 +85,7 @@ export const SlideList = () => {
                     key={slide.id}
                     slide={slide}
                     updateList={updateList}
-                    
+
                   />
                 );
               })

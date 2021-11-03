@@ -45,8 +45,18 @@ export const Home = () => {
      
       <div className="dashboard">
         <div className="dashboard-container-left">
-        <h3 className="dashboard-header">Welcome, {currentUser.fullName}!</h3>
+          <div className="dashboard-logo">
+        <Image
+          className="dope-scope-logo-dashboard-main"
+          cloudName="ddaeunjfu"
+          publicId="sldw7e2sdswxiiwnqxng.png"
+          secure="true"
+        >
+          <Transformation width="275" height="170" crop="fill" />
+        </Image>
+        <h3 className="dashboard-header"> Welcome to DopeScope,<br></br> {currentUser.fullName}!</h3>
         <div className="dashboard-veiw-toggle-buttons"><h5 className="view-toggle-buttons" onClick={handleMySlidesClick}>My Slides</h5> <h5 className="view-toggle-buttons" onClick={handleMyScopesClick}>My Scopes</h5></div>
+        </div>
        
         {/* <div className="scope-slides-wrapper">
             <SlideList />
@@ -57,15 +67,15 @@ export const Home = () => {
         {DisplayView()}
         </div>
         <div className="mini-slide-list-dashboard">
-        <Image
+        {/* <Image
           className="dope-scope-logo-mini"
           cloudName="ddaeunjfu"
           publicId="sldw7e2sdswxiiwnqxng.png"
           secure="true"
         >
           <Transformation width="275" height="170" crop="fill" />
-        </Image>
-        <MiniSlideCardList sliceNumber={7}/>
+        </Image> */}
+        <MiniSlideCardList sliceNumber={8}/>
         </div>
       </div>
     </>
