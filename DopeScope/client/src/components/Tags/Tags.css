@@ -38,7 +38,9 @@
 .found-slides-cotainer{
     display: flex;
     flex-wrap: wrap;
-   width: 68rem;
+   width: 70rem;
+   max-height: 64rem;
+   overflow: auto;
 }
 
 .found-slides-header{
@@ -52,5 +54,6 @@
 }
 
 .tag-slide-page{
-    margin-left: 6rem;
+    margin-left: 2rem;
+    display: flex;
 }

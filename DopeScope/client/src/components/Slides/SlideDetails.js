@@ -19,6 +19,7 @@ import { MiniSlideCardList } from "./MiniSlideCardList";
 import { CustomImageSearch } from "../CustomImageSearch/CustomImageSearch";
 import { SlideDetailImage } from "./SlideDetailImage";
 import { LargeScopeImage } from "../Microscopes/LargeScopeImage";
+import { CloudinaryContext, Image, Transformation } from "cloudinary-react";
 
 export const SlideDetails = () => {
   const { slideId } = useParams();
@@ -165,8 +166,11 @@ export const SlideDetails = () => {
 
   useEffect(()=>{
     getSlideLikeByUser(slideId, firebaseId).then(setUserLike);
-    likeButton()
   },[likeToggle])
+  
+  useEffect(()=>{
+    likeButton()  
+  },[likes])
 
 
   const slideTagModalDisplay = () => {
@@ -223,7 +227,7 @@ export const SlideDetails = () => {
               <div> x{slide.magnification}</div>
               <div className="likes-container">
                 <div className="likes-item">{likeButton()}</div>
-                <div className="likes-item">{likeCounter()}</div>
+                <div className="likes-item">{likes.length}</div>
               </div>
             </div>
           </div>
@@ -264,7 +268,8 @@ export const SlideDetails = () => {
             <h5>Uploaded: {date}</h5>
           </section> */}
           <h3 className="slide-comments"> Comments</h3>
-          <div>
+          <div className="note-card-div">
+          <div className="note-card-wrapper">
             {notes?.length !== 0 ? (
               notes?.map((note) => {
                 return <NoteCard key={note.id} note={note} />;
@@ -273,11 +278,19 @@ export const SlideDetails = () => {
               <div>No Comments</div>
             )}
           </div>
+          </div>
         </section>
         <section className="right-container">
           <div>
-            
-            <MiniSlideCardList likes={likes}/>
+          <Image
+            className="dope-scope-logo-mini"
+            cloudName="ddaeunjfu"
+            publicId="sldw7e2sdswxiiwnqxng.png"
+            secure="true"
+          >
+            <Transformation width="275" height="170" crop="fill" />
+          </Image>
+            <MiniSlideCardList likes={likes} sliceNumber={3}/>
           </div>
           <div className="large-scope-img">
           <LargeScopeImage slide={slide} location={location} />

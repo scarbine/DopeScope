@@ -48,8 +48,7 @@
 }
 
 .application-views{
-  padding-bottom: 4rem;
-  height: 64rem;
+  height: auto;
   margin-left: 2rem;
   
 }

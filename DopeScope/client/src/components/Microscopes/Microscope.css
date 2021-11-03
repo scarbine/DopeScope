@@ -2,7 +2,7 @@
     margin : 1rem;
 }
 .scope-container{
-    margin: 2rem;
+    margin: 0rem 0rem 0rem 2rem;
 }
 
 .scope-card-container{
@@ -29,7 +29,7 @@
 .scope-slides-wrapper{
     display: flex;
     flex-direction: column;
-    margin-top: 1rem;
+    margin-top: 2rem;
 }
 
 .title-scope{
@@ -41,7 +41,7 @@
 .scope-detail-image{
     height: 30rem;
     width: 30rem;
-    margin-top: 7rem;
+    margin-top: 2rem;
     margin-right: 2rem;
   
 }
@@ -78,4 +78,12 @@
 
 .scope-card-btn{
     box-shadow: rgba(211, 211, 211, 0.582) .25rem .25rem 5px;
+}
+
+.dope-scope-logo-scope-list{
+    margin-left: 20rem;
+}
+
+.all-scopes-view-wrapper{
+    display: flex;
 }

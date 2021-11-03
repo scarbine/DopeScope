@@ -14,6 +14,8 @@ import {
 } from "../../modules/MicroscopeManager";
 import firebase from "firebase";
 import axios from "axios";
+import { Image } from "cloudinary-react";
+import { Transformation } from "cloudinary-react";
 
 export const SlideForm = () => {
   const history = useHistory();
@@ -79,6 +81,15 @@ export const SlideForm = () => {
 
   return (
     <>
+    <div className="form-container">
+      <Image
+        className="dope-scope-logo-form"
+        cloudName="ddaeunjfu"
+        publicId="sldw7e2sdswxiiwnqxng.png"
+        secure="true"
+      >
+        <Transformation width="275" height="170" crop="fill" />
+      </Image>
       <Form className="new-slide-form">
         <h1>Add New Slide</h1>
         <FormGroup>
@@ -169,6 +180,7 @@ export const SlideForm = () => {
           </Button>
         </FormGroup>
       </Form>
+      </div>
     </>
   );
 };
