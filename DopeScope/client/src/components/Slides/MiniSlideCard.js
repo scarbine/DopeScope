@@ -23,7 +23,7 @@ export const MiniSlideCard = (props) => {
 
   useEffect(() => {
     getSlideLikes(props.slide.id).then(setLikes);
-  }, []);
+  }, [likes]);
 
   return (
     <>

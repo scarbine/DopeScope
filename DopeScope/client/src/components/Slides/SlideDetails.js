@@ -166,8 +166,13 @@ export const SlideDetails = () => {
 
   useEffect(()=>{
     getSlideLikeByUser(slideId, firebaseId).then(setUserLike);
-    likeButton()
   },[likeToggle])
+  
+  useEffect(()=>{
+    likeButton()
+  
+    
+  },[likes])
 
 
   const slideTagModalDisplay = () => {
@@ -224,7 +229,7 @@ export const SlideDetails = () => {
               <div> x{slide.magnification}</div>
               <div className="likes-container">
                 <div className="likes-item">{likeButton()}</div>
-                <div className="likes-item">{likeCounter()}</div>
+                <div className="likes-item">{likes.length}</div>
               </div>
             </div>
           </div>
@@ -277,11 +282,14 @@ export const SlideDetails = () => {
         </section>
         <section className="right-container">
           <div>
-            
-              <Image className="dope-scope-logo-mini" cloudName="ddaeunjfu" publicId="sldw7e2sdswxiiwnqxng.png" secure="true">
-              <Transformation width="275" height="170" crop="fill"/>
-              </Image>
-           
+          <Image
+            className="dope-scope-logo-mini"
+            cloudName="ddaeunjfu"
+            publicId="sldw7e2sdswxiiwnqxng.png"
+            secure="true"
+          >
+            <Transformation width="275" height="170" crop="fill" />
+          </Image>
             <MiniSlideCardList likes={likes} sliceNumber={3}/>
           </div>
           <div className="large-scope-img">
