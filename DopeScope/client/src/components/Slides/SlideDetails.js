@@ -166,13 +166,16 @@ export const SlideDetails = () => {
 
   useEffect(()=>{
     getSlideLikeByUser(slideId, firebaseId).then(setUserLike);
-  },[likeToggle])
+  },[likes])
   
   useEffect(()=>{
-    likeButton()  
-  },[likes])
+    likeButton() 
+    likesCount() 
+  },[userLike])
 
-
+ const likesCount = () =>{
+   return likes.length
+ }
   const slideTagModalDisplay = () => {
 
     setSlideTagModal(
@@ -195,7 +198,6 @@ export const SlideDetails = () => {
             <div className="search-return-container">
               <a className="search-return-card" href={sr.image.contextLink}>
                 <img className="search-results-image" src={sr.image.thumbnailLink} alt={sr.title} />
-                {/* <div className="search-result-title">{sr.title}</div> */}
                 <div className="search-result-title">{sr.snippet}</div>
               </a>
             </div>
@@ -227,7 +229,7 @@ export const SlideDetails = () => {
               <div> x{slide.magnification}</div>
               <div className="likes-container">
                 <div className="likes-item">{likeButton()}</div>
-                <div className="likes-item">{likes.length}</div>
+                <div className="likes-item">{likesCount()}</div>
               </div>
             </div>
           </div>
