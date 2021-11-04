@@ -53,7 +53,8 @@ namespace DopeScope.Repository
                     cmd.CommandText = @"SELECT s.Id AS SlideId, s.Magnification, s.MicroscopeId,s.Description, s.ImageUrl, s.Name, s.DateCreated, u.Id AS UserId, u.FirebaseId, u.FirstName, u.Lastname, u.Email, n.Id, n.UserId, n.SlideId, n.Note FROM Note n
                         JOIN[User] u ON u.Id = n.UserId
                         JOIN Slide s ON s.Id = n.SlideId
-                        WHERE s.Id = @Id";
+                        WHERE s.Id = @Id
+                        ORDER BY n.Id DESC";
 
                     DbUtils.AddParameter(cmd, "@Id", id);
 

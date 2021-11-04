@@ -7,6 +7,7 @@ import { SlideList } from "./Slides/SlideList";
 import "../index.css";
 import { MiniSlideCardList } from "./Slides/MiniSlideCardList";
 import { Image, Transformation } from "cloudinary-react";
+import { SlideSearch } from "./Slides/SlideSearch";
 
 
 export const Home = () => {
@@ -75,6 +76,8 @@ export const Home = () => {
         >
           <Transformation width="275" height="170" crop="fill" />
         </Image> */}
+        
+
         <MiniSlideCardList sliceNumber={8}/>
         </div>
       </div>
