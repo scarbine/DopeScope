@@ -49,7 +49,8 @@ namespace DopeScope.Repository
                     cmd.CommandText = @"SELECT s.Id, s.Magnification, s.MicroscopeId,s.Description, s.ImageUrl, s.Name, s.DateCreated, m.Id AS MId, m.Make, m.Model, m.ImageUrl AS ScopeImageUrl, m.UserId AS MUID, u.Id AS UserId, u.FirebaseId, u.FirstName, u.Lastname, u.Email FROM Slide s
                         JOIN Microscope m ON s.MicroscopeId = m.Id
                         JOIN [USER] u ON u.Id = m.UserId
-                        WHERE u.FirebaseId =@Id";
+                        WHERE u.FirebaseId =@Id
+                        ORDER BY s.Id DESC";
                     DbUtils.AddParameter(cmd, "@Id", firebaseId);
 
                     var slides = new List<Slide>();
@@ -78,7 +79,8 @@ namespace DopeScope.Repository
                     cmd.CommandText = @"SELECT s.Id, s.Magnification, s.MicroscopeId,s.Description, s.ImageUrl, s.Name, s.DateCreated, m.Id AS MId, m.ImageUrl AS ScopeImageUrl, m.Make, m.Model, m.UserId AS MUID, u.Id AS UserId, u.FirebaseId, u.FirstName, u.Lastname, u.Email FROM Slide s
                         JOIN Microscope m ON s.MicroscopeId = m.Id
                         JOIN [USER] u ON u.Id = m.UserId
-                        WHERE m.Id =@Id";
+                        WHERE m.Id =@Id
+                        ORDER BY s.Id DESC";
                     DbUtils.AddParameter(cmd, "@Id", id);
 
                     var slides = new List<Slide>();
@@ -138,7 +140,8 @@ namespace DopeScope.Repository
                     cmd.CommandText = @"SELECT s.Id, s.Magnification, s.MicroscopeId,s.Description, s.ImageUrl, s.Name, s.DateCreated, m.Id AS MId, m.ImageUrl AS ScopeImageUrl, m.Make, m.Model, m.UserId AS MUID, u.Id AS UserId, u.FirebaseId, u.FirstName, u.Lastname, u.Email FROM Slide s
                         JOIN Microscope m ON s.MicroscopeId = m.Id
                         JOIN [USER] u ON u.Id = m.UserId
-                        WHERE s.Name LIKE @Criterion";
+                        WHERE s.Name LIKE @Criterion
+                        ORDER BY s.Id DESC";
                     DbUtils.AddParameter(cmd, "@Criterion", $"%{q}%");
 
                     var slides = new List<Slide>();
