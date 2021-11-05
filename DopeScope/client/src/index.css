@@ -85,3 +85,25 @@ html, body {
 .view-toggle-buttons:hover{
   cursor: pointer;
 }
+
+.slide-counter{
+  border: lightgrey solid .1rem;
+  box-shadow: rgba(211, 211, 211, 0.582) .25rem .25rem 5px;
+  height:20rem;
+  width: 17rem;
+  margin-left: 6rem;
+  border-radius: 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  text-align: center;
+}
+
+.slide-counter-total{
+  font-size: 5rem;
+  margin-top: 4rem;
+}
+.slide-counter-text{
+  font-size: 2rem;
+  margin-bottom: 2rem;
+}

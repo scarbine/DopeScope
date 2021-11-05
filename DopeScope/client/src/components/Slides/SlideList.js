@@ -67,7 +67,7 @@ export const SlideList = () => {
       <div className="slide-container">
         <div className="scope-slides-wrapper">
           <div className="slides-list-header">
-            <h3 className="scope-slide-title"> Slides</h3>
+            {/* <h3 className="scope-slide-title"> Slides</h3> */}
             {/* {slideLine} */}
             {location === "/slide" ? (
               <SlideSearch setSlides={setSlides} />

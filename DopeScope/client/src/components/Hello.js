@@ -8,6 +8,7 @@ import "../index.css";
 import { MiniSlideCardList } from "./Slides/MiniSlideCardList";
 import { Image, Transformation } from "cloudinary-react";
 import { SlideSearch } from "./Slides/SlideSearch";
+import { getAllSlides } from "../modules/SlideManager";
 
 
 export const Home = () => {
@@ -17,6 +18,7 @@ export const Home = () => {
   const[viewToggle, setViewToggle] = useState(false)
   const[view, setView] =useState(0)
   const [currentUser, setCurrentUser] = useState({})
+  const [slides, setSlides] = useState([])
   
 
   const DisplayView = () =>{
@@ -35,11 +37,16 @@ export const Home = () => {
     setView(0)
     console.log(view)
   }
+  useEffect(()=>{
+    getAllSlides().then(setSlides)
+  },[])
   
   useEffect(()=>{
     DisplayView()
     getUserByFirebaseId(firebaseId).then(setCurrentUser)
   },[view])
+  
+
 
   return (
     <>
@@ -65,7 +72,11 @@ export const Home = () => {
         <div className="scope-list-dashboard">
           <MicroscopeList />
         </div> */}
+        <div className="display-view-box">
+        <div className="display-view-wrapper">
         {DisplayView()}
+        </div>
+        </div>
         </div>
         <div className="mini-slide-list-dashboard">
         {/* <Image
@@ -77,8 +88,11 @@ export const Home = () => {
           <Transformation width="275" height="170" crop="fill" />
         </Image> */}
         
-
-        <MiniSlideCardList sliceNumber={8}/>
+        <div className="slide-counter">
+          <div className="slide-counter-total">{slides.length}</div>
+          <div className="slide-counter-text">DopeScopes</div>
+        </div>
+        <MiniSlideCardList sliceNumber={6}/>
         </div>
       </div>
     </>
