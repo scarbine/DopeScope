@@ -288,8 +288,9 @@
 }
 
 .tags-container {
-  display: flex;
-  justify-content: space-evenly;
+    justify-content: space-evenly;
+    display: flex;
+    flex-wrap: wrap;
 }
 
 .slide-tag-modal-header {
