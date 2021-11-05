@@ -1,14 +1,24 @@
 .tag-active-true{
-    border:.1rem solid slategray;
-    background-color: steelblue;
-    color: whitesmoke;
-    padding:.25rem;
-    border-radius: .25rem;
+    border: 0.1
+    rem
+     solid slategray;
+        background-color: rgba(70, 131, 180, 0.822);
+        color: whitesmoke;
+        padding: 0.75rem 1.75rem;    
+        border-radius: 4.25rem;
+        margin: 1rem;
+        justify-content: crenter;
+        display: flex;
+        justify-content: center;
 }
 .tag-active-false{
-    border:.1rem solid slategray;
-    padding:.25rem;
-    border-radius: .25rem;
+    border: .1rem solid lightgrey;
+    padding: 0.75rem 1.75rem;    
+    border-radius: 4.25rem;
+    margin: 1rem;
+    justify-content: crenter;
+    display: flex;
+    justify-content: center;
 }
 
 .all-tags-container{
@@ -17,6 +27,9 @@
     flex-wrap: wrap;
     justify-content: space-between;
     margin: 0rem 5rem 0rem 5rem;
+    justify-content: center;
+    padding: 1rem 5rem;
+    max-width: 960px;
 }
 
 .search-tag-container{

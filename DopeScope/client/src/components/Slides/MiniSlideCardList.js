@@ -3,21 +3,16 @@ import { useHistory } from "react-router";
 import { useEffect, useState } from "react/cjs/react.development";
 import { getAllSlides } from "../../modules/SlideManager";
 import { MiniSlideCard } from "./MiniSlideCard";
+import { Spinner } from "reactstrap";
 
-
-export const MiniSlideCardList = ({sliceNumber}) => {
-  
-  const history = useHistory()
+export const MiniSlideCardList = ({ sliceNumber }) => {
+  const history = useHistory();
   const [slides, setSlides] = useState([]);
   const location = history.location.pathname;
-  
 
   useEffect(() => {
-    getAllSlides().then(setSlides)
-}, []);
-
-   
-
+    getAllSlides().then(setSlides);
+  }, []);
 
   return (
     <>
@@ -27,6 +22,7 @@ export const MiniSlideCardList = ({sliceNumber}) => {
         {slides?.slice(0, sliceNumber).map((slide) => {
           return <MiniSlideCard key={slide.id} slide={slide} />;
         })}
+     
       </div>
     </>
   );
