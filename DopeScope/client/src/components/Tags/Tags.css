@@ -27,6 +27,8 @@
     flex-wrap: wrap;
     justify-content: space-between;
     margin: 0rem 5rem 0rem 5rem;
+    justify-content: center;
+    padding: 1rem 5rem;
 }
 
 .search-tag-container{

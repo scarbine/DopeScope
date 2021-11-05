@@ -120,7 +120,7 @@
 
 .comments-header {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-evenly;
   margin: 1rem 0rem 1rem 0rem;
 }
 .slide-detail-img {

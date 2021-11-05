@@ -54,7 +54,7 @@ export const SlideDetails = () => {
   const [notes, setNotes] = useState([]);
   // const [, imagePublicIdWithFileExt] = slide.imageUrl.split("DopeScope/");
   // const [imagePublicId] = imagePublicIdWithFileExt.split(".");
-  
+
   const updateList = () => {
     setUpdate(!update);
   };
@@ -146,8 +146,7 @@ export const SlideDetails = () => {
     getNotesBySlideId(slideId).then(setNotes);
   }, [location, slideTagModalToggle]);
 
-  useEffect(()=>{
-  },[])
+  useEffect(() => {}, []);
 
   useEffect(() => {
     setTimeout(1000);
@@ -161,23 +160,21 @@ export const SlideDetails = () => {
 
   useEffect(() => {
     getSlideLikes(slideId).then(setLikes);
- ;
   }, [likeToggle]);
 
-  useEffect(()=>{
+  useEffect(() => {
     getSlideLikeByUser(slideId, firebaseId).then(setUserLike);
-  },[likes])
-  
-  useEffect(()=>{
-    likeButton() 
-    likesCount() 
-  },[userLike])
+  }, [likes]);
 
- const likesCount = () =>{
-   return likes.length
- }
+  useEffect(() => {
+    likeButton();
+    likesCount();
+  }, [userLike]);
+
+  const likesCount = () => {
+    return likes.length;
+  };
   const slideTagModalDisplay = () => {
-
     setSlideTagModal(
       <SlideTagModal
         key={Math.random}
@@ -197,7 +194,11 @@ export const SlideDetails = () => {
           <>
             <div className="search-return-container">
               <a className="search-return-card" href={sr.image.contextLink}>
-                <img className="search-results-image" src={sr.image.thumbnailLink} alt={sr.title} />
+                <img
+                  className="search-results-image"
+                  src={sr.image.thumbnailLink}
+                  alt={sr.title}
+                />
                 <div className="search-result-title">{sr.snippet}</div>
               </a>
             </div>
@@ -220,12 +221,19 @@ export const SlideDetails = () => {
               src={slide.imageUrl}
               alt={slide.name}
             /> */}
-            <SlideDetailImage slide={slide} location={location} height={550} width={550}/>
+            <SlideDetailImage
+              slide={slide}
+              location={location}
+              height={550}
+              width={550}
+            />
             <div className="sub-image-info">
               <div>
                 {slide.microscope.make} {slide.microscope.model}
               </div>
-              <div className="sub-image-full-name">{slide.microscope.user.fullName} </div>
+              <div className="sub-image-full-name">
+                {slide.microscope.user.fullName}{" "}
+              </div>
               <div> x{slide.magnification}</div>
               <div className="likes-container">
                 <div className="likes-item">{likeButton()}</div>
@@ -239,23 +247,30 @@ export const SlideDetails = () => {
             })}
           </div>
           <div className="comments-header">
-            <Button className="slide-btn" onClick={handleEdit}>
-              Edit Slide
-            </Button>
-            <Button className="slide-btn" onClick={handleDelete}>
-              Delete Slide
-            </Button>
-            {slideTagModal}
-            <SlideCommentModal
-              key={slide.id}
-              slide={slide}
-              updateList={updateList}
-              setUpdate={setUpdate}
-              update={update}
-              setNotes={setNotes}
-              slideId={slideId}
-              getNotesBySlideId={getNotesBySlideId}
-            />
+            {currrentUserObj.id === slide.microscope.userId ? (
+              <>
+                {" "}
+                <Button className="slide-btn" onClick={handleEdit}>
+                  Edit Slide
+                </Button>
+                <Button className="slide-btn" onClick={handleDelete}>
+                  Delete Slide
+                </Button>
+                {slideTagModal}
+              </>
+            ) : (
+              <> </>
+              )}
+              <SlideCommentModal
+                key={slide.id}
+                slide={slide}
+                updateList={updateList}
+                setUpdate={setUpdate}
+                update={update}
+                setNotes={setNotes}
+                slideId={slideId}
+                getNotesBySlideId={getNotesBySlideId}
+              />
             <CustomImageSearch
               slide={slide}
               searchResults={searchResults}
@@ -271,31 +286,31 @@ export const SlideDetails = () => {
           </section> */}
           <h3 className="slide-comments"> Comments</h3>
           <div className="note-card-div">
-          <div className="note-card-wrapper">
-            {notes?.length !== 0 ? (
-              notes?.map((note) => {
-                return <NoteCard key={note.id} note={note} />;
-              })
-            ) : (
-              <div>No Comments</div>
-            )}
-          </div>
+            <div className="note-card-wrapper">
+              {notes?.length !== 0 ? (
+                notes?.map((note) => {
+                  return <NoteCard key={note.id} note={note} />;
+                })
+              ) : (
+                <div>No Comments</div>
+              )}
+            </div>
           </div>
         </section>
         <section className="right-container">
           <div>
-          <Image
-            className="dope-scope-logo-mini"
-            cloudName="ddaeunjfu"
-            publicId="sldw7e2sdswxiiwnqxng.png"
-            secure="true"
-          >
-            <Transformation width="275" height="170" crop="fill" />
-          </Image>
-            <MiniSlideCardList likes={likes} sliceNumber={3}/>
+            <Image
+              className="dope-scope-logo-mini"
+              cloudName="ddaeunjfu"
+              publicId="sldw7e2sdswxiiwnqxng.png"
+              secure="true"
+            >
+              <Transformation width="275" height="170" crop="fill" />
+            </Image>
+            <MiniSlideCardList likes={likes} sliceNumber={3} />
           </div>
           <div className="large-scope-img">
-          <LargeScopeImage slide={slide} location={location} />
+            <LargeScopeImage slide={slide} location={location} />
           </div>
         </section>
       </div>
