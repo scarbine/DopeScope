@@ -64,7 +64,7 @@
   height: 48rem;
   border: solid lightgrey 0.1rem;
   margin-top: 3rem;
-  border-radius: 2rem;
+  /* border-radius: 2rem; */
   box-shadow: rgba(211, 211, 211, 0.582) .25rem .25rem 5px;
   background-color: #7ddcfa1f;
 }
