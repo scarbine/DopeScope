@@ -8,7 +8,7 @@ import { deleteSlide } from "../../modules/SlideManager";
 import { Button, Card } from "reactstrap";
 import { SlideCommentModal } from "./SlideCommentModal";
 import { SlideList } from "./SlideList";
-import { addLike, deleteLike, getSlideLikes } from "../../modules/Likemanager";
+import { getSlideLikes } from "../../modules/Likemanager";
 import firebase from "firebase";
 import { getSlideLikeByUser } from "../../modules/Likemanager";
 import { getAllSlideTagsBySlideId } from "../../modules/SlideTagManager";
@@ -20,6 +20,7 @@ import { CustomImageSearch } from "../CustomImageSearch/CustomImageSearch";
 import { SlideDetailImage } from "./SlideDetailImage";
 import { LargeScopeImage } from "../Microscopes/LargeScopeImage";
 import { CloudinaryContext, Image, Transformation } from "cloudinary-react";
+import { LikesButton } from "../Likes/LikesButton";
 
 export const SlideDetails = () => {
   const { slideId } = useParams();
@@ -70,18 +71,6 @@ export const SlideDetails = () => {
     deleteSlide(slide.id).then(history.push("/slide"));
   };
 
-  const handleAddLike = (e) => {
-    e.preventDefault();
-    const likeObj = {
-      slideId: slideId,
-    };
-    addLike(likeObj).then(setLikeToggle(!likeToggle));
-  };
-  const handleDeleteLike = (e) => {
-    e.preventDefault();
-    deleteLike(userLike.id).then(setUserLike(undefined));
-    setLikeToggle(!likeToggle);
-  };
 
   const addSlideTag = (e) => {
     e.preventDefault();
@@ -91,56 +80,12 @@ export const SlideDetails = () => {
     setSlideTagModalToggle(!slideTagModalToggle);
   };
 
-  const likeButton = () => {
-    if (userLike === undefined) {
-      return (
-        <>
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="16"
-            height="16"
-            fill="currentColor"
-            className="bi bi-heart"
-            viewBox="0 0 16 16"
-            onClick={handleAddLike}
-          >
-            <path d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z" />
-          </svg>
-        </>
-      );
-    } else {
-      return (
-        <>
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="16"
-            height="16"
-            fill="currentColor"
-            className="bi bi-heart-fill"
-            viewBox="0 0 16 16"
-            onClick={handleDeleteLike}
-          >
-            <path
-              fillRule="evenodd"
-              d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z"
-            />
-          </svg>
-        </>
-      );
-    }
-  };
-
-  const likeCounter = () => {
-    return likes?.length;
-  };
-
+  
   useEffect(() => {
     getSlideById(slideId).then(setSlide);
     getNotesBySlideId(slideId).then(setNotes);
-    getSlideLikes(slideId).then(setLikes);
     getAllSlideTagsBySlideId(slideId).then(setSlideTags);
     console.log(userLike);
-    getSlideLikeByUser(slideId, firebaseId).then(setUserLike);
     getUserByFirebaseId(firebaseId).then(setCurrentUserObj);
     setEseEffectTrigger(!useEffectTrigger);
     getNotesBySlideId(slideId).then(setNotes);
@@ -149,7 +94,7 @@ export const SlideDetails = () => {
   useEffect(() => {}, []);
 
   useEffect(() => {
-    setTimeout(1000);
+    // setTimeout(1000);
     slideTagModalDisplay();
     mapSearchResults();
   }, [useEffectTrigger, location, slideTagModalToggle, slideId]);
@@ -158,22 +103,7 @@ export const SlideDetails = () => {
     getNotesBySlideId(slideId).then(setNotes);
   }, [update]);
 
-  useEffect(() => {
-    getSlideLikes(slideId).then(setLikes);
-  }, [likeToggle]);
-
-  useEffect(() => {
-    getSlideLikeByUser(slideId, firebaseId).then(setUserLike);
-  }, [likes]);
-
-  useEffect(() => {
-    likeButton();
-    likesCount();
-  }, [userLike]);
-
-  const likesCount = () => {
-    return likes.length;
-  };
+  
   const slideTagModalDisplay = () => {
     setSlideTagModal(
       <SlideTagModal
@@ -216,11 +146,7 @@ export const SlideDetails = () => {
         <section className="slide-details-column">
           <h1 className="slide-detail-header">{slide.name}</h1>
           <div className="image-container">
-            {/* <img
-              className="slide-detail-img"
-              src={slide.imageUrl}
-              alt={slide.name}
-            /> */}
+         
             <SlideDetailImage
               slide={slide}
               location={location}
@@ -236,8 +162,8 @@ export const SlideDetails = () => {
               </div>
               <div> x{slide.magnification}</div>
               <div className="likes-container">
-                <div className="likes-item">{likeButton()}</div>
-                <div className="likes-item">{likesCount()}</div>
+               
+                <LikesButton slideId={slideId} />
               </div>
             </div>
           </div>
@@ -260,17 +186,17 @@ export const SlideDetails = () => {
               </>
             ) : (
               <> </>
-              )}
-              <SlideCommentModal
-                key={slide.id}
-                slide={slide}
-                updateList={updateList}
-                setUpdate={setUpdate}
-                update={update}
-                setNotes={setNotes}
-                slideId={slideId}
-                getNotesBySlideId={getNotesBySlideId}
-              />
+            )}
+            <SlideCommentModal
+              key={slide.id}
+              slide={slide}
+              updateList={updateList}
+              setUpdate={setUpdate}
+              update={update}
+              setNotes={setNotes}
+              slideId={slideId}
+              getNotesBySlideId={getNotesBySlideId}
+            />
             <CustomImageSearch
               slide={slide}
               searchResults={searchResults}
