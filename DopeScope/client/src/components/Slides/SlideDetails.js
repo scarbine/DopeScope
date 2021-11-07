@@ -115,29 +115,6 @@ export const SlideDetails = () => {
     );
   };
 
-  // const mapSearchResults = () => {
-  //   return searchResults !== undefined ? (
-  //     searchResults.items?.map((sr) => {
-  //       return (
-  //         <>
-  //           <div className="search-return-container">
-  //             <a className="search-return-card" href={sr.image.contextLink}>
-  //               <img
-  //                 className="search-results-image"
-  //                 src={sr.image.thumbnailLink}
-  //                 alt={sr.title}
-  //               />
-  //               <div className="search-result-title">{sr.snippet}</div>
-  //             </a>
-  //           </div>
-  //         </>
-  //       );
-  //     })
-  //   ) : (
-  //     <> </>
-  //   );
-  // };
-
   return (
     <>
       <div className="slide-detail-container">
