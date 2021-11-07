@@ -94,11 +94,12 @@ namespace DopeScope.Repository
                 {
                     cmd.CommandText = @"
                         UPDATE Tag
-                           SET Tag = @Tag,
-                               TagId = @TagId                    
+                           SET Tag = @Tag
+                                                 
                          WHERE Id = @Id";
 
                     DbUtils.AddParameter(cmd, "@Tag", tag.TagName);
+                    DbUtils.AddParameter(cmd, "@Id", tag.Id);
 
 
                     cmd.ExecuteNonQuery();

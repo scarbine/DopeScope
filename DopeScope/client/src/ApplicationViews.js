@@ -12,6 +12,7 @@ import { SlideDetails } from "./components/Slides/SlideDetails";
 import { TagSearch } from "./components/Tags/TagSearch";
 import { AllScopesView } from "./components/Microscopes/AllScopesView";
 import { AllSlidesView } from "./components/Slides/AllSlidesView";
+import { EditTagOptions } from "./components/Tags/EditTagOptions";
 
 export default function ApplicationViews({ isLoggedIn }) {
   return (
@@ -58,6 +59,9 @@ export default function ApplicationViews({ isLoggedIn }) {
         </Route>
         <Route path="/tag/search">
           {isLoggedIn ? <TagSearch /> : <Redirect to="/login" />}
+        </Route>
+        <Route path="/tag/edit">
+          {isLoggedIn ? <EditTagOptions /> : <Redirect to="/login" />}
         </Route>
 
         <Route path="/register">

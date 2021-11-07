@@ -35,7 +35,7 @@ namespace DopeScope.Controllers
             return Ok(_tagRepository.GetAll());
         }
 
-        [HttpGet("Tag")]
+        [HttpGet("{id}")]
         public IActionResult Get(int id)
         {
             var slideTag = _tagRepository.GetById(id);

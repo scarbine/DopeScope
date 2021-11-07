@@ -18,21 +18,22 @@ export const LikesButton = ({slideId}) => {
     const history = useHistory()
     const location = history.location.pathname
 
+    const totalLikes = likes.length
+
 
     const handleAddLike = (e) => {
         e.preventDefault();
         const likeObj = {
             slideId: parseInt(slideId),
         };
-        console.log(likeObj)
+      
         addLike(likeObj).then(getSlideLikes(slideId)).then(setLikes)
     
     }
 
-    const handleDeleteLike = () => {
+    const handleDeleteLike = (e) => {
+        e.preventDefault()
         deleteLike(userLike.id).then(setUserLike(undefined))
-        console.log(userLike)
-
     }
 
     useEffect(()=> {
@@ -87,7 +88,7 @@ export const LikesButton = ({slideId}) => {
                 )}
 
           
-                <div>{likes.length}</div>
+                <div className="likes-item">{totalLikes}</div>
 
 
         </>

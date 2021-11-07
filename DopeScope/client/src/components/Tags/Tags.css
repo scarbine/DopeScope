@@ -70,3 +70,28 @@
     margin-left: 2rem;
     display: flex;
 }
+
+.tag-options-container{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    min-width: 15rem;
+    max-width: 57rem;
+    margin-top: 2rem;
+}
+
+.edit-tag-view{
+    margin-top: 3rem;
+    margin-left: 10rem;
+    text-align: center;
+}
+
+.edit-tag-action-btns{
+    display: flex;
+    justify-content: space-evenly;
+    margin-top: 1rem;
+}
+
+.edit-tag-field{
+    margin-top: 2rem;
+}

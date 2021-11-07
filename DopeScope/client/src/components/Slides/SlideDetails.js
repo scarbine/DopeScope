@@ -95,8 +95,9 @@ export const SlideDetails = () => {
 
   useEffect(() => {
     // setTimeout(1000);
+ 
+    // mapSearchResults();
     slideTagModalDisplay();
-    mapSearchResults();
   }, [useEffectTrigger, location, slideTagModalToggle, slideId]);
 
   useEffect(() => {
