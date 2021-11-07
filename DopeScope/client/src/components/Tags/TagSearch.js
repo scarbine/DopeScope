@@ -71,7 +71,7 @@ export const TagSearch = () => {
         <div>
           <h5 className="found-slides-header">
             {foundSlides.length} {searchTagName}{" "}
-            {foundSlides.length === 0 || foundSlides.length === 1
+            { foundSlides.length === 1
               ? "Slide"
               : "Slides"}{" "}
           </h5>

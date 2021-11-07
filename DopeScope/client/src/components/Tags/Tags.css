@@ -89,7 +89,23 @@
 .edit-tag-action-btns{
     display: flex;
     justify-content: space-evenly;
-    margin-top: 1rem;
+    margin-top: 2rem;
+    margin-left: 10rem;
+    margin-right: 10rem;
+  
+ 
+
+}
+
+.edit-tag-action-btn{
+    margin: 1rem;
+    border-radius: 2rem;
+    background-color: lightskyblue;
+    color: whitesmoke;
+    border: lightgray .1rem;
+    box-shadow: rgba(211, 211, 211, 0.582) .25rem .25rem 5px;
+    padding: .5rem 1rem .5rem 1rem;
+
 }
 
 .edit-tag-field{
@@ -100,4 +116,12 @@
     margin-left: -5rem;
     margin-bottom: 3rem;
     margin-top: -3rem;
+}
+
+.edit-tag-input{
+    width: 25rem;
+    border-radius: 2rem;
+    height: 2rem;
+    text-align: center;
+    margin-top:2rem;
 }

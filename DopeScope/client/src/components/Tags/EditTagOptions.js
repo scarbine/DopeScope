@@ -6,6 +6,7 @@ import { Image, Transformation } from "cloudinary-react";
 export const EditTagOptions = () => {
   const [tags, setTags] = useState([]);
   const [tagToEdit, setTagToEdit] = useState(undefined);
+  const [didSubmit, setDidSubmit] =useState(false)
 
   const handleTagClick = (e) => {
     console.log(e.target.id);
@@ -16,7 +17,7 @@ export const EditTagOptions = () => {
 
   useEffect(() => {
     getAllTags().then(setTags);
-  }, []);
+  }, [didSubmit]);
 
   useEffect(() => {
     console.log(tagToEdit);
@@ -26,12 +27,14 @@ export const EditTagOptions = () => {
     const newTag = { ...tagToEdit };
     newTag[e.target.name] = e.target.value;
     setTagToEdit(newTag);
+   
     console.log(tagToEdit);
   };
 
   const handleSubmit = () => {
     updateTag(tagToEdit);
     setTagToEdit(undefined);
+    setDidSubmit(!didSubmit)
   };
   const handleCancel = () => {
     setTagToEdit(undefined);
@@ -72,7 +75,8 @@ export const EditTagOptions = () => {
           {tagToEdit !== undefined ? (
             <>
               <div>
-                <input
+                  <h3>Edit Tag </h3>
+                <input className="edit-tag-input"
                   onChange={handleInputControlChange}
                   type="text"
                   name="tagName"
