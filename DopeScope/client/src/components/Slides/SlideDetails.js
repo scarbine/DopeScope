@@ -37,7 +37,7 @@ export const SlideDetails = () => {
   const [slideTagModal, setSlideTagModal] = useState(null);
   const [useEffectTrigger, setEseEffectTrigger] = useState(false);
   const [slideTagModalToggle, setSlideTagModalToggle] = useState(false);
-  const [searchResults, setSearchResults] = useState([]);
+  const [searchResults, setSearchResults] = useState(undefined);
   const [slide, setSlide] = useState({
     dateCreated: "",
     name: "",
@@ -71,7 +71,6 @@ export const SlideDetails = () => {
     deleteSlide(slide.id).then(history.push("/slide"));
   };
 
-
   const addSlideTag = (e) => {
     e.preventDefault();
   };
@@ -80,7 +79,6 @@ export const SlideDetails = () => {
     setSlideTagModalToggle(!slideTagModalToggle);
   };
 
-  
   useEffect(() => {
     getSlideById(slideId).then(setSlide);
     getNotesBySlideId(slideId).then(setNotes);
@@ -95,7 +93,7 @@ export const SlideDetails = () => {
 
   useEffect(() => {
     // setTimeout(1000);
- 
+
     // mapSearchResults();
     slideTagModalDisplay();
   }, [useEffectTrigger, location, slideTagModalToggle, slideId]);
@@ -104,7 +102,6 @@ export const SlideDetails = () => {
     getNotesBySlideId(slideId).then(setNotes);
   }, [update]);
 
-  
   const slideTagModalDisplay = () => {
     setSlideTagModal(
       <SlideTagModal
@@ -118,28 +115,28 @@ export const SlideDetails = () => {
     );
   };
 
-  const mapSearchResults = () => {
-    return searchResults !== undefined ? (
-      searchResults.items?.map((sr) => {
-        return (
-          <>
-            <div className="search-return-container">
-              <a className="search-return-card" href={sr.image.contextLink}>
-                <img
-                  className="search-results-image"
-                  src={sr.image.thumbnailLink}
-                  alt={sr.title}
-                />
-                <div className="search-result-title">{sr.snippet}</div>
-              </a>
-            </div>
-          </>
-        );
-      })
-    ) : (
-      <> </>
-    );
-  };
+  // const mapSearchResults = () => {
+  //   return searchResults !== undefined ? (
+  //     searchResults.items?.map((sr) => {
+  //       return (
+  //         <>
+  //           <div className="search-return-container">
+  //             <a className="search-return-card" href={sr.image.contextLink}>
+  //               <img
+  //                 className="search-results-image"
+  //                 src={sr.image.thumbnailLink}
+  //                 alt={sr.title}
+  //               />
+  //               <div className="search-result-title">{sr.snippet}</div>
+  //             </a>
+  //           </div>
+  //         </>
+  //       );
+  //     })
+  //   ) : (
+  //     <> </>
+  //   );
+  // };
 
   return (
     <>
@@ -147,7 +144,6 @@ export const SlideDetails = () => {
         <section className="slide-details-column">
           <h1 className="slide-detail-header">{slide.name}</h1>
           <div className="image-container">
-         
             <SlideDetailImage
               slide={slide}
               location={location}
@@ -163,7 +159,6 @@ export const SlideDetails = () => {
               </div>
               <div> x{slide.magnification}</div>
               <div className="likes-container">
-               
                 <LikesButton slideId={slideId} />
               </div>
             </div>
@@ -204,13 +199,31 @@ export const SlideDetails = () => {
               setSearchResults={setSearchResults}
             />
           </div>
-          {mapSearchResults()}
-          {/* <section className="slide-detail-info-container">
-            <h5></h5>
-
-            <h5>Description: {slide.description}</h5>
-            <h5>Uploaded: {date}</h5>
-          </section> */}
+          {/* {mapSearchResults()} */}
+          {searchResults !== undefined ? (
+            searchResults.items?.map((sr) => {
+              return (
+                <>
+                  <div className="search-return-container">
+                    <a
+                      className="search-return-card"
+                      href={sr.image.contextLink}
+                    >
+                      <img
+                        className="search-results-image"
+                        src={sr.image.thumbnailLink}
+                        alt={sr.title}
+                      />
+                      <div className="search-result-title">{sr.snippet}</div>
+                    </a>
+                  </div>
+                </>
+              );
+            })
+          ) : (
+            <> </>
+          )}
+         
           <h3 className="slide-comments"> Comments</h3>
           <div className="note-card-div">
             <div className="note-card-wrapper">

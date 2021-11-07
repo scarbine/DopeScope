@@ -1,34 +1,39 @@
 import React from "react";
 
 import { getSearchResults } from "../../modules/CustomerSearchmanager";
-import { CustomerSearchResultsModal } from "./CustomImageSearchResultsModal";
 
 
 
-export const CustomImageSearch = (props) => {
+
+export const CustomImageSearch = ({slide, setSearchResults, searchResults}) => {
 
     
    
   
     const num = 5
-    const q = props.slide.name
+    const q = slide.name
     const searchType = 'image'
   
 
 
     const handleOnClick = () => {
-            getSearchResults(num,q,searchType).then(props.setSearchResults)
+            getSearchResults(num,q,searchType).then(setSearchResults)
         //   console.log(props.searchResults.items)
-      
-        
+    }
+
+    const handleColapse = () => {
+        setSearchResults(undefined)
+        console.log(searchResults)
     }
 
     return (
-        <>
+        <>{searchResults === undefined ?
             <div onClick={handleOnClick} className="slide-btn btn btn-secondary">
                 Learn More
-            </div>
-            {/* <CustomerSearchResultsModal name="Learn More" searchResults={props.searchResults} /> */}
+            </div> : <div onClick={handleColapse} className="slide-btn btn btn-secondary">
+                See Less
+            </div>}
+          
      
         </>
     )
