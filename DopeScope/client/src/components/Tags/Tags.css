@@ -82,7 +82,7 @@
 
 .edit-tag-view{
     margin-top: 3rem;
-    margin-left: 10rem;
+    margin-left: 8rem;
     text-align: center;
 }
 
@@ -94,4 +94,10 @@
 
 .edit-tag-field{
     margin-top: 2rem;
+}
+
+.logo-edit-tag{
+    margin-left: -5rem;
+    margin-bottom: 3rem;
+    margin-top: -3rem;
 }

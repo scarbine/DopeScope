@@ -1,7 +1,7 @@
 import React from "react";
 import { useEffect, useState } from "react/cjs/react.development";
 import { getAllTags, getTagById, updateTag } from "../../modules/TagManager";
-
+import { Image, Transformation } from "cloudinary-react";
 
 export const EditTagOptions = () => {
   const [tags, setTags] = useState([]);
@@ -40,6 +40,16 @@ export const EditTagOptions = () => {
   return (
     <>
       <div className="edit-tag-view">
+        <div className="logo-edit-tag">
+          <Image
+            className="dope-scope-logo-mini"
+            cloudName="ddaeunjfu"
+            publicId="sldw7e2sdswxiiwnqxng.png"
+            secure="true"
+          >
+            <Transformation width="275" height="170" crop="fill" />
+          </Image>
+        </div>
         <h1>Which tag would you like to edit?</h1>
         <div className="tag-options-container">
           {tags?.map((tag) => {
@@ -69,8 +79,12 @@ export const EditTagOptions = () => {
                   value={tagToEdit?.tagName}
                 ></input>
                 <div className="edit-tag-action-btns">
-                  <div className="edit-tag-action-btn" onClick={handleSubmit}>Submit</div>
-                  <div className="edit-tag-action-btn" onClick={handleCancel}>Cancel</div>
+                  <div className="edit-tag-action-btn" onClick={handleSubmit}>
+                    Submit
+                  </div>
+                  <div className="edit-tag-action-btn" onClick={handleCancel}>
+                    Cancel
+                  </div>
                 </div>
               </div>{" "}
             </>
