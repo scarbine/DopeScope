@@ -12,6 +12,7 @@ namespace DopeScope.Repository
         List<Slide> GetUserSlides(string firebaseId);
         List<Slide> GetScopeSlides(int id);
         List<Slide> SearchSlides(string q);
+        int CountSlides();
         Slide GetById(int id);
         void Add(Slide slide);
         void Update( Slide slide);

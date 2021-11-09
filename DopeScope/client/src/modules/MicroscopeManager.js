@@ -9,9 +9,9 @@ export const getAllMicroscopes = () => {
       headers: {
         Authorization: `Bearer ${token}`,
       },
-    }).then((resp) => {
-      if (resp.ok) {
-        return resp.json();
+    }).then((res) => {
+      if (res.ok) {
+        return res.json();
       } else {
         throw new Error("An unknown error occurred while trying to get Scope.");
       }
@@ -81,10 +81,10 @@ export const addMicroscope = (microscope) => {
         "Content-Type": "application/json",
       },
       body: JSON.stringify(microscope),
-    }).then((resp) => {
-      if (resp.ok) {
-        return resp.json();
-      } else if (resp.status === 401) {
+    }).then((res) => {
+      if (res.ok) {
+        return res.json();
+      } else if (res.status === 401) {
         throw new Error("Unauthorized");
       } else {
         throw new Error(
@@ -103,10 +103,10 @@ export const updateMicroscope = (microscope) => {
         "Content-Type": "application/json",
       },
       body: JSON.stringify(microscope),
-    }).then((resp) => {
-      if (resp.ok) {
-        return resp.json();
-      } else if (resp.status === 401) {
+    }).then((res) => {
+      if (res.ok) {
+        return res.json();
+      } else if (res.status === 401) {
         throw new Error("Unauthorized");
       } else {
         throw new Error(

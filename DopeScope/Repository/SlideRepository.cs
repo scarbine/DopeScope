@@ -185,6 +185,22 @@ namespace DopeScope.Repository
             }
         }
 
+        public int CountSlides ()
+        { 
+            using (var conn = Connection)
+            {
+                conn.Open();
+                using (var cmd = conn.CreateCommand())
+                    {
+                    cmd.CommandText = "SELECT COUNT(id) FROM Slide";
+                    Int32 count = (Int32)cmd.ExecuteScalar();
+
+                    return count;
+                }
+                
+            }
+        }
+
         public void Update( Slide slide)
         {
             using (var conn = Connection)

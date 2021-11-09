@@ -15,6 +15,8 @@ namespace DopeScope.Repository
         Like GetById(int id);
         void Add(Like like);
 
+       
+
         void Delete(int Id);
 
     }
