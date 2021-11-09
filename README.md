@@ -52,3 +52,5 @@ A user should have the ablitly to add new slides with images that can be viewed,
   - Bootstrap
   - SQL
   - Firebase
+  - Cloudinary
+  - Google Custom Search API
