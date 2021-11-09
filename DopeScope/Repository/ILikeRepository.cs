@@ -9,7 +9,7 @@ namespace DopeScope.Repository
 
         List<Like> GetUserLikes(string firebaseId);
 
-        List<Like> GetSlideLikes(int slideId);
+        int GetSlideLikes(int slideId);
         Like GetBySlideAndFirebaseId(int slideId, string firebaseId);
 
         Like GetById(int id);

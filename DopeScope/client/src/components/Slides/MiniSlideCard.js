@@ -41,7 +41,7 @@ export const MiniSlideCard = (props) => {
       </CloudinaryContext>
         </div>
         <div className="right-box">
-          <div>{likes.length}</div>
+          <div>{likes}</div>
           <div>{props.slide.microscope.user.fullName}</div>
         </div>
       </div>

@@ -12,7 +12,7 @@ import {
 
 import "./Slide.css";
 
-export const SlideCard = ({ slide, updateList }) => {
+export const SlideCard = ({ slide }) => {
   const [date] = slide.dateCreated.split("T");
   const history = useHistory();
   const [likes, setLikes] = useState([]);
@@ -49,7 +49,7 @@ export const SlideCard = ({ slide, updateList }) => {
             <div className="card-subtitle">
               <CardTitle tag="h5">{slide.name}</CardTitle>
               <div>
-                {likes.length}{" "}
+                {likes}{" "}
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   width="16"

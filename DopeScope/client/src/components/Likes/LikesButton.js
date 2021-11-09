@@ -16,7 +16,6 @@ export const LikesButton = ({ slideId }) => {
   const history = useHistory();
   const location = history.location.pathname;
 
-  const totalLikes = likes.length;
 
   const handleAddLike = (e) => {
     e.preventDefault();
@@ -24,7 +23,8 @@ export const LikesButton = ({ slideId }) => {
       slideId: parseInt(slideId),
     };
 
-    addLike(likeObj).then(getSlideLikes(slideId)).then(setLikes);
+    addLike(likeObj)
+    getSlideLikes(slideId).then(setLikes);
   };
 
   const handleDeleteLike = (e) => {
@@ -44,7 +44,7 @@ export const LikesButton = ({ slideId }) => {
 
   return (
     <>
-      {userLike === undefined || likes.length === 0 ? (
+      {userLike === undefined || likes === 0 ? (
         <>
           <div className="likes-item">
             <svg
@@ -81,7 +81,7 @@ export const LikesButton = ({ slideId }) => {
         </>
       )}
 
-      <div className="likes-item">{totalLikes}</div>
+      <div className="likes-item">{likes}</div>
     </>
   );
 };
