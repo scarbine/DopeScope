@@ -127,32 +127,22 @@ namespace DopeScope.Repository
             }
         }
 
-        public List<Like> GetSlideLikes(int slideId)
+        public int GetSlideLikes(int slideId)
         {
             using (var conn = Connection)
             {
                 conn.Open();
                 using (var cmd = conn.CreateCommand())
                 {
-                    cmd.CommandText = @"SELECT l.Id, l.SlideId, l.UserId, u.Id AS UserId, u.FirstName, u.LastName, u.Email, u.FirebaseId , s.Id AS SlideSlideId, s.Name, s.Description, s.Magnification, s.DateCreated, s.MicroscopeId, s.ImageUrl  FROM [Like] l 
-                        JOIN [User] u ON u.id = l.UserId
-                        JOIN Slide s ON s.Id = l.SlideId
-                        WHERE s.Id = @Id";
+                    cmd.CommandText = @"SELECT COUNT(id) FROM [Like] WHERE slideId = @Id";
+
                     DbUtils.AddParameter(cmd, "@Id", slideId);
 
-                    var likes = new List<Like>();
+                    Int32 count = (Int32)cmd.ExecuteScalar();
 
-                    var reader = cmd.ExecuteReader();
-                    while (reader.Read())
-                    {
-                        likes.Add(NewLike(reader));
-                    }
-
-                    reader.Close();
-
-                    return likes;
-
+                    return count;
                 }
+
             }
         }
             public void Add(Like like)
