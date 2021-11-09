@@ -1,127 +1,118 @@
-.tag-active-true{
-    border: 0.1
-    rem
-     solid slategray;
-        background-color: rgba(70, 131, 180, 0.822);
-        color: whitesmoke;
-        padding: 0.75rem 1.75rem;    
-        border-radius: 4.25rem;
-        margin: 1rem;
-        justify-content: crenter;
-        display: flex;
-        justify-content: center;
+.tag-active-true {
+  border: 0.1 rem solid slategray;
+  background-color: rgba(70, 131, 180, 0.822);
+  color: whitesmoke;
+  padding: 0.75rem 1.75rem;
+  border-radius: 4.25rem;
+  margin: 1rem;
+  justify-content: crenter;
+  display: flex;
+  justify-content: center;
 }
-.tag-active-false{
-    border: .1rem solid lightgrey;
-    padding: 0.75rem 1.75rem;    
-    border-radius: 4.25rem;
-    margin: 1rem;
-    justify-content: crenter;
-    display: flex;
-    justify-content: center;
+.tag-active-false {
+  border: 0.1rem solid lightgrey;
+  padding: 0.75rem 1.75rem;
+  border-radius: 4.25rem;
+  margin: 1rem;
+  justify-content: crenter;
+  display: flex;
+  justify-content: center;
 }
 
-.all-tags-container{
-    display: flex;
-    text-align: center;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    margin: 0rem 5rem 0rem 5rem;
-    justify-content: center;
-    padding: 1rem 5rem;
-    max-width: 960px;
+.all-tags-container {
+  display: flex;
+  text-align: center;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin: 0rem 5rem 0rem 5rem;
+  justify-content: center;
+  padding: 1rem 5rem;
+  max-width: 960px;
 }
 
-.search-tag-container{
-    margin: 1rem;
-    border-radius: 2rem;
-    background-color: lightskyblue;
-    color: whitesmoke;
-    border: lightgray .1rem;
-    box-shadow: rgba(211, 211, 211, 0.582) .25rem .25rem 5px;
-    padding: .5rem 1rem .5rem 1rem;
+.search-tag-container {
+  margin: 1rem;
+  border-radius: 2rem;
+  background-color: lightskyblue;
+  color: whitesmoke;
+  border: lightgray 0.1rem;
+  box-shadow: rgba(211, 211, 211, 0.582) 0.25rem 0.25rem 5px;
+  padding: 0.5rem 1rem 0.5rem 1rem;
 }
 
-.search-tag-container:hover{
-    cursor: pointer;
+.search-tag-container:hover {
+  cursor: pointer;
 }
 
-
-
-.found-slides-cotainer{
-    display: flex;
-    flex-wrap: wrap;
-   width: 70rem;
-   max-height: 64rem;
-   overflow: auto;
+.found-slides-cotainer {
+  display: flex;
+  flex-wrap: wrap;
+  width: 70rem;
+  max-height: 64rem;
+  overflow: auto;
 }
 
-.found-slides-header{
-    text-align: center;
-
+.found-slides-header {
+  text-align: center;
 }
 
-.found-slides-header-tags{
-    text-align: center;
-    margin-top: 2rem;
+.found-slides-header-tags {
+  text-align: center;
+  margin-top: 2rem;
 }
 
-.tag-slide-page{
-    margin-left: 2rem;
-    display: flex;
+.tag-slide-page {
+  margin-left: 2rem;
+  display: flex;
 }
 
-.tag-options-container{
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-evenly;
-    min-width: 15rem;
-    max-width: 57rem;
-    margin-top: 2rem;
+.tag-options-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  min-width: 15rem;
+  max-width: 57rem;
+  margin-top: 2rem;
 }
 
-.edit-tag-view{
-    margin-top: 3rem;
-    margin-left: 8rem;
-    text-align: center;
+.edit-tag-view {
+  margin-top: 3rem;
+  margin-left: 8rem;
+  text-align: center;
 }
 
-.edit-tag-action-btns{
-    display: flex;
-    justify-content: space-evenly;
-    margin-top: 2rem;
-    margin-left: 10rem;
-    margin-right: 10rem;
-  
- 
-
+.edit-tag-action-btns {
+  display: flex;
+  justify-content: space-evenly;
+  margin-top: 2rem;
+  margin-left: 10rem;
+  margin-right: 10rem;
 }
 
-.edit-tag-action-btn{
-    margin: 1rem;
-    border-radius: 2rem;
-    background-color: lightskyblue;
-    color: whitesmoke;
-    border: lightgray .1rem;
-    box-shadow: rgba(211, 211, 211, 0.582) .25rem .25rem 5px;
-    padding: .5rem 1rem .5rem 1rem;
-
+.edit-tag-action-btn {
+  margin: 1rem;
+  border-radius: 2rem;
+  background-color: lightskyblue;
+  color: whitesmoke;
+  border: lightgray 0.1rem;
+  box-shadow: rgba(211, 211, 211, 0.582) 0.25rem 0.25rem 5px;
+  padding: 0.5rem 1rem 0.5rem 1rem;
 }
 
-.edit-tag-field{
-    margin-top: 2rem;
+.edit-tag-field {
+  margin-top: 2rem;
 }
 
-.logo-edit-tag{
-    margin-left: -5rem;
-    margin-bottom: 3rem;
-    margin-top: -3rem;
+.logo-edit-tag {
+  margin-left: -5rem;
+  margin-bottom: 3rem;
+  margin-top: -3rem;
 }
 
-.edit-tag-input{
-    width: 25rem;
-    border-radius: 2rem;
-    height: 2rem;
-    text-align: center;
-    margin-top:2rem;
+.edit-tag-input {
+  width: 25rem;
+  border-radius: 2rem;
+  height: 2rem;
+  text-align: center;
+  margin-top: 2rem;
 }

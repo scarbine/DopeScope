@@ -10,7 +10,7 @@ import {
   NavLink,
 } from "reactstrap";
 import { logout } from "../modules/authManager";
-import "../index.css"
+import "../index.css";
 
 export default function Header({ isLoggedIn }) {
   const [isOpen, setIsOpen] = useState(false);
@@ -18,7 +18,7 @@ export default function Header({ isLoggedIn }) {
 
   return (
     <div className="navbar-container">
-      <Navbar className="navbar-items"  dark expand="md">
+      <Navbar className="navbar-items" dark expand="md">
         <NavbarBrand className="logo" tag={RRNavLink} to="/">
           DopeScope
         </NavbarBrand>

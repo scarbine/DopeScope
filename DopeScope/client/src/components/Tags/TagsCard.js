@@ -2,7 +2,6 @@ import React from "react";
 import { useEffect, useState } from "react/cjs/react.development";
 import { addSlideTag, deleteSlideTag } from "../../modules/SlideTagManager";
 
-
 import "./Tags.css";
 
 export const TagCard = (props) => {
@@ -29,7 +28,6 @@ export const TagCard = (props) => {
 
   return (
     <>
-      {/* {console.log(props.tag.id, "is", isActive, "tagFound", tagFound)} */}
       {isActive ? (
         <div
           className={`tag-active-${isActive}`}

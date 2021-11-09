@@ -1,12 +1,11 @@
 import React from "react";
 import { useHistory } from "react-router";
 import { useEffect, useState } from "react/cjs/react.development";
-import { Card, CardImg, CardBody, CardTitle, Col } from "reactstrap";
+import { Card, CardBody, CardTitle, Col } from "reactstrap";
 import { getSlideLikes } from "../../modules/Likemanager";
 
 import {
   Image,
-  Video,
   Transformation,
   CloudinaryContext,
 } from "cloudinary-react";
@@ -32,15 +31,6 @@ export const SlideCard = ({ slide, updateList }) => {
     <>
       <div className="slide-card-container">
         <Card className="slide-card">
-          {/* <Image
-            top
-            className="slide-card-image"
-            width="100%"
-            src={slide.imageUrl}
-            alt="Card image cap"
-            onClick={handleDetails}
-            thumbnail={true} 
-          /> */}
           <CloudinaryContext
             cloudName="ddaeunjfu"
             secure="true"
@@ -50,7 +40,6 @@ export const SlideCard = ({ slide, updateList }) => {
               <Transformation
                 width="237"
                 height="237"
-                // gravity="face"
                 crop="thumb"
               />
             </Image>

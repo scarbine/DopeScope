@@ -5,7 +5,6 @@ import { SlideCard } from "../Slides/SlideCard";
 import { searchSlidesByTagId } from "../../modules/SlideTagManager";
 import { TagCardSearch } from "./TagCardSearch";
 import { getAllSlides } from "../../modules/SlideManager";
-import { Container } from "reactstrap";
 import { MiniSlideCardList } from "../Slides/MiniSlideCardList";
 import { Image, Transformation } from "cloudinary-react";
 
@@ -42,46 +41,36 @@ export const TagSearch = () => {
   return (
     <>
       <div className="tag-slide-page">
+        <div>
           <div>
-        <div>
-        {/* <Image
-            className="dope-scope-logo-mini"
-            cloudName="ddaeunjfu"
-            publicId="sldw7e2sdswxiiwnqxng.png"
-            secure="true"
-          >
-            <Transformation width="275" height="170" crop="fill" />
-          </Image> */}
-          <h3 className="found-slides-header-tags">Search By Tag</h3>
-          <div className="all-tags-container">
-            {allTags.map((tag) => {
-              return (
-                <TagCardSearch
-                  className="search-tag-card"
-                  key={tag.id}
-                  tag={tag}
-                  setSearchTagId={setSearchTagId}
-                  setSearchTagName={setSearchTagName}
-                />
-              );
-            })}
+            <h3 className="found-slides-header-tags">Search By Tag</h3>
+            <div className="all-tags-container">
+              {allTags.map((tag) => {
+                return (
+                  <TagCardSearch
+                    className="search-tag-card"
+                    key={tag.id}
+                    tag={tag}
+                    setSearchTagId={setSearchTagId}
+                    setSearchTagName={setSearchTagName}
+                  />
+                );
+              })}
+            </div>
           </div>
-        </div>
 
-        <div>
-          <h5 className="found-slides-header">
-            {foundSlides.length} {searchTagName}{" "}
-            { foundSlides.length === 1
-              ? "Slide"
-              : "Slides"}{" "}
-          </h5>
-          {console.log(foundSlides)}
-          <div className="found-slides-cotainer">
-            {foundSlides?.map((slide) => {
-              return <SlideCard key={slide.id} slide={slide} />;
-            })}
+          <div>
+            <h5 className="found-slides-header">
+              {foundSlides.length} {searchTagName}{" "}
+              {foundSlides.length === 1 ? "Slide" : "Slides"}{" "}
+            </h5>
+            {console.log(foundSlides)}
+            <div className="found-slides-cotainer">
+              {foundSlides?.map((slide) => {
+                return <SlideCard key={slide.id} slide={slide} />;
+              })}
+            </div>
           </div>
-        </div>
         </div>
         <div>
           <Image
@@ -92,7 +81,7 @@ export const TagSearch = () => {
           >
             <Transformation width="275" height="170" crop="fill" />
           </Image>
-          <MiniSlideCardList sliceNumber={7}/>
+          <MiniSlideCardList sliceNumber={7} />
         </div>
       </div>
     </>

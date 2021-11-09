@@ -1,10 +1,9 @@
 import React, { useEffect } from "react";
 import { useHistory, useParams } from "react-router";
 import { useState } from "react/cjs/react.development";
-import { Button, Container } from "reactstrap";
+import { Button } from "reactstrap";
 import { getMicroscopesById } from "../../modules/MicroscopeManager";
 import { getSlideByScopeId } from "../../modules/SlideManager";
-import { SideBar } from "../SideBar/SideBar";
 import { MiniSlideCardList } from "../Slides/MiniSlideCardList";
 import { SlideCard } from "../Slides/SlideCard";
 import { Image, Transformation } from "cloudinary-react";
@@ -41,15 +40,21 @@ export const MicroscopeDetail = () => {
             <h1 className="scope-name">
               {scope.make} {scope.model}
             </h1>
-            {/* <div className="scope-owner">{scope.user.fullName}</div> */}
           </div>
-          {/* <h5>{scope.user.fullName}</h5> */}
-          {/* <h5>Scopes Slides</h5> */}
+
           <div className="scope-slides-wrapper">
-            <h5 className="scope-slide-title"> {slides.length !== 0 ? <>{slides.length} {slides.length === 1 ? <>Slide</> : <>Slides</> }</> : <>Slides</>}</h5>
-            {/* <h5 className="scope-slide-title">
-              ________________________________________________________________________________________
-            </h5> */}
+            <h5 className="scope-slide-title">
+              {" "}
+              {slides.length !== 0 ? (
+                <>
+                  {slides.length}{" "}
+                  {slides.length === 1 ? <>Slide</> : <>Slides</>}
+                </>
+              ) : (
+                <>Slides</>
+              )}
+            </h5>
+
             <div className="scope-slides">
               {slides.length === 0 ? (
                 <div>Currenlty No Slides </div>
@@ -65,7 +70,7 @@ export const MicroscopeDetail = () => {
           </div>
         </div>
         <div>
-        <Image
+          <Image
             className="dope-scope-logo-mini"
             cloudName="ddaeunjfu"
             publicId="sldw7e2sdswxiiwnqxng.png"
@@ -73,12 +78,12 @@ export const MicroscopeDetail = () => {
           >
             <Transformation width="275" height="170" crop="fill" />
           </Image>
-          <MiniSlideCardList sliceNumber={3}/>
-        <img
-          className="scope-detail-image"
-          src={scope.imageUrl}
-          alt={scope.model}
-        />
+          <MiniSlideCardList sliceNumber={3} />
+          <img
+            className="scope-detail-image"
+            src={scope.imageUrl}
+            alt={scope.model}
+          />
         </div>
       </container>
     </>

@@ -1,19 +1,16 @@
 import React from "react";
 import { useEffect, useState } from "react/cjs/react.development";
-
 import {
   Image,
-  Video,
   Transformation,
   CloudinaryContext,
 } from "cloudinary-react";
 import { useHistory } from "react-router";
 
-// import "../Slides/Slide.css";
+
 
 export const LargeScopeImage = ({ slide, location }) => {
-  //   const [currentSlide, setCurrentSlide] = useState({});
-  //   const [imagePublicIdWithFileExt, setImagePublicIdWithFlieExt ] = useState("")
+
   const [imagePublicId, setImagePublicId] = useState("");
   const history = useHistory();
 
@@ -22,8 +19,7 @@ export const LargeScopeImage = ({ slide, location }) => {
   };
 
   useEffect(() => {
-    // setCurrentSlide(slide);
-    // setTimeout(500)
+
     if (slide.name !== "") {
       const [, pid] = slide.microscope.imageUrl?.split("DopeScope/");
       const [iPid] = pid?.split(".");
@@ -31,13 +27,9 @@ export const LargeScopeImage = ({ slide, location }) => {
     }
   }, [location, slide.name]);
 
-  //   const [, imagePublicIdWithFileExt] =
-  //     slide.imageUrl?.split("DopeScope/");
-  //   const [imagePublicId,] = imagePublicIdWithFileExt.split(".");
 
   return (
     <>
-      {/* {console.log(imagePublicId , slide)} */}
       <div>
         <CloudinaryContext cloudName="ddaeunjfu" secure="true">
           <Image
@@ -48,7 +40,6 @@ export const LargeScopeImage = ({ slide, location }) => {
             <Transformation
               width="375"
               height="550"
-              // gravity="face"
               crop="thumb"
             />
           </Image>

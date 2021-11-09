@@ -1,17 +1,11 @@
-import { getAllByAltText } from "@testing-library/dom";
-import React, { useEffect, useState, useRef } from "react";
+import React, { useEffect, useState } from "react";
 import { useHistory } from "react-router";
-import { Button } from "reactstrap";
-import {
-  getAllMicroscopes,
-  searchScopes,
-} from "../../modules/MicroscopeManager";
+
+import { getAllMicroscopes } from "../../modules/MicroscopeManager";
 import { MicroscopeCard } from "./MicroscopeCard";
 import { getScopesByUserId } from "../../modules/MicroscopeManager";
 import firebase from "firebase";
 import "./Microscope.css";
-import { Image } from "cloudinary-react";
-import { Transformation } from "cloudinary-react";
 
 export const MicroscopeList = () => {
   const history = useHistory();
@@ -19,7 +13,6 @@ export const MicroscopeList = () => {
   const [microscopes, setMicroscopes] = useState([]);
   const [currentLocation, setCurrentLocation] = useState("");
   const user = firebase.auth().currentUser;
-  
 
   useEffect(() => {
     if (location === "/microscope") {
@@ -33,43 +26,13 @@ export const MicroscopeList = () => {
     }
   }, [currentLocation]);
 
-  // const ScopeSearch = () => {
-  //   let textInput = useRef();
-
-  //   const handleSearch = () => {
-  //     console.log(textInput.current.value);
-  //     searchScopes(textInput.current.value).then((searchResults) =>
-  //       setMicroscopes(searchResults)
-  //     );
-
-  //     const handleSearchChange = (e) => {
-
-  //     }
-  //   };
-
-  //   return (
-  //     <>
-
-  //       <input ref={textInput} type="text" onChange={handleSearchChange}></input>
-  //       <button onClick={handleSearch}>Search Scopes</button>
-  //       {console.log(microscopes)}
-  //     </>
-  //   );
-  // };
-
   return (
     <>
       <div className="scope-container ">
-     
         <div>
           <div className="scope-slides-wrapper">
-            <h3 className="scope-slide-title">
-              {/* {location === "/microscope" ? "All Scopes" : "Scopes"} */}
-            </h3>
-            {/* <ScopeSearch /> */}
-            {/* <h5 className="scope-slide-title line">
-              ________________________________________________________________________________________
-            </h5> */}
+            <h3 className="scope-slide-title"></h3>
+
             <div className="scope-slides">
               {microscopes.length !== 0 ? (
                 microscopes.map((microscope) => {

@@ -1,16 +1,12 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect } from "react";
 import { useHistory, useParams } from "react-router";
 import { useState } from "react/cjs/react.development";
 import { getNotesBySlideId } from "../../modules/NotesManager";
 import { getSlideById } from "../../modules/SlideManager";
-import { NoteCard } from "../Notes/NotesCard";
 import { deleteSlide } from "../../modules/SlideManager";
-import { Button, Card } from "reactstrap";
+import { Button } from "reactstrap";
 import { SlideCommentModal } from "./SlideCommentModal";
-import { SlideList } from "./SlideList";
-import { getSlideLikes } from "../../modules/Likemanager";
 import firebase from "firebase";
-import { getSlideLikeByUser } from "../../modules/Likemanager";
 import { getAllSlideTagsBySlideId } from "../../modules/SlideTagManager";
 import { SlideTagCard } from "./SlideTagCard";
 import { SlideTagModal } from "./SlideTagModal";
@@ -19,8 +15,9 @@ import { MiniSlideCardList } from "./MiniSlideCardList";
 import { CustomImageSearch } from "../CustomImageSearch/CustomImageSearch";
 import { SlideDetailImage } from "./SlideDetailImage";
 import { LargeScopeImage } from "../Microscopes/LargeScopeImage";
-import { CloudinaryContext, Image, Transformation } from "cloudinary-react";
+import { Image, Transformation } from "cloudinary-react";
 import { LikesButton } from "../Likes/LikesButton";
+import { NotesList } from "../Notes/NotesList";
 
 export const SlideDetails = () => {
   const { slideId } = useParams();
@@ -28,7 +25,6 @@ export const SlideDetails = () => {
   const location = history.location.pathname;
   const [update, setUpdate] = useState(false);
   const [likes, setLikes] = useState([]);
-  const [likeToggle, setLikeToggle] = useState(false);
   const user = firebase.auth().currentUser;
   const firebaseId = user.uid;
   const [userLike, setUserLike] = useState(undefined);
@@ -53,8 +49,6 @@ export const SlideDetails = () => {
     },
   });
   const [notes, setNotes] = useState([]);
-  // const [, imagePublicIdWithFileExt] = slide.imageUrl.split("DopeScope/");
-  // const [imagePublicId] = imagePublicIdWithFileExt.split(".");
 
   const updateList = () => {
     setUpdate(!update);
@@ -92,9 +86,6 @@ export const SlideDetails = () => {
   useEffect(() => {}, []);
 
   useEffect(() => {
-    // setTimeout(1000);
-
-    // mapSearchResults();
     slideTagModalDisplay();
   }, [useEffectTrigger, location, slideTagModalToggle, slideId]);
 
@@ -176,7 +167,6 @@ export const SlideDetails = () => {
               setSearchResults={setSearchResults}
             />
           </div>
-          {/* {mapSearchResults()} */}
           {searchResults !== undefined ? (
             searchResults.items?.map((sr) => {
               return (
@@ -204,13 +194,7 @@ export const SlideDetails = () => {
           <h3 className="slide-comments"> Comments</h3>
           <div className="note-card-div">
             <div className="note-card-wrapper">
-              {notes?.length !== 0 ? (
-                notes?.map((note) => {
-                  return <NoteCard key={note.id} note={note} />;
-                })
-              ) : (
-                <div>No Comments</div>
-              )}
+              <NotesList notes={notes}/>
             </div>
           </div>
         </section>

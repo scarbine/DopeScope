@@ -3,7 +3,11 @@ import { useState } from "react";
 
 import { Offcanvas, Button } from "bootstrap";
 
-export const CustomerSearchResultsModal = ({ name, searchResults, ...props }) => {
+export const CustomerSearchResultsModal = ({
+  name,
+  searchResults,
+  ...props
+}) => {
   const [show, setShow] = useState(false);
 
   const mapSearchResults = () => {
@@ -40,20 +44,9 @@ export const CustomerSearchResultsModal = ({ name, searchResults, ...props }) =>
         <Offcanvas.Header closeButton>
           <Offcanvas.Title>Offcanvas</Offcanvas.Title>
         </Offcanvas.Header>
-        <Offcanvas.Body>
-         {mapSearchResults()}
-        </Offcanvas.Body>
+        <Offcanvas.Body>{mapSearchResults()}</Offcanvas.Body>
       </Offcanvas>
     </>
   );
 };
 
-//   function Example() {
-//     return (
-//       <>
-//         {['start', 'end', 'top', 'bottom'].map((placement, idx) => (
-//           <OffCanvasExample key={idx} placement={placement} name={placement} />
-//         ))}
-//       </>
-//     );
-//   }
